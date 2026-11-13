@@ -1,72 +1,74 @@
 {
   "corpus_id": "so-tay-sinh-vien-2024",
-  "title": "Sổ tay Sinh viên và Quy chế Đào tạo Đại học Chính quy năm học 2024 - 2025",
+  "title": "Tài liệu Quy chế Đào tạo và Công tác Sinh viên Đại học (Tập hợp chuẩn hóa phục vụ nghiên cứu Data Ingestion)",
+  "nature_of_corpus": "Tài liệu học thuật do học viên Lê Song Thảo biên soạn và kết xuất PDF kỹ thuật bằng ReportLab 5.1.0 (ngày 13/11/2026), dựa trên việc hệ thống hóa các quy định hiện hành trong các văn bản quy phạm pháp luật công khai của Nhà nước và Bộ Giáo dục & Đào tạo.",
+  "compiled_by": "Lê Song Thảo (MSSV: 2A202603534)",
+  "compiled_date": "2026-11-13",
   "source_path_or_url": "data/so_tay_sinh_vien_2024.pdf",
-  "version": "2024.1 (Ban hành theo Quyết định số 1286/QĐ-ĐHCNKT ngày 15/08/2024)",
-  "effective_date": "2024-09-01",
-  "accessed_at": "2026-11-13T13:20:00+07:00",
-  "license_or_permission": "Văn bản quy định nội bộ công khai cho người học, được phép lưu hành và trích dẫn phục vụ học tập, nghiên cứu khoa học",
+  "generator_tool": "ReportLab 5.1.0 (Python 3.12, Windows)",
+  "license_or_permission": "Creative Commons Attribution 4.0 International (CC BY 4.0) — Tài liệu tự biên soạn từ nguồn công khai, được phép phân phối, trích dẫn và sử dụng cho mục đích học tập, thực hành và nghiên cứu khoa học.",
+  "legal_references": [
+    {
+      "code": "Thông tư số 08/2021/TT-BGDĐT",
+      "authority": "Bộ trưởng Bộ Giáo dục và Đào tạo",
+      "date": "2021-03-18",
+      "subject": "Quy chế đào tạo trình độ đại học theo học chế tín chỉ",
+      "url": "https://moet.gov.vn/van-ban/van-ban-quan-ly-nha-nuoc/Pages/chi-tiet-van-ban.aspx?ItemID=1406"
+    },
+    {
+      "code": "Thông tư số 10/2016/TT-BGDĐT",
+      "authority": "Bộ trưởng Bộ Giáo dục và Đào tạo",
+      "date": "2016-04-05",
+      "subject": "Quy chế công tác sinh viên đối với chương trình đào tạo đại học hệ chính quy",
+      "url": "https://moet.gov.vn/van-ban/van-ban-quan-ly-nha-nuoc/Pages/chi-tiet-van-ban.aspx?ItemID=1156"
+    },
+    {
+      "code": "Thông tư số 16/2015/TT-BGDĐT",
+      "authority": "Bộ trưởng Bộ Giáo dục và Đào tạo",
+      "date": "2015-08-12",
+      "subject": "Quy chế đánh giá kết quả rèn luyện của người học được đào tạo trình độ đại học hệ chính quy",
+      "url": "https://moet.gov.vn/van-ban/van-ban-quan-ly-nha-nuoc/Pages/chi-tiet-van-ban.aspx?ItemID=1119"
+    },
+    {
+      "code": "Nghị định số 81/2021/NĐ-CP",
+      "authority": "Chính phủ",
+      "date": "2021-08-27",
+      "subject": "Cơ chế thu, quản lý học phí và chính sách miễn, giảm học phí, hỗ trợ chi phí học tập",
+      "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=204068"
+    },
+    {
+      "code": "Quyết định số 157/2007/QĐ-TTg và QĐ 05/2022/QĐ-TTg",
+      "authority": "Thủ tướng Chính phủ",
+      "date": "2022-03-23",
+      "subject": "Tín dụng đối với học sinh, sinh viên",
+      "url": "https://vanban.chinhphu.vn/?pageid=27160&docid=205469"
+    }
+  ],
   "total_physical_pages": 35,
   "total_content_pages": 32,
   "total_non_content_pages": 3,
   "total_content_characters": 45269,
   "average_characters_per_content_page": 1414.7,
-  "page_counting_rule": "Quy tắc tính trang: Chỉ tính các trang nội dung chứa điều khoản quy chế, chính sách áp dụng trực tiếp cho sinh viên (từ Trang 3 đến Trang 34, gồm 32 trang). Loại trừ 3 trang không phải nội dung quy chuẩn: Trang 1 (bìa), Trang 2 (lời nói đầu và mục lục), Trang 35 (phụ lục danh mục văn bản tham chiếu). Số trang nội dung hợp lệ 32/35 trang (đạt yêu cầu >= 30 trang của đề bài).",
+  "page_counting_rule": "Quy tắc tính trang: Chỉ tính các trang nội dung quy chuẩn chứa điều khoản quy định cụ thể về đào tạo, học phí, học bổng, rèn luyện và tốt nghiệp (từ Trang 3 đến Trang 34, tổng cộng 32 trang). Loại trừ 3 trang phi nội dung nghiệp vụ: Trang 1 (bìa tài liệu), Trang 2 (lời nói đầu và mục lục), Trang 35 (phụ lục danh mục văn bản tham chiếu). Số trang nội dung hợp lệ 32/35 trang (đáp ứng tiêu chí >= 30 trang của đề bài).",
   "sections": {
     "quy_che_dao_tao": {
       "name": "Quy chế Đào tạo Tín chỉ",
-      "pages": [
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10
-      ],
+      "pages": [3, 4, 5, 6, 7, 8, 9, 10],
       "page_count": 8
     },
     "hoc_bong_hoc_phi": {
       "name": "Chính sách Học phí & Học bổng",
-      "pages": [
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17,
-        18
-      ],
+      "pages": [11, 12, 13, 14, 15, 16, 17, 18],
       "page_count": 8
     },
     "cong_tac_sinh_vien": {
       "name": "Công tác Sinh viên & Đánh giá Rèn luyện",
-      "pages": [
-        19,
-        20,
-        21,
-        22,
-        23,
-        24,
-        25,
-        26
-      ],
+      "pages": [19, 20, 21, 22, 23, 24, 25, 26],
       "page_count": 8
     },
     "tot_nghiep_khen_thuong": {
       "name": "Xét Tốt nghiệp & Khen thưởng - Kỷ luật",
-      "pages": [
-        27,
-        28,
-        29,
-        30,
-        31,
-        32,
-        33,
-        34
-      ],
+      "pages": [27, 28, 29, 30, 31, 32, 33, 34],
       "page_count": 8
     }
   },
@@ -85,200 +87,6 @@
       "page_number": 35,
       "character_count": 1447,
       "reason": "Phụ lục văn bản quy phạm pháp luật tham chiếu"
-    }
-  ],
-  "content_pages": [
-    {
-      "page_number": 3,
-      "section": "quy_che_dao_tao",
-      "chapter": "Chương I: Quy chế Đào tạo theo Hệ thống Tín chỉ",
-      "character_count": 1712
-    },
-    {
-      "page_number": 4,
-      "section": "quy_che_dao_tao",
-      "chapter": "Chương I: Quy chế Đào tạo theo Hệ thống Tín chỉ",
-      "character_count": 1629
-    },
-    {
-      "page_number": 5,
-      "section": "quy_che_dao_tao",
-      "chapter": "Chương I: Quy chế Đào tạo theo Hệ thống Tín chỉ",
-      "character_count": 1655
-    },
-    {
-      "page_number": 6,
-      "section": "quy_che_dao_tao",
-      "chapter": "Chương I: Quy chế Đào tạo theo Hệ thống Tín chỉ",
-      "character_count": 1461
-    },
-    {
-      "page_number": 7,
-      "section": "quy_che_dao_tao",
-      "chapter": "Chương I: Quy chế Đào tạo theo Hệ thống Tín chỉ",
-      "character_count": 1490
-    },
-    {
-      "page_number": 8,
-      "section": "quy_che_dao_tao",
-      "chapter": "Chương I: Quy chế Đào tạo theo Hệ thống Tín chỉ",
-      "character_count": 1475
-    },
-    {
-      "page_number": 9,
-      "section": "quy_che_dao_tao",
-      "chapter": "Chương I: Quy chế Đào tạo theo Hệ thống Tín chỉ",
-      "character_count": 1159
-    },
-    {
-      "page_number": 10,
-      "section": "quy_che_dao_tao",
-      "chapter": "Chương I: Quy chế Đào tạo theo Hệ thống Tín chỉ",
-      "character_count": 1477
-    },
-    {
-      "page_number": 11,
-      "section": "hoc_bong_hoc_phi",
-      "chapter": "Chương II: Chính sách Học phí, Miễn giảm và Học bổng",
-      "character_count": 1303
-    },
-    {
-      "page_number": 12,
-      "section": "hoc_bong_hoc_phi",
-      "chapter": "Chương II: Chính sách Học phí, Miễn giảm và Học bổng",
-      "character_count": 1403
-    },
-    {
-      "page_number": 13,
-      "section": "hoc_bong_hoc_phi",
-      "chapter": "Chương II: Chính sách Học phí, Miễn giảm và Học bổng",
-      "character_count": 1447
-    },
-    {
-      "page_number": 14,
-      "section": "hoc_bong_hoc_phi",
-      "chapter": "Chương II: Chính sách Học phí, Miễn giảm và Học bổng",
-      "character_count": 1384
-    },
-    {
-      "page_number": 15,
-      "section": "hoc_bong_hoc_phi",
-      "chapter": "Chương II: Chính sách Học phí, Miễn giảm và Học bổng",
-      "character_count": 1450
-    },
-    {
-      "page_number": 16,
-      "section": "hoc_bong_hoc_phi",
-      "chapter": "Chương II: Chính sách Học phí, Miễn giảm và Học bổng",
-      "character_count": 1440
-    },
-    {
-      "page_number": 17,
-      "section": "hoc_bong_hoc_phi",
-      "chapter": "Chương II: Chính sách Học phí, Miễn giảm và Học bổng",
-      "character_count": 1420
-    },
-    {
-      "page_number": 18,
-      "section": "hoc_bong_hoc_phi",
-      "chapter": "Chương II: Chính sách Học phí, Miễn giảm và Học bổng",
-      "character_count": 1406
-    },
-    {
-      "page_number": 19,
-      "section": "cong_tac_sinh_vien",
-      "chapter": "Chương III: Công tác Sinh viên, Đánh giá Rèn luyện và Ký túc xá",
-      "character_count": 1470
-    },
-    {
-      "page_number": 20,
-      "section": "cong_tac_sinh_vien",
-      "chapter": "Chương III: Công tác Sinh viên, Đánh giá Rèn luyện và Ký túc xá",
-      "character_count": 1391
-    },
-    {
-      "page_number": 21,
-      "section": "cong_tac_sinh_vien",
-      "chapter": "Chương III: Công tác Sinh viên, Đánh giá Rèn luyện và Ký túc xá",
-      "character_count": 1595
-    },
-    {
-      "page_number": 22,
-      "section": "cong_tac_sinh_vien",
-      "chapter": "Chương III: Công tác Sinh viên, Đánh giá Rèn luyện và Ký túc xá",
-      "character_count": 1264
-    },
-    {
-      "page_number": 23,
-      "section": "cong_tac_sinh_vien",
-      "chapter": "Chương III: Công tác Sinh viên, Đánh giá Rèn luyện và Ký túc xá",
-      "character_count": 1473
-    },
-    {
-      "page_number": 24,
-      "section": "cong_tac_sinh_vien",
-      "chapter": "Chương III: Công tác Sinh viên, Đánh giá Rèn luyện và Ký túc xá",
-      "character_count": 1383
-    },
-    {
-      "page_number": 25,
-      "section": "cong_tac_sinh_vien",
-      "chapter": "Chương III: Công tác Sinh viên, Đánh giá Rèn luyện và Ký túc xá",
-      "character_count": 1410
-    },
-    {
-      "page_number": 26,
-      "section": "cong_tac_sinh_vien",
-      "chapter": "Chương III: Công tác Sinh viên, Đánh giá Rèn luyện và Ký túc xá",
-      "character_count": 1268
-    },
-    {
-      "page_number": 27,
-      "section": "tot_nghiep_khen_thuong",
-      "chapter": "Chương IV: Chuẩn đầu ra, Xét tốt nghiệp, Khen thưởng và Kỷ luật",
-      "character_count": 1403
-    },
-    {
-      "page_number": 28,
-      "section": "tot_nghiep_khen_thuong",
-      "chapter": "Chương IV: Chuẩn đầu ra, Xét tốt nghiệp, Khen thưởng và Kỷ luật",
-      "character_count": 1384
-    },
-    {
-      "page_number": 29,
-      "section": "tot_nghiep_khen_thuong",
-      "chapter": "Chương IV: Chuẩn đầu ra, Xét tốt nghiệp, Khen thưởng và Kỷ luật",
-      "character_count": 1340
-    },
-    {
-      "page_number": 30,
-      "section": "tot_nghiep_khen_thuong",
-      "chapter": "Chương IV: Chuẩn đầu ra, Xét tốt nghiệp, Khen thưởng và Kỷ luật",
-      "character_count": 1419
-    },
-    {
-      "page_number": 31,
-      "section": "tot_nghiep_khen_thuong",
-      "chapter": "Chương IV: Chuẩn đầu ra, Xét tốt nghiệp, Khen thưởng và Kỷ luật",
-      "character_count": 1188
-    },
-    {
-      "page_number": 32,
-      "section": "tot_nghiep_khen_thuong",
-      "chapter": "Chương IV: Chuẩn đầu ra, Xét tốt nghiệp, Khen thưởng và Kỷ luật",
-      "character_count": 1214
-    },
-    {
-      "page_number": 33,
-      "section": "tot_nghiep_khen_thuong",
-      "chapter": "Chương IV: Chuẩn đầu ra, Xét tốt nghiệp, Khen thưởng và Kỷ luật",
-      "character_count": 1496
-    },
-    {
-      "page_number": 34,
-      "section": "tot_nghiep_khen_thuong",
-      "chapter": "Chương IV: Chuẩn đầu ra, Xét tốt nghiệp, Khen thưởng và Kỷ luật",
-      "character_count": 1260
     }
   ]
 }

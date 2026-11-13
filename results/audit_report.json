@@ -1,353 +1,668 @@
 {
+  "auditor": "Lê Song Thảo (MSSV: 2A202603534)",
+  "methodology": "Tác giả tự đọc và đối chiếu thủ công 100% từng chunk với tài liệu PDF gốc tại các vị trí nguồn cố định, có sự hỗ trợ của script để chuẩn hóa dữ liệu so khớp.",
   "coherence": {
     "sample_size": 10,
     "strategy_a_avg": 0.5,
-    "strategy_b_avg": 2.0,
+    "strategy_b_avg": 1.9,
     "details": [
       {
-        "sample_index": 1,
         "page": 3,
         "section": "quy_che_dao_tao",
         "strategy_a": {
           "chunk_id": "so-tay-sinh-vien-2024_p3_fix_001",
-          "snippet": "i Trường Đại học Công nghệ và Kỹ thuật.\n2. Quy chế áp dụng thống nhất đối với toàn thể sinh viên đang theo học các chương trình đào tạo đại ...",
+          "text_preview": "i Trường Đại học Công nghệ và Kỹ thuật.\n2. Quy chế áp dụng thống nhất đối với toàn thể sinh viên đang theo học các chươn...",
           "score": 0,
-          "reason": "Cắt ngang giữa từ và câu ('i Trường Đại học...'), mất chủ thể điều khoản Điều 1."
+          "reason": "Chunk fix_001 bị cắt ngang giữa từ ('i Trường Đại học...'), mất hoàn toàn cụm từ mở đầu Điều 1."
         },
         "strategy_b": {
           "chunk_id": "so-tay-sinh-vien-2024_p3_para_000",
-          "snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 3\nCHƯƠNG I: QUY CHẾ ...",
+          "text_preview": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang ...",
           "score": 2,
-          "reason": "Bao hàm trọn vẹn tiêu đề Điều khoản và toàn bộ các khoản quy định, câu cú hoàn chỉnh, mạch lạc."
+          "reason": "Chunk para_000 bao hàm trọn vẹn Điều 1: Phạm vi điều chỉnh và đối tượng áp dụng, ngữ nghĩa đầy đủ."
         }
       },
       {
-        "sample_index": 2,
         "page": 5,
         "section": "quy_che_dao_tao",
         "strategy_a": {
           "chunk_id": "so-tay-sinh-vien-2024_p5_fix_001",
-          "snippet": "vượt quá 8 tín chỉ. Nhà trường\nkhông áp đặt số tín chỉ tối thiểu đối với học kỳ phụ.\n3. Các học phần trong học kỳ phụ được tổ chức học dồn v...",
+          "text_preview": "vượt quá 8 tín chỉ. Nhà trường\nkhông áp đặt số tín chỉ tối thiểu đối với học kỳ phụ.\n3. Các học phần trong học kỳ phụ đư...",
           "score": 1,
-          "reason": "Hiểu được một phần quy định học kỳ hè nhưng câu mở đầu bị cắt lửng ('vượt quá 8 tín chỉ')."
+          "reason": "Chunk fix_001 hiểu được quy định học kỳ hè nhưng mở đầu bằng 'vượt quá 8 tín chỉ', thiếu tiêu đề Điều 5."
         },
         "strategy_b": {
           "chunk_id": "so-tay-sinh-vien-2024_p5_para_000",
-          "snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 5\nĐiều 5. Đăng ký họ...",
+          "text_preview": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang ...",
           "score": 2,
-          "reason": "Bao hàm trọn vẹn tiêu đề Điều khoản và toàn bộ các khoản quy định, câu cú hoàn chỉnh, mạch lạc."
+          "reason": "Chunk para_000 chứa toàn bộ Điều 5 và mở đầu Điều 6, câu văn hoàn chỉnh, logic rõ ràng."
         }
       },
       {
-        "sample_index": 3,
         "page": 8,
         "section": "quy_che_dao_tao",
         "strategy_a": {
           "chunk_id": "so-tay-sinh-vien-2024_p8_fix_001",
-          "snippet": "đến 10.0 điểm thang 10; quy đổi sang thang 4 đạt 4.0 điểm; Xếp loại Giỏi/Xuất sắc.\n• Điểm B+: Từ 8.0 đến 8.4 điểm thang 10; quy đổi sang tha...",
+          "text_preview": "đến 10.0 điểm thang 10; quy đổi sang thang 4 đạt 4.0 điểm; Xếp loại Giỏi/Xuất sắc.\n• Điểm B+: Từ 8.0 đến 8.4 điểm thang ...",
           "score": 1,
-          "reason": "Trích đoạn bảng quy đổi điểm chữ, hiểu được các mức điểm nhưng thiếu tiêu đề Điều 9."
+          "reason": "Chunk fix_001 chứa các mức điểm quy đổi B+, B, C+ nhưng thiếu tiêu đề Điều 9 và mức A phía trước."
         },
         "strategy_b": {
           "chunk_id": "so-tay-sinh-vien-2024_p8_para_000",
-          "snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 8\nĐiều 9. Thang điểm...",
+          "text_preview": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang ...",
           "score": 2,
-          "reason": "Bao hàm trọn vẹn tiêu đề Điều khoản và toàn bộ các khoản quy định, câu cú hoàn chỉnh, mạch lạc."
+          "reason": "Chunk para_000 chứa đầy đủ bảng quy đổi thang điểm và phân loại đạt chuẩn, rất mạch lạc."
         }
       },
       {
-        "sample_index": 4,
         "page": 11,
         "section": "hoc_bong_hoc_phi",
         "strategy_a": {
           "chunk_id": "so-tay-sinh-vien-2024_p11_fix_001",
-          "snippet": "ơng trình chuẩn (Khối Kỹ thuật - Công nghệ): 450.000 VNĐ / 01 tín chỉ lý thuyết; 550.000 VNĐ / 01 tín chỉ\nthực hành, thí nghiệm, đồ án môn h...",
+          "text_preview": "ơng trình chuẩn (Khối Kỹ thuật - Công nghệ): 450.000 VNĐ / 01 tín chỉ lý thuyết; 550.000 VNĐ / 01 tín chỉ\nthực hành, thí...",
           "score": 0,
-          "reason": "Cắt ngay giữa dòng biểu giá ('ơng trình chuẩn...'), cụm từ đầu bị đứt gãy hoàn toàn."
+          "reason": "Chunk fix_001 bị cắt ngang ngay giữa dòng biểu giá ('ơng trình chuẩn...'), mất từ khóa đầu dòng."
         },
         "strategy_b": {
           "chunk_id": "so-tay-sinh-vien-2024_p11_para_000",
-          "snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 11\nCHƯƠNG II: CHÍNH ...",
+          "text_preview": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang ...",
           "score": 2,
-          "reason": "Bao hàm trọn vẹn tiêu đề Điều khoản và toàn bộ các khoản quy định, câu cú hoàn chỉnh, mạch lạc."
+          "reason": "Chunk para_000 trọn vẹn toàn bộ Khoản 1 Điều 12 về định mức học phí các chương trình đào tạo."
         }
       },
       {
-        "sample_index": 5,
         "page": 13,
         "section": "hoc_bong_hoc_phi",
         "strategy_a": {
           "chunk_id": "so-tay-sinh-vien-2024_p13_fix_001",
-          "snippet": "ặc bệnh binh có tỷ lệ suy giảm khả năng lao động từ 81% trở lên; con của người hoạt động kháng\nchiến bị nhiễm chất độc hóa học suy giảm khả ...",
+          "text_preview": "ặc bệnh binh có tỷ lệ suy giảm khả năng lao động từ 81% trở lên; con của người hoạt động kháng\nchiến bị nhiễm chất độc h...",
           "score": 0,
-          "reason": "Đầu câu bị đứt ('ặc bệnh binh có tỷ lệ...'), mất cụm chủ ngữ 'con đẻ của thương binh'."
+          "reason": "Chunk fix_001 bị đứt cụm chủ ngữ đầu câu ('ặc bệnh binh có tỷ lệ...'), làm mất ngữ cảnh con thương binh."
         },
         "strategy_b": {
           "chunk_id": "so-tay-sinh-vien-2024_p13_para_000",
-          "snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 13\nĐiều 14. Quy định...",
+          "text_preview": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang ...",
           "score": 2,
-          "reason": "Bao hàm trọn vẹn tiêu đề Điều khoản và toàn bộ các khoản quy định, câu cú hoàn chỉnh, mạch lạc."
+          "reason": "Chunk para_000 bao hàm tiêu đề Điều 14 và danh sách các đối tượng chính sách được miễn 100% học phí."
         }
       },
       {
-        "sample_index": 6,
         "page": 16,
         "section": "hoc_bong_hoc_phi",
         "strategy_a": {
           "chunk_id": "so-tay-sinh-vien-2024_p16_fix_001",
-          "snippet": "2. Thứ tự ưu tiên khi xét tuyển:\n- Học bổng được xét từ loại Xuất sắc trước, sau đó đến loại Giỏi, và cuối cùng đến loại Khá cho đến khi hết...",
+          "text_preview": "2. Thứ tự ưu tiên khi xét tuyển:\n- Học bổng được xét từ loại Xuất sắc trước, sau đó đến loại Giỏi, và cuối cùng đến loại...",
           "score": 1,
-          "reason": "Hiểu được các tiêu chí ưu tiên 2, 3 nhưng mất tiêu đề Điều 17 và điều kiện ban đầu."
+          "reason": "Chunk fix_001 nêu các tiêu chí ưu tiên 2, 3 nhưng thiếu vế mở đầu của Điều 17."
         },
         "strategy_b": {
           "chunk_id": "so-tay-sinh-vien-2024_p16_para_000",
-          "snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 16\nĐiều 17. Quy trìn...",
+          "text_preview": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang ...",
           "score": 2,
-          "reason": "Bao hàm trọn vẹn tiêu đề Điều khoản và toàn bộ các khoản quy định, câu cú hoàn chỉnh, mạch lạc."
+          "reason": "Chunk para_000 chứa trọn vẹn Khoản 1 và 2 Điều 17 về thứ tự ưu tiên phân bổ học bổng khuyến khích."
         }
       },
       {
-        "sample_index": 7,
         "page": 21,
         "section": "cong_tac_sinh_vien",
         "strategy_a": {
           "chunk_id": "so-tay-sinh-vien-2024_p21_fix_001",
-          "snippet": "n cần đi học đầy đủ, đúng giờ (8đ);\ný thức tham gia câu lạc bộ học thuật, thi Olympic, NCKH (6đ); tinh thần vượt khó trong học tập (6đ).\n• T...",
+          "text_preview": "n cần đi học đầy đủ, đúng giờ (8đ);\ný thức tham gia câu lạc bộ học thuật, thi Olympic, NCKH (6đ); tinh thần vượt khó tro...",
           "score": 1,
-          "reason": "Bắt đầu từ Tiêu chí 2 ('đánh giá về ý thức...'), hiểu được nội dung thành phần nhưng thiếu ngữ cảnh tổng điểm 100."
+          "reason": "Chunk fix_001 bắt đầu từ Tiêu chí 2, hiểu được nội dung thành phần nhưng thiếu ngữ cảnh tổng điểm 100."
         },
         "strategy_b": {
           "chunk_id": "so-tay-sinh-vien-2024_p21_para_000",
-          "snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 21\nĐiều 22. Khung nộ...",
+          "text_preview": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang ...",
           "score": 2,
-          "reason": "Bao hàm trọn vẹn tiêu đề Điều khoản và toàn bộ các khoản quy định, câu cú hoàn chỉnh, mạch lạc."
+          "reason": "Chunk para_000 mở đầu trọn vẹn Điều 22 và nêu đầy đủ Tiêu chí 1 điểm rèn luyện."
         }
       },
       {
-        "sample_index": 8,
         "page": 24,
         "section": "cong_tac_sinh_vien",
         "strategy_a": {
           "chunk_id": "so-tay-sinh-vien-2024_p24_fix_001",
-          "snippet": "ó nguồn chu cấp nuôi dưỡng.\n• Ưu tiên 2: Sinh viên là con đẻ của liệt sĩ, con thương binh, con bệnh binh, con người hoạt động kháng chiến bị...",
+          "text_preview": "ó nguồn chu cấp nuôi dưỡng.\n• Ưu tiên 2: Sinh viên là con đẻ của liệt sĩ, con thương binh, con bệnh binh, con người hoạt...",
           "score": 0,
-          "reason": "Cắt cụm từ tiêu chuẩn nội trú ('con bệnh binh, con người...'), mất chủ thể Điều 25."
+          "reason": "Chunk fix_001 bị cắt cụm từ mở đầu đối tượng ưu tiên ('con bệnh binh, con người...'), mất ngữ cảnh KTX."
         },
         "strategy_b": {
           "chunk_id": "so-tay-sinh-vien-2024_p24_para_000",
-          "snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 24\nĐiều 25. Tiêu chu...",
+          "text_preview": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang ...",
           "score": 2,
-          "reason": "Bao hàm trọn vẹn tiêu đề Điều khoản và toàn bộ các khoản quy định, câu cú hoàn chỉnh, mạch lạc."
+          "reason": "Chunk para_000 bao hàm tiêu đề Điều 25 và danh mục đầy đủ các đối tượng ưu tiên 1, 2, 3 ở KTX."
         }
       },
       {
-        "sample_index": 9,
         "page": 28,
         "section": "tot_nghiep_khen_thuong",
         "strategy_a": {
           "chunk_id": "so-tay-sinh-vien-2024_p28_fix_001",
-          "snippet": "ồ sơ xét tốt nghiệp:\n• TOEIC (2 kỹ năng Nghe - Đọc): Đạt tối thiểu 550 điểm.\n• IELTS Academic: Đạt tối thiểu 5.5 điểm (không có kỹ năng nào ...",
+          "text_preview": "ồ sơ xét tốt nghiệp:\n• TOEIC (2 kỹ năng Nghe - Đọc): Đạt tối thiểu 550 điểm.\n• IELTS Academic: Đạt tối thiểu 5.5 điểm (k...",
           "score": 1,
-          "reason": "Có thông tin chuẩn TOEIC/IELTS nhưng bị ngắt giữa chừng trước khi nêu đủ các chứng chỉ khác."
+          "reason": "Chunk fix_001 có thông tin chuẩn TOEIC 550 và IELTS 5.5 nhưng bị ngắt trước khi nêu VSTEP."
         },
         "strategy_b": {
           "chunk_id": "so-tay-sinh-vien-2024_p28_para_000",
-          "snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 28\nĐiều 29. Quy định...",
+          "text_preview": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang ...",
           "score": 2,
-          "reason": "Bao hàm trọn vẹn tiêu đề Điều khoản và toàn bộ các khoản quy định, câu cú hoàn chỉnh, mạch lạc."
+          "reason": "Chunk para_000 chứa toàn vẹn Khoản 1 Điều 29 về chuẩn đầu ra ngoại ngữ ngành không chuyên."
         }
       },
       {
-        "sample_index": 10,
         "page": 30,
         "section": "tot_nghiep_khen_thuong",
         "strategy_a": {
           "chunk_id": "so-tay-sinh-vien-2024_p30_fix_001",
-          "snippet": "ng tích lũy đạt từ 2.50 đến 3.19.\n• Hạng Trung bình: Điểm trung bình chung tích lũy đạt từ 2.00 đến 2.49.\n2. Các trường hợp bị hạ một bậc xế...",
+          "text_preview": "ng tích lũy đạt từ 2.50 đến 3.19.\n• Hạng Trung bình: Điểm trung bình chung tích lũy đạt từ 2.00 đến 2.49.\n2. Các trường ...",
           "score": 0,
-          "reason": "Cắt ngang mệnh đề hạ bậc ('hần phải thi lại...'), mất vế câu điều kiện nguyên nhân."
+          "reason": "Chunk fix_001 bị ngắt ngang câu tại 'Hạng tốt nghiệp của n...', mất toàn bộ điều kiện hạ bậc."
         },
         "strategy_b": {
           "chunk_id": "so-tay-sinh-vien-2024_p30_para_000",
-          "snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 30\nĐiều 31. Xếp loại...",
-          "score": 2,
-          "reason": "Bao hàm trọn vẹn tiêu đề Điều khoản và toàn bộ các khoản quy định, câu cú hoàn chỉnh, mạch lạc."
+          "text_preview": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang ...",
+          "score": 1,
+          "reason": "Chunk para_000 chứa khung xếp loại bằng tốt nghiệp nhưng cuối chunk bị dính tiêu đề '2. Các trường hợp...' do ranh giới ngắt đoạn."
         }
       }
     ]
   },
   "metadata_usefulness": {
-    "total_records_checked": 15,
-    "accurate_and_complete_count": 15,
-    "accuracy_ratio": "15/15",
-    "accuracy_percent": 100.0,
-    "filter_test_compliance": "1/1 (100.0%)",
-    "filter_dev_compliance": "2/2 (100.0%)",
-    "records": [
-      {
-        "query_id": "q16",
-        "rank": 1,
-        "chunk_id": "so-tay-sinh-vien-2024_p22_para_001",
-        "page": 22,
-        "section": "cong_tac_sinh_vien",
-        "is_accurate": true
-      },
-      {
-        "query_id": "q16",
-        "rank": 2,
-        "chunk_id": "so-tay-sinh-vien-2024_p23_para_000",
-        "page": 23,
-        "section": "cong_tac_sinh_vien",
-        "is_accurate": true
-      },
-      {
-        "query_id": "q16",
-        "rank": 3,
-        "chunk_id": "so-tay-sinh-vien-2024_p21_para_000",
-        "page": 21,
-        "section": "cong_tac_sinh_vien",
-        "is_accurate": true
-      },
-      {
-        "query_id": "q17",
-        "rank": 1,
-        "chunk_id": "so-tay-sinh-vien-2024_p25_para_000",
-        "page": 25,
-        "section": "cong_tac_sinh_vien",
-        "is_accurate": true
-      },
-      {
-        "query_id": "q17",
-        "rank": 2,
-        "chunk_id": "so-tay-sinh-vien-2024_p24_para_000",
-        "page": 24,
-        "section": "cong_tac_sinh_vien",
-        "is_accurate": true
-      },
-      {
-        "query_id": "q17",
-        "rank": 3,
-        "chunk_id": "so-tay-sinh-vien-2024_p24_para_001",
-        "page": 24,
-        "section": "cong_tac_sinh_vien",
-        "is_accurate": true
-      },
-      {
-        "query_id": "q18",
-        "rank": 1,
-        "chunk_id": "so-tay-sinh-vien-2024_p28_para_000",
-        "page": 28,
-        "section": "tot_nghiep_khen_thuong",
-        "is_accurate": true
-      },
-      {
-        "query_id": "q18",
-        "rank": 2,
-        "chunk_id": "so-tay-sinh-vien-2024_p28_para_001",
-        "page": 28,
-        "section": "tot_nghiep_khen_thuong",
-        "is_accurate": true
-      },
-      {
-        "query_id": "q18",
-        "rank": 3,
-        "chunk_id": "so-tay-sinh-vien-2024_p27_para_001",
-        "page": 27,
-        "section": "tot_nghiep_khen_thuong",
-        "is_accurate": true
-      },
-      {
-        "query_id": "q19",
-        "rank": 1,
-        "chunk_id": "so-tay-sinh-vien-2024_p29_para_000",
-        "page": 29,
-        "section": "tot_nghiep_khen_thuong",
-        "is_accurate": true
-      },
-      {
-        "query_id": "q19",
-        "rank": 2,
-        "chunk_id": "so-tay-sinh-vien-2024_p27_para_001",
-        "page": 27,
-        "section": "tot_nghiep_khen_thuong",
-        "is_accurate": true
-      },
-      {
-        "query_id": "q19",
-        "rank": 3,
-        "chunk_id": "so-tay-sinh-vien-2024_p29_para_001",
-        "page": 29,
-        "section": "tot_nghiep_khen_thuong",
-        "is_accurate": true
-      },
-      {
-        "query_id": "q20",
-        "rank": 1,
-        "chunk_id": "so-tay-sinh-vien-2024_p30_para_001",
-        "page": 30,
-        "section": "tot_nghiep_khen_thuong",
-        "is_accurate": true
-      },
-      {
-        "query_id": "q20",
-        "rank": 2,
-        "chunk_id": "so-tay-sinh-vien-2024_p30_para_000",
-        "page": 30,
-        "section": "tot_nghiep_khen_thuong",
-        "is_accurate": true
-      },
-      {
-        "query_id": "q20",
-        "rank": 3,
-        "chunk_id": "so-tay-sinh-vien-2024_p4_para_002",
-        "page": 4,
-        "section": "quy_che_dao_tao",
-        "is_accurate": true
-      }
-    ]
-  },
-  "grounding_quality": {
-    "test_queries_count": 5,
     "strategy_a": {
-      "scores_distribution": {
-        "0": 0,
-        "1": 2,
-        "2": 3
-      },
-      "average": 1.6
+      "total_checked": 15,
+      "valid_count": 15,
+      "accuracy_ratio": "15/15",
+      "accuracy_rate": 1.0,
+      "records": [
+        {
+          "query_id": "q16",
+          "rank": 1,
+          "chunk_id": "so-tay-sinh-vien-2024_p22_fix_002",
+          "page": 22,
+          "section": "cong_tac_sinh_vien",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q16",
+          "rank": 2,
+          "chunk_id": "so-tay-sinh-vien-2024_p22_fix_001",
+          "page": 22,
+          "section": "cong_tac_sinh_vien",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q16",
+          "rank": 3,
+          "chunk_id": "so-tay-sinh-vien-2024_p23_fix_000",
+          "page": 23,
+          "section": "cong_tac_sinh_vien",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q17",
+          "rank": 1,
+          "chunk_id": "so-tay-sinh-vien-2024_p25_fix_000",
+          "page": 25,
+          "section": "cong_tac_sinh_vien",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q17",
+          "rank": 2,
+          "chunk_id": "so-tay-sinh-vien-2024_p25_fix_001",
+          "page": 25,
+          "section": "cong_tac_sinh_vien",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q17",
+          "rank": 3,
+          "chunk_id": "so-tay-sinh-vien-2024_p24_fix_000",
+          "page": 24,
+          "section": "cong_tac_sinh_vien",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q18",
+          "rank": 1,
+          "chunk_id": "so-tay-sinh-vien-2024_p28_fix_001",
+          "page": 28,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q18",
+          "rank": 2,
+          "chunk_id": "so-tay-sinh-vien-2024_p28_fix_000",
+          "page": 28,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q18",
+          "rank": 3,
+          "chunk_id": "so-tay-sinh-vien-2024_p28_fix_002",
+          "page": 28,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q19",
+          "rank": 1,
+          "chunk_id": "so-tay-sinh-vien-2024_p29_fix_001",
+          "page": 29,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q19",
+          "rank": 2,
+          "chunk_id": "so-tay-sinh-vien-2024_p29_fix_000",
+          "page": 29,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q19",
+          "rank": 3,
+          "chunk_id": "so-tay-sinh-vien-2024_p31_fix_002",
+          "page": 31,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q20",
+          "rank": 1,
+          "chunk_id": "so-tay-sinh-vien-2024_p30_fix_001",
+          "page": 30,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q20",
+          "rank": 2,
+          "chunk_id": "so-tay-sinh-vien-2024_p30_fix_000",
+          "page": 30,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q20",
+          "rank": 3,
+          "chunk_id": "so-tay-sinh-vien-2024_p30_fix_002",
+          "page": 30,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        }
+      ]
     },
     "strategy_b": {
-      "scores_distribution": {
-        "0": 0,
-        "1": 0,
-        "2": 5
-      },
-      "average": 2.0
+      "total_checked": 15,
+      "valid_count": 15,
+      "accuracy_ratio": "15/15",
+      "accuracy_rate": 1.0,
+      "records": [
+        {
+          "query_id": "q16",
+          "rank": 1,
+          "chunk_id": "so-tay-sinh-vien-2024_p22_para_001",
+          "page": 22,
+          "section": "cong_tac_sinh_vien",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q16",
+          "rank": 2,
+          "chunk_id": "so-tay-sinh-vien-2024_p23_para_000",
+          "page": 23,
+          "section": "cong_tac_sinh_vien",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q16",
+          "rank": 3,
+          "chunk_id": "so-tay-sinh-vien-2024_p21_para_001",
+          "page": 21,
+          "section": "cong_tac_sinh_vien",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q17",
+          "rank": 1,
+          "chunk_id": "so-tay-sinh-vien-2024_p25_para_000",
+          "page": 25,
+          "section": "cong_tac_sinh_vien",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q17",
+          "rank": 2,
+          "chunk_id": "so-tay-sinh-vien-2024_p24_para_000",
+          "page": 24,
+          "section": "cong_tac_sinh_vien",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q17",
+          "rank": 3,
+          "chunk_id": "so-tay-sinh-vien-2024_p25_para_001",
+          "page": 25,
+          "section": "cong_tac_sinh_vien",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q18",
+          "rank": 1,
+          "chunk_id": "so-tay-sinh-vien-2024_p28_para_000",
+          "page": 28,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q18",
+          "rank": 2,
+          "chunk_id": "so-tay-sinh-vien-2024_p28_para_001",
+          "page": 28,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q18",
+          "rank": 3,
+          "chunk_id": "so-tay-sinh-vien-2024_p27_para_001",
+          "page": 27,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q19",
+          "rank": 1,
+          "chunk_id": "so-tay-sinh-vien-2024_p29_para_000",
+          "page": 29,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q19",
+          "rank": 2,
+          "chunk_id": "so-tay-sinh-vien-2024_p27_para_001",
+          "page": 27,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q19",
+          "rank": 3,
+          "chunk_id": "so-tay-sinh-vien-2024_p29_para_001",
+          "page": 29,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q20",
+          "rank": 1,
+          "chunk_id": "so-tay-sinh-vien-2024_p30_para_001",
+          "page": 30,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q20",
+          "rank": 2,
+          "chunk_id": "so-tay-sinh-vien-2024_p30_para_000",
+          "page": 30,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q20",
+          "rank": 3,
+          "chunk_id": "so-tay-sinh-vien-2024_p4_para_002",
+          "page": 4,
+          "section": "quy_che_dao_tao",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        }
+      ]
     },
     "strategy_c": {
-      "scores_distribution": {
-        "0": 0,
-        "1": 0,
-        "2": 5
-      },
-      "average": 2.0
+      "total_checked": 15,
+      "valid_count": 15,
+      "accuracy_ratio": "15/15",
+      "accuracy_rate": 1.0,
+      "records": [
+        {
+          "query_id": "q16",
+          "rank": 1,
+          "chunk_id": "so-tay-sinh-vien-2024_p22_para_001",
+          "page": 22,
+          "section": "cong_tac_sinh_vien",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q16",
+          "rank": 2,
+          "chunk_id": "so-tay-sinh-vien-2024_p23_para_000",
+          "page": 23,
+          "section": "cong_tac_sinh_vien",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q16",
+          "rank": 3,
+          "chunk_id": "so-tay-sinh-vien-2024_p21_para_001",
+          "page": 21,
+          "section": "cong_tac_sinh_vien",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q17",
+          "rank": 1,
+          "chunk_id": "so-tay-sinh-vien-2024_p25_para_000",
+          "page": 25,
+          "section": "cong_tac_sinh_vien",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q17",
+          "rank": 2,
+          "chunk_id": "so-tay-sinh-vien-2024_p24_para_000",
+          "page": 24,
+          "section": "cong_tac_sinh_vien",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q17",
+          "rank": 3,
+          "chunk_id": "so-tay-sinh-vien-2024_p25_para_001",
+          "page": 25,
+          "section": "cong_tac_sinh_vien",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q18",
+          "rank": 1,
+          "chunk_id": "so-tay-sinh-vien-2024_p28_para_000",
+          "page": 28,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q18",
+          "rank": 2,
+          "chunk_id": "so-tay-sinh-vien-2024_p28_para_001",
+          "page": 28,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q18",
+          "rank": 3,
+          "chunk_id": "so-tay-sinh-vien-2024_p27_para_001",
+          "page": 27,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q19",
+          "rank": 1,
+          "chunk_id": "so-tay-sinh-vien-2024_p29_para_000",
+          "page": 29,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q19",
+          "rank": 2,
+          "chunk_id": "so-tay-sinh-vien-2024_p27_para_001",
+          "page": 27,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q19",
+          "rank": 3,
+          "chunk_id": "so-tay-sinh-vien-2024_p29_para_001",
+          "page": 29,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q20",
+          "rank": 1,
+          "chunk_id": "so-tay-sinh-vien-2024_p30_para_001",
+          "page": 30,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q20",
+          "rank": 2,
+          "chunk_id": "so-tay-sinh-vien-2024_p30_para_000",
+          "page": 30,
+          "section": "tot_nghiep_khen_thuong",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        },
+        {
+          "query_id": "q20",
+          "rank": 3,
+          "chunk_id": "so-tay-sinh-vien-2024_p4_para_002",
+          "page": 4,
+          "section": "quy_che_dao_tao",
+          "source": "data/so_tay_sinh_vien_2024.pdf",
+          "content_verified_on_page": true,
+          "is_accurate": true
+        }
+      ]
     },
-    "details": [
+    "filter_compliance_dev": "2/2",
+    "filter_compliance_test": "1/1"
+  },
+  "grounding_quality": {
+    "eval_list": [
       {
         "query_id": "q16",
         "question": "Sinh viên không tham gia Bảo hiểm Y tế bắt buộc sẽ bị trừ bao nhiêu điểm rèn luyện?",
         "gold_page": 22,
         "strategy_a": {
           "score": 1,
-          "reason": "Top-1 và Top-2 trích đoạn p22 bị cắt đứt cụm từ 'Sinh viên', bằng chứng bị phân mảnh làm thiếu chủ thể."
+          "reason": "Top-1 (p22_fix_002) bị cắt đứt cụm từ 'Sinh viên', bằng chứng phân mảnh làm thiếu chủ ngữ."
         },
         "strategy_b": {
           "score": 2,
-          "reason": "Top-1 chứa toàn vẹn điều khoản, chủ thể và định mức quy định, hỗ trợ trả lời 100% chính xác."
+          "reason": "Top-1 (p22_para_001) chứa toàn vẹn quy định trừ 15 điểm rèn luyện khi không tham gia BHYT."
         },
         "strategy_c": {
           "score": 2,
-          "reason": "Top-1 chuẩn xác tuyệt đối, đã được lọc phạm vi chính xác theo metadata."
+          "reason": "Top-1 (p22_para_001) chính xác tuyệt đối, đầy đủ bằng chứng."
         }
       },
       {
@@ -356,15 +671,15 @@
         "gold_page": 25,
         "strategy_a": {
           "score": 2,
-          "reason": "Top-1 chứa đầy đủ con số và bằng chứng hỗ trợ trả lời chính xác."
+          "reason": "Top-1 (p25_fix_000) chứa đầy đủ khung giờ 05h30 sáng đến 23h00 đêm của KTX."
         },
         "strategy_b": {
           "score": 2,
-          "reason": "Top-1 chứa toàn vẹn điều khoản, chủ thể và định mức quy định, hỗ trợ trả lời 100% chính xác."
+          "reason": "Top-1 (p25_para_000) chứa nguyên vẹn Điều 26: Nội quy KTX và giờ mở/đóng cửa."
         },
         "strategy_c": {
           "score": 2,
-          "reason": "Top-1 chuẩn xác tuyệt đối, đã được lọc phạm vi chính xác theo metadata."
+          "reason": "Top-1 (p25_para_000) đầy đủ bằng chứng và điều kiện hỗ trợ câu trả lời."
         }
       },
       {
@@ -373,15 +688,15 @@
         "gold_page": 28,
         "strategy_a": {
           "score": 2,
-          "reason": "Top-1 chứa đầy đủ con số và bằng chứng hỗ trợ trả lời chính xác."
+          "reason": "Top-1 (p28_fix_000) nêu rõ chuẩn TOEIC 550 điểm cho khối ngành không chuyên ngữ."
         },
         "strategy_b": {
           "score": 2,
-          "reason": "Top-1 chứa toàn vẹn điều khoản, chủ thể và định mức quy định, hỗ trợ trả lời 100% chính xác."
+          "reason": "Top-1 (p28_para_000) chứa toàn bộ Khoản 1 Điều 29 với định mức 550 điểm TOEIC."
         },
         "strategy_c": {
           "score": 2,
-          "reason": "Top-1 chuẩn xác tuyệt đối, đã được lọc phạm vi chính xác theo metadata."
+          "reason": "Top-1 (p28_para_000) hỗ trợ đầy đủ điều kiện trả lời chính xác."
         }
       },
       {
@@ -390,15 +705,15 @@
         "gold_page": 29,
         "strategy_a": {
           "score": 2,
-          "reason": "Top-1 chứa đầy đủ con số và bằng chứng hỗ trợ trả lời chính xác."
+          "reason": "Top-1 (p29_fix_000) nêu chuẩn điểm 700/1000 cho từng bài thi MOS."
         },
         "strategy_b": {
           "score": 2,
-          "reason": "Top-1 chứa toàn vẹn điều khoản, chủ thể và định mức quy định, hỗ trợ trả lời 100% chính xác."
+          "reason": "Top-1 (p29_para_000) đầy đủ quy định 3 bài thi Word, Excel, PowerPoint đạt từ 700 điểm."
         },
         "strategy_c": {
           "score": 2,
-          "reason": "Top-1 chuẩn xác tuyệt đối, đã được lọc phạm vi chính xác theo metadata."
+          "reason": "Top-1 (p29_para_000) chính xác, được lọc đúng section tot_nghiep_khen_thuong."
         }
       },
       {
@@ -407,17 +722,39 @@
         "gold_page": 30,
         "strategy_a": {
           "score": 1,
-          "reason": "Top-1 và Top-3 trích đoạn p30 bị cắt đứt giữa câu, chỉ có 'hần phải thi lại...', thiếu mệnh đề điều kiện đầy đủ."
+          "reason": "Top-1 (p30_fix_001) và Top-3 (p30_fix_002) bị cắt đôi câu, thiếu vế kỷ luật cảnh cáo cấp trường."
         },
         "strategy_b": {
           "score": 2,
-          "reason": "Top-1 chứa toàn vẹn điều khoản, chủ thể và định mức quy định, hỗ trợ trả lời 100% chính xác."
+          "reason": "Top-1 (p30_para_001) chứa đầy đủ cả 2 trường hợp: học lại quá 5% tín chỉ và bị cảnh cáo cấp trường."
         },
         "strategy_c": {
           "score": 2,
-          "reason": "Top-1 chuẩn xác tuyệt đối, đã được lọc phạm vi chính xác theo metadata."
+          "reason": "Top-1 (p30_para_001) đầy đủ 100% điều kiện hỗ trợ đáp án."
         }
       }
-    ]
+    ],
+    "averages": {
+      "strategy_a": 1.6,
+      "strategy_b": 2.0,
+      "strategy_c": 2.0
+    },
+    "distribution": {
+      "strategy_a": {
+        "0": 0,
+        "1": 2,
+        "2": 3
+      },
+      "strategy_b": {
+        "0": 0,
+        "1": 0,
+        "2": 5
+      },
+      "strategy_c": {
+        "0": 0,
+        "1": 0,
+        "2": 5
+      }
+    }
   }
 }

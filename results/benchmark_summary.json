@@ -1,13 +1,52 @@
 {
+  "corpus_id": "so-tay-sinh-vien-2024",
   "embedding_model": "models/gemini-embedding-001",
   "dimensions": 3072,
-  "vector_store": "ChromaDB (Persistent)",
+  "vector_store": "ChromaDB v1.5.9 (Persistent)",
   "distance_metric": "cosine",
+  "timing_breakdown": {
+    "load_time_seconds": 0.337,
+    "strategy_a": {
+      "chunk_time": 0.0,
+      "embed_time": 63.09,
+      "store_time": 0.526,
+      "total_ingest_time": 63.95
+    },
+    "strategy_b": {
+      "chunk_time": 0.002,
+      "embed_time": 79.74,
+      "store_time": 0.259,
+      "total_ingest_time": 80.34
+    },
+    "strategy_c": {
+      "chunk_time": 0.0,
+      "embed_time": 0.0,
+      "store_time": 0.294,
+      "total_ingest_time": 0.63
+    }
+  },
+  "cost_accounting": {
+    "pricing_rate": "$0.00002 / 1000 tokens",
+    "billed_cost_usd": 0.0,
+    "strategy_a": {
+      "characters": 49397,
+      "approx_tokens": 14113,
+      "commercial_estimated_cost_usd": 0.000282
+    },
+    "strategy_b": {
+      "characters": 45197,
+      "approx_tokens": 12913,
+      "commercial_estimated_cost_usd": 0.000258
+    },
+    "strategy_c": {
+      "characters": 45197,
+      "approx_tokens": 12913,
+      "commercial_estimated_cost_usd": 0.0
+    }
+  },
   "strategy_a": {
     "name": "Fixed-size (500 chars, overlap 50)",
     "chunk_count": 116,
-    "ingest_time_seconds": 88.02,
-    "cost_usd": 0.0,
     "metrics": {
       "dev": {
         "total_queries": 15,
@@ -40,9 +79,7 @@
   },
   "strategy_b": {
     "name": "Paragraph / Structure-aware (max 800 chars)",
-    "chunk_count": 70,
-    "ingest_time_seconds": 55.87,
-    "cost_usd": 0.0,
+    "chunk_count": 72,
     "metrics": {
       "dev": {
         "total_queries": 15,
@@ -75,9 +112,7 @@
   },
   "strategy_c": {
     "name": "Paragraph + Metadata Filter",
-    "chunk_count": 70,
-    "ingest_time_seconds": 55.87,
-    "cost_usd": 0.0,
+    "chunk_count": 72,
     "metrics": {
       "dev": {
         "total_queries": 15,

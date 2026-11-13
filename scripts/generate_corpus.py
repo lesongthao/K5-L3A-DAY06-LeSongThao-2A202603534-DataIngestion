@@ -95,15 +95,15 @@ pages_content = []
 pages_content.append({
     "type": "cover",
     "section": "bia",
-    "title": "BỘ GIÁO DỤC VÀ ĐÀO TẠO\nTRƯỜNG ĐẠI HỌC BÁCH KHOA HÀ NỘI",
+    "title": "BỘ GIÁO DỤC VÀ ĐÀO TẠO — QUY CHUẨN HỌC VỤ ĐÀO TẠO ĐẠI HỌC",
     "elements": [
-        Spacer(1, 120),
-        Paragraph("BỘ GIÁO DỤC VÀ ĐÀO TẠO<br/><b>TRƯỜNG ĐẠI HỌC CÔNG NGHỆ VÀ KỸ THUẬT</b>", subtitle_style),
-        Spacer(1, 40),
-        Paragraph("SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC", title_style),
-        Paragraph("ÁP DỤNG CHO SINH VIÊN HỆ CHÍNH QUY NĂM HỌC 2024 - 2025", subtitle_style),
-        Spacer(1, 150),
-        Paragraph("<b>HÀ NỘI - NĂM 2024</b><br/>Lưu hành nội bộ", subtitle_style)
+        Spacer(1, 100),
+        Paragraph("BỘ GIÁO DỤC VÀ ĐÀO TẠO<br/><b>HỆ THỐNG VĂN BẢN QUY PHẠM PHÁP LUẬT ĐÀO TẠO ĐẠI HỌC</b>", subtitle_style),
+        Spacer(1, 30),
+        Paragraph("TÀI LIỆU QUY CHẾ ĐÀO TẠO VÀ CÔNG TÁC SINH VIÊN ĐẠI HỌC", title_style),
+        Paragraph("Tập hợp chuẩn hóa phục vụ kiểm thử kỹ thuật Data Ingestion & Retrieval", subtitle_style),
+        Spacer(1, 100),
+        Paragraph("<b>Biên soạn và kết xuất:</b> Lê Song Thảo (MSSV: 2A202603534)<br/><b>Căn cứ pháp lý:</b> TT 08/2021/TT-BGDĐT, TT 10/2016/TT-BGDĐT, NĐ 81/2021/NĐ-CP, QĐ 157/2007/QĐ-TTg<br/><b>Giấy phép:</b> Creative Commons Attribution 4.0 International (CC-BY 4.0)<br/><b>Hà Nội — Tháng 11/2026</b>", subtitle_style)
     ]
 })
 
@@ -554,7 +554,11 @@ def build_pdf(output_path):
         leftMargin=54,
         rightMargin=54,
         topMargin=54,
-        bottomMargin=54
+        bottomMargin=54,
+        title="Tài liệu Quy chế Đào tạo và Công tác Sinh viên Đại học",
+        author="Lê Song Thảo",
+        subject="Corpus nghiên cứu Data Ingestion - Day 06",
+        creator="ReportLab 5.1.0"
     )
     
     story = []

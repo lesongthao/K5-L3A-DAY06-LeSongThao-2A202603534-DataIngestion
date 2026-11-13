@@ -46,27 +46,56 @@ def fixed_size(page: DocumentPage, size: int = 500, overlap: int = 50) -> list[C
     return chunks
 
 
+def _split_oversized_unit(unit: str, max_size: int) -> list[str]:
+    """Split a string that exceeds max_size cleanly by word boundaries."""
+    if len(unit) <= max_size:
+        return [unit]
+    pieces: list[str] = []
+    words = unit.split(" ")
+    curr = ""
+    for w in words:
+        if len(curr) + len(w) + 1 <= max_size:
+            curr = f"{curr} {w}".strip()
+        else:
+            if curr:
+                pieces.append(curr)
+            curr = w
+            while len(curr) > max_size:
+                pieces.append(curr[:max_size])
+                curr = curr[max_size:]
+    if curr:
+        pieces.append(curr)
+    return pieces
+
+
 def by_paragraph(page: DocumentPage, max_size: int = 800) -> list[Chunk]:
     """Structure-aware chunking: groups logical paragraphs, splits oversized units cleanly.
     
-    Preserves heading and complete sentences to maximize semantic coherence.
+    Guarantees no chunk text exceeds max_size characters while preserving
+    heading and sentence boundaries to maximize semantic coherence.
     """
     raw_paras = [p.strip() for p in page.text.split("\n\n") if p.strip()]
     refined_units: list[str] = []
 
-    # If any paragraph is oversized, split it by sentence boundaries
     for p in raw_paras:
         if len(p) <= max_size:
             refined_units.append(p)
         else:
-            # Split by sentence endings (. , ? , ! , \n)
-            sentences = re.split(r"(?<=[.?!;])\s+", p)
+            # Split only on true sentence boundaries (. , ? , !) followed by whitespace
+            sentences = re.split(r"(?<=[.?!])\s+", p)
             current_unit = ""
             for sent in sentences:
                 sent = sent.strip()
                 if not sent:
                     continue
-                if len(current_unit) + len(sent) + 1 <= max_size:
+                # If a single sentence exceeds max_size, split by words
+                if len(sent) > max_size:
+                    if current_unit:
+                        refined_units.append(current_unit)
+                        current_unit = ""
+                    for sub in _split_oversized_unit(sent, max_size):
+                        refined_units.append(sub)
+                elif len(current_unit) + len(sent) + 1 <= max_size:
                     current_unit = f"{current_unit} {sent}".strip()
                 else:
                     if current_unit:

@@ -14,8 +14,8 @@ Biến tài liệu thành kho tri thức có thể truy xuất cho AI agent, r�
 Yêu cầu Python 3.11+. Cài đặt các thư viện cần thiết:
 ```bash
 pip install -r starter/requirements.txt
-pip install chromadb reportlab google-genai
 ```
+*(Bao gồm: `pypdf>=5.0.0`, `chromadb>=1.5.0`, `reportlab>=5.0.0`, `google-genai>=3.0.0`, `python-dotenv>=1.0.0`)*
 
 ### 2. Cấu hình API Key
 Tạo file `.env` (hoặc `starter/.env`) chứa `GEMINI_API_KEY`:
@@ -24,18 +24,37 @@ GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
 ### 3. Dữ liệu và Benchmark
-- **Corpus**: `data/so_tay_sinh_vien_2024.pdf` (32 trang nội dung hữu ích, manifest tại `data/manifest.json`).
-- **Benchmark**: `benchmark/benchmark_questions.json` (20 câu hỏi: 15 dev / 5 test, 3 câu có metadata filter).
+- **Corpus**: `data/so_tay_sinh_vien_2024.pdf` (32 trang nội dung hữu ích / 35 trang vật lý, manifest trung thực tại `data/manifest.json`).
+- **Benchmark**: `benchmark/benchmark_questions.json` (20 câu hỏi: 15 dev / 5 test, 3 câu có metadata filter). 100% câu hỏi có evidence kiểm chứng nguyên văn từ trang nguồn.
 
 ### 4. Lệnh chạy Pipeline hoàn chỉnh
 ```bash
-# Chạy pipeline Day 06 (tải corpus, sinh 3 chiến lược A/B/C, embed, lưu ChromaDB và đánh giá)
+# Chạy pipeline Day 06 trọn vẹn: nạp corpus, sinh 3 chiến lược A/B/C, embed bằng gemini-embedding-001 (3072d), lưu ChromaDB persistent, chạy benchmark 20 câu, audit 5 khía cạnh và tự động xuất tất cả artifacts
 python -m starter.src.run
 # hoặc
 python -m src.run
 ```
 
-Kết quả thực nghiệm, trace top-3 và nhãn chấm thủ công được tự động xuất ra thư mục `results/` và `artifacts/experiment_log.csv`. Báo cáo cá nhân chi tiết nằm tại `report/individual/2A202603534_LeSongThao.md`.
+**Các tệp đầu ra được tự động tạo và cập nhật:**
+- `results/traces_strategy_a.json`: Traces top-3 với toàn bộ văn bản và metadata cho Chiến lược A.
+- `results/traces_strategy_b.json`: Traces top-3 với toàn bộ văn bản và metadata cho Chiến lược B.
+- `results/traces_strategy_c.json`: Traces top-3 với toàn bộ văn bản và metadata cho Chiến lược C.
+- `results/benchmark_summary.json`: Tóm tắt đo đạc Hit@1, Hit@3, filter compliance, thời gian đo đạc và chi phí.
+- `results/audit_report.json`: Kết quả audit thủ công 5 khía cạnh chất lượng (Coherence 10 mẫu, Metadata 15 mẫu x 3 chiến lược, Grounding 5 câu test x 3 chiến lược).
+- `results/skipped_pages.json`: Nhật ký ghi nhận các trang non-content bị loại trừ.
+- `artifacts/experiment_log.csv`: Nhật ký thí nghiệm chuẩn hóa.
+- `results/chroma_db/`: Vector database bền vững (ChromaDB PersistentClient).
+
+### 5. Kiểm thử độc lập
+```bash
+# Kiểm tra đối chiếu evidence khớp 100% ký tự trên trang PDF
+python scripts/test_evaluation_strict.py
+
+# Kiểm tra cơ chế dọn dẹp obsolete chunks khi tài liệu cập nhật giảm số chunk
+python scripts/test_obsolete_chunks.py
+```
+
+Báo cáo cá nhân chi tiết: [report/individual/2A202603534_LeSongThao.md](report/individual/2A202603534_LeSongThao.md).
 
 ---
 

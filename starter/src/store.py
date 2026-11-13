@@ -1,6 +1,7 @@
 """Persistent Vector Store implementation using ChromaDB on disk.
 Fully supports persistent storage, cosine similarity search, and metadata filtering.
-Guarantees idempotence (re-ingestion deduplication) and cleans obsolete chunks.
+Guarantees idempotence (re-ingestion deduplication) and cleans obsolete chunks
+when a document version changes or reduces in chunk count.
 """
 from pathlib import Path
 from typing import Any
@@ -42,8 +43,10 @@ class ChromaVectorStore:
     def upsert(self, strategy: str, chunks: list[Chunk], vectors: list[list[float]]) -> None:
         """Validate lengths and dimensions, write stable IDs without duplicates.
         
-        Guarantees idempotency: re-ingesting the same source will overwrite chunks
-        with identical chunk_id rather than duplicating records.
+        Guarantees idempotency and obsolete chunk removal:
+        - Overwrites chunks with identical chunk_id.
+        - Identifies and deletes older chunks belonging to the same document_id
+          that are no longer present in the updated chunk list.
         """
         if len(chunks) != len(vectors):
             raise ValueError(f"Length mismatch: {len(chunks)} chunks vs {len(vectors)} vectors.")
@@ -62,6 +65,21 @@ class ChromaVectorStore:
 
         ids = [c.chunk_id for c in chunks]
         documents = [c.text for c in chunks]
+        new_ids_set = set(ids)
+
+        # Remove obsolete chunks for the document IDs being upserted
+        doc_ids = list({c.document_id for c in chunks})
+        for doc_id in doc_ids:
+            try:
+                existing = collection.get(where={"document_id": doc_id})
+                if existing and existing.get("ids"):
+                    obsolete_ids = [cid for cid in existing["ids"] if cid not in new_ids_set]
+                    if obsolete_ids:
+                        collection.delete(ids=obsolete_ids)
+                        print(f"[{strategy}] Cleaned up {len(obsolete_ids)} obsolete chunks for document '{doc_id}'.")
+            except Exception as e:
+                # In case collection is newly created or empty
+                pass
         
         # Flatten metadata for Chroma compatibility (strings, ints, floats, bools)
         metadatas = []

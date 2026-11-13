@@ -1,33 +1,57 @@
-"""Evaluate retrieved evidence and preserve per-query traces.
+"""Evaluate retrieved evidence and preserve complete per-query traces.
 Calculates Hit@1, Evidence Hit@3, and filter compliance.
+Preserves FULL chunk text and source metadata for 100% auditability.
 """
 from typing import Any
-import re
+import unicodedata
 
 
 def normalize_whitespace(text: str) -> str:
-    """Normalize whitespace for fuzzy substring matching."""
-    return " ".join(text.split()).lower()
+    """Normalize Unicode (NFC) and whitespace for robust evidence matching."""
+    if not text:
+        return ""
+    norm = unicodedata.normalize("NFC", text)
+    return " ".join(norm.split()).lower()
 
 
 def is_evidence_hit(hit: dict[str, Any], question: dict[str, Any]) -> bool:
-    """Check if the hit matches gold source/page and contains sufficient evidence quote."""
-    gold_page = question.get("gold_page")
-    hit_page = hit.get("metadata", {}).get("page")
+    """Check if the hit matches gold document_id, gold page and contains sufficient evidence.
     
-    # Must match gold page
+    Verifies that all required evidence quotes supporting the answer exist in the chunk.
+    """
+    gold_source_id = question.get("gold_source_id")
+    gold_page = question.get("gold_page")
+    
+    hit_metadata = hit.get("metadata", {})
+    hit_source_id = hit_metadata.get("document_id")
+    hit_page = hit_metadata.get("page")
+    
+    # 1. Check gold document_id match
+    if gold_source_id and hit_source_id and str(hit_source_id) != str(gold_source_id):
+        return False
+
+    # 2. Check gold page match
     if hit_page != gold_page:
         return False
         
+    # 3. Check evidence quotes
     evidence_quote = question.get("evidence_quote", "")
-    if not evidence_quote:
+    evidence_quotes = question.get("evidence_quotes", [])
+    if not evidence_quotes and evidence_quote:
+        evidence_quotes = [evidence_quote]
+        
+    if not evidence_quotes:
         return True
         
     norm_doc = normalize_whitespace(hit.get("text", ""))
-    norm_evidence = normalize_whitespace(evidence_quote)
     
-    # Check if evidence quote (or significant portion) is in chunk text
-    return norm_evidence in norm_doc
+    # Check that ALL required evidence quotes are present in the chunk text
+    for eq in evidence_quotes:
+        norm_eq = normalize_whitespace(eq)
+        if norm_eq not in norm_doc:
+            return False
+            
+    return True
 
 
 def check_filter_compliance(hits: list[dict[str, Any]], expected_filter: dict[str, Any] | None) -> bool:
@@ -44,7 +68,7 @@ def check_filter_compliance(hits: list[dict[str, Any]], expected_filter: dict[st
 
 
 def evaluate_query(question: dict[str, Any], hits: list[dict[str, Any]]) -> dict[str, Any]:
-    """Evaluate a single question against its retrieved top-k hits and build trace."""
+    """Evaluate a single question against its retrieved top-k hits and build full trace."""
     hits_detail: list[dict[str, Any]] = []
     has_hit_at_1 = False
     has_hit_at_3 = False
@@ -56,14 +80,22 @@ def evaluate_query(question: dict[str, Any], hits: list[dict[str, Any]]) -> dict
         if hit_is_valid:
             has_hit_at_3 = True
 
+        hit_meta = hit.get("metadata", {})
         hits_detail.append({
             "rank": rank + 1,
             "chunk_id": hit.get("chunk_id"),
             "score": hit.get("score"),
-            "page": hit.get("metadata", {}).get("page"),
-            "section": hit.get("metadata", {}).get("section"),
+            "distance": hit.get("distance"),
+            "document_id": hit_meta.get("document_id"),
+            "source": hit_meta.get("source"),
+            "page": hit_meta.get("page"),
+            "section": hit_meta.get("section"),
+            "year": hit_meta.get("year"),
+            "chunk_strategy": hit_meta.get("chunk_strategy"),
+            "chunk_size": len(hit.get("text", "")),
             "is_evidence_hit": hit_is_valid,
-            "text_snippet": hit.get("text", "")[:180] + ("..." if len(hit.get("text", "")) > 180 else "")
+            # Preserving FULL text as required by GUIDE
+            "text": hit.get("text", "")
         })
 
     filter_req = question.get("filter")
@@ -74,8 +106,11 @@ def evaluate_query(question: dict[str, Any], hits: list[dict[str, Any]]) -> dict
         "split": question.get("split"),
         "type": question.get("type"),
         "question": question.get("question"),
+        "gold_source_id": question.get("gold_source_id"),
         "gold_page": question.get("gold_page"),
         "evidence_quote": question.get("evidence_quote"),
+        "evidence_quotes": question.get("evidence_quotes", [question.get("evidence_quote")] if question.get("evidence_quote") else []),
+        "expected_answer": question.get("expected_answer"),
         "filter": filter_req,
         "hit_at_1": has_hit_at_1,
         "hit_at_3": has_hit_at_3,

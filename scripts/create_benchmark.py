@@ -2,6 +2,7 @@
 and starter/data/benchmark_questions.json.
 Total questions: 20 (15 dev, 5 test).
 Metadata filter questions: 3 (q08, q11 in dev; q19 in test).
+Strictly verifies that evidence_quotes fully support the expected answers.
 """
 import json
 import os
@@ -19,6 +20,9 @@ questions = [
         "gold_source_id": "so-tay-sinh-vien-2024",
         "gold_page": 3,
         "evidence_quote": "Đối với khối ngành Kỹ thuật - Công nghệ là 4,0 năm (tương đương 8 học kỳ chính)",
+        "evidence_quotes": [
+            "Đối với khối ngành Kỹ thuật - Công nghệ là 4,0 năm (tương đương 8 học kỳ chính)"
+        ],
         "expected_answer": "4,0 năm (tương đương 8 học kỳ chính)",
         "filter": None
     },
@@ -30,6 +34,9 @@ questions = [
         "gold_source_id": "so-tay-sinh-vien-2024",
         "gold_page": 4,
         "evidence_quote": "Sinh viên có học lực bình thường (GPA tích lũy đạt từ 2.00 trở lên) phải đăng ký tối thiểu 14 tín chỉ và tối đa 24 tín chỉ trong mỗi học kỳ chính",
+        "evidence_quotes": [
+            "Sinh viên có học lực bình thường (GPA tích lũy đạt từ 2.00 trở lên) phải đăng ký tối thiểu 14 tín chỉ và tối đa 24 tín chỉ trong mỗi học kỳ chính"
+        ],
         "expected_answer": "Tối thiểu 14 tín chỉ (và tối đa 24 tín chỉ)",
         "filter": None
     },
@@ -41,6 +48,9 @@ questions = [
         "gold_source_id": "so-tay-sinh-vien-2024",
         "gold_page": 5,
         "evidence_quote": "Sinh viên rút học phần sau tuần thứ 2 vẫn phải đóng 100% học phí của học phần đó.",
+        "evidence_quotes": [
+            "Sinh viên rút học phần sau tuần thứ 2 vẫn phải đóng 100% học phí của học phần đó."
+        ],
         "expected_answer": "Có, sinh viên rút học phần sau tuần thứ 2 vẫn phải đóng 100% học phí của học phần đó.",
         "filter": None
     },
@@ -52,6 +62,9 @@ questions = [
         "gold_source_id": "so-tay-sinh-vien-2024",
         "gold_page": 6,
         "evidence_quote": "Sinh viên đạt điểm D hoặc D+ ở bất kỳ học phần nào được quyền đăng ký học cải thiện để nâng cao điểm trung bình chung tích lũy.",
+        "evidence_quotes": [
+            "Sinh viên đạt điểm D hoặc D+ ở bất kỳ học phần nào được quyền đăng ký học cải thiện để nâng cao điểm trung bình chung tích lũy."
+        ],
         "expected_answer": "Điểm D hoặc D+ (điểm C trở lên không được học cải thiện)",
         "filter": None
     },
@@ -63,6 +76,9 @@ questions = [
         "gold_source_id": "so-tay-sinh-vien-2024",
         "gold_page": 7,
         "evidence_quote": "Sinh viên vắng mặt quá 20% tổng số tiết học quy định trên lớp của học phần (tương đương nghỉ quá 3 buổi đối với môn 3 tín chỉ lý thuyết) mà không có lý do chính đáng sẽ bị cấm thi kết thúc học phần.",
+        "evidence_quotes": [
+            "Sinh viên vắng mặt quá 20% tổng số tiết học quy định trên lớp của học phần (tương đương nghỉ quá 3 buổi đối với môn 3 tín chỉ lý thuyết) mà không có lý do chính đáng sẽ bị cấm thi kết thúc học phần."
+        ],
         "expected_answer": "Quá 20% tổng số tiết học quy định trên lớp của học phần",
         "filter": None
     },
@@ -74,6 +90,9 @@ questions = [
         "gold_source_id": "so-tay-sinh-vien-2024",
         "gold_page": 8,
         "evidence_quote": "Điểm B+: Từ 8.0 đến 8.4 điểm thang 10; quy đổi sang thang 4 đạt 3.5 điểm; Xếp loại Khá giỏi.",
+        "evidence_quotes": [
+            "Điểm B+: Từ 8.0 đến 8.4 điểm thang 10; quy đổi sang thang 4 đạt 3.5 điểm; Xếp loại Khá giỏi."
+        ],
         "expected_answer": "3.5 điểm",
         "filter": None
     },
@@ -84,8 +103,13 @@ questions = [
         "question": "Sinh viên bị buộc thôi học khi bị cảnh báo kết quả học tập trong những trường hợp cụ thể nào?",
         "gold_source_id": "so-tay-sinh-vien-2024",
         "gold_page": 10,
-        "evidence_quote": "Bị cảnh báo học vụ mức 2 liên tiếp 3 học kỳ chính.",
-        "expected_answer": "Bị cảnh báo học vụ mức 2 liên tiếp 3 học kỳ chính, hoặc tổng số lần bị cảnh báo vượt quá 4 lần, hoặc quá thời gian đào tạo tối đa",
+        "evidence_quote": "Sinh viên bị buộc thôi học nếu thuộc một trong các diện sau: - Bị cảnh báo học vụ mức 2 liên tiếp 3 học kỳ chính. - Tổng số lần bị cảnh báo học vụ trong toàn khóa học vượt quá 4 lần. - Hết thời gian đào tạo tối đa theo quy định tại Điều 2",
+        "evidence_quotes": [
+            "Bị cảnh báo học vụ mức 2 liên tiếp 3 học kỳ chính",
+            "Tổng số lần bị cảnh báo học vụ trong toàn khóa học vượt quá 4 lần",
+            "Hết thời gian đào tạo tối đa theo quy định tại Điều 2"
+        ],
+        "expected_answer": "Gồm 3 trường hợp: (1) Bị cảnh báo học vụ mức 2 liên tiếp 3 học kỳ chính; (2) Tổng số lần bị cảnh báo học vụ trong toàn khóa học vượt quá 4 lần; (3) Hết thời gian đào tạo tối đa theo quy định.",
         "filter": None
     },
     {
@@ -96,6 +120,9 @@ questions = [
         "gold_source_id": "so-tay-sinh-vien-2024",
         "gold_page": 11,
         "evidence_quote": "Chương trình chuẩn (Khối Kỹ thuật - Công nghệ): 450.000 VNĐ / 01 tín chỉ lý thuyết; 550.000 VNĐ / 01 tín chỉ thực hành",
+        "evidence_quotes": [
+            "Chương trình chuẩn (Khối Kỹ thuật - Công nghệ): 450.000 VNĐ / 01 tín chỉ lý thuyết; 550.000 VNĐ / 01 tín chỉ thực hành"
+        ],
         "expected_answer": "450.000 VNĐ / 01 tín chỉ lý thuyết",
         "filter": {"section": "hoc_bong_hoc_phi"}
     },
@@ -107,6 +134,9 @@ questions = [
         "gold_source_id": "so-tay-sinh-vien-2024",
         "gold_page": 12,
         "evidence_quote": "Thời gian gia hạn tối đa không quá 30 ngày kể từ hạn nộp cuối cùng.",
+        "evidence_quotes": [
+            "Thời gian gia hạn tối đa không quá 30 ngày kể từ hạn nộp cuối cùng."
+        ],
         "expected_answer": "Tối đa không quá 30 ngày",
         "filter": None
     },
@@ -118,6 +148,9 @@ questions = [
         "gold_source_id": "so-tay-sinh-vien-2024",
         "gold_page": 13,
         "evidence_quote": "con đẻ của thương binh hoặc bệnh binh có tỷ lệ suy giảm khả năng lao động từ 81% trở lên;",
+        "evidence_quotes": [
+            "con đẻ của thương binh hoặc bệnh binh có tỷ lệ suy giảm khả năng lao động từ 81% trở lên;"
+        ],
         "expected_answer": "Suy giảm khả năng lao động từ 81% trở lên",
         "filter": None
     },
@@ -129,6 +162,9 @@ questions = [
         "gold_source_id": "so-tay-sinh-vien-2024",
         "gold_page": 15,
         "evidence_quote": "Học bổng loại Xuất sắc: Dành cho sinh viên có GPA đạt từ 3.60 đến 4.00 và Điểm rèn luyện đạt loại Xuất sắc (từ 90 điểm trở lên). Mức học bổng bằng 120% mức học phí của học kỳ đó.",
+        "evidence_quotes": [
+            "Học bổng loại Xuất sắc: Dành cho sinh viên có GPA đạt từ 3.60 đến 4.00 và Điểm rèn luyện đạt loại Xuất sắc (từ 90 điểm trở lên). Mức học bổng bằng 120% mức học phí của học kỳ đó."
+        ],
         "expected_answer": "120% mức học phí của học kỳ đó",
         "filter": {"section": "hoc_bong_hoc_phi"}
     },
@@ -140,6 +176,9 @@ questions = [
         "gold_source_id": "so-tay-sinh-vien-2024",
         "gold_page": 17,
         "evidence_quote": "Học bổng Viettel - Chắp cánh tài năng công nghệ: Trị giá 20.000.000 VNĐ / suất;",
+        "evidence_quotes": [
+            "Học bổng Viettel - Chắp cánh tài năng công nghệ: Trị giá 20.000.000 VNĐ / suất;"
+        ],
         "expected_answer": "20.000.000 VNĐ / suất",
         "filter": None
     },
@@ -151,6 +190,9 @@ questions = [
         "gold_source_id": "so-tay-sinh-vien-2024",
         "gold_page": 18,
         "evidence_quote": "mức vay tối đa được điều chỉnh lên tới 4.000.000 VNĐ / tháng / sinh viên (tương đương 40.000.000 VNĐ cho một năm học 10 tháng).",
+        "evidence_quotes": [
+            "mức vay tối đa được điều chỉnh lên tới 4.000.000 VNĐ / tháng / sinh viên (tương đương 40.000.000 VNĐ cho một năm học 10 tháng)."
+        ],
         "expected_answer": "4.000.000 VNĐ / tháng / sinh viên (40 triệu VNĐ/năm học)",
         "filter": None
     },
@@ -162,6 +204,9 @@ questions = [
         "gold_source_id": "so-tay-sinh-vien-2024",
         "gold_page": 21,
         "evidence_quote": "Tiêu chí 1: Đánh giá về ý thức học tập (Tối đa 20 điểm):",
+        "evidence_quotes": [
+            "Tiêu chí 1: Đánh giá về ý thức học tập (Tối đa 20 điểm):"
+        ],
         "expected_answer": "Tối đa 20 điểm",
         "filter": None
     },
@@ -173,6 +218,9 @@ questions = [
         "gold_source_id": "so-tay-sinh-vien-2024",
         "gold_page": 22,
         "evidence_quote": "Sinh viên bị kỷ luật mức Khiển trách trong học kỳ: Điểm rèn luyện trong học kỳ đó tối đa không được vượt quá loại Khá (không quá 79 điểm), bất kể tổng điểm tự chấm đạt mức nào.",
+        "evidence_quotes": [
+            "Sinh viên bị kỷ luật mức Khiển trách trong học kỳ: Điểm rèn luyện trong học kỳ đó tối đa không được vượt quá loại Khá (không quá 79 điểm), bất kể tổng điểm tự chấm đạt mức nào."
+        ],
         "expected_answer": "Tối đa không vượt quá loại Khá (không quá 79 điểm)",
         "filter": None
     },
@@ -184,6 +232,9 @@ questions = [
         "gold_source_id": "so-tay-sinh-vien-2024",
         "gold_page": 22,
         "evidence_quote": "Sinh viên không tham gia Bảo hiểm Y tế bắt buộc sẽ bị trừ trực tiếp 15 điểm vào Tiêu chí 2.",
+        "evidence_quotes": [
+            "Sinh viên không tham gia Bảo hiểm Y tế bắt buộc sẽ bị trừ trực tiếp 15 điểm vào Tiêu chí 2."
+        ],
         "expected_answer": "Bị trừ trực tiếp 15 điểm vào Tiêu chí 2",
         "filter": None
     },
@@ -195,6 +246,9 @@ questions = [
         "gold_source_id": "so-tay-sinh-vien-2024",
         "gold_page": 25,
         "evidence_quote": "Ký túc xá mở cửa từ 05h30 sáng và đóng cửa lúc 23h00 đêm hàng ngày.",
+        "evidence_quotes": [
+            "Ký túc xá mở cửa từ 05h30 sáng và đóng cửa lúc 23h00 đêm hàng ngày."
+        ],
         "expected_answer": "Mở cửa từ 05h30 sáng và đóng cửa lúc 23h00 đêm",
         "filter": None
     },
@@ -206,6 +260,9 @@ questions = [
         "gold_source_id": "so-tay-sinh-vien-2024",
         "gold_page": 28,
         "evidence_quote": "TOEIC (2 kỹ năng Nghe - Đọc): Đạt tối thiểu 550 điểm.",
+        "evidence_quotes": [
+            "TOEIC (2 kỹ năng Nghe - Đọc): Đạt tối thiểu 550 điểm."
+        ],
         "expected_answer": "Tối thiểu 550 điểm TOEIC (2 kỹ năng Nghe - Đọc)",
         "filter": None
     },
@@ -217,6 +274,9 @@ questions = [
         "gold_source_id": "so-tay-sinh-vien-2024",
         "gold_page": 29,
         "evidence_quote": "Điểm số tối thiểu của mỗi bài thi kỹ năng phải đạt từ 700 / 1.000 điểm trở lên.",
+        "evidence_quotes": [
+            "Điểm số tối thiểu của mỗi bài thi kỹ năng phải đạt từ 700 / 1.000 điểm trở lên."
+        ],
         "expected_answer": "Từ 700 / 1.000 điểm trở lên",
         "filter": {"section": "tot_nghiep_khen_thuong"}
     },
@@ -227,8 +287,12 @@ questions = [
         "question": "Trường hợp nào sinh viên có kết quả học tập loại Xuất sắc hoặc Giỏi bị hạ một bậc xếp loại tốt nghiệp?",
         "gold_source_id": "so-tay-sinh-vien-2024",
         "gold_page": 30,
-        "evidence_quote": "Có khối lượng tín chỉ của các học phần phải thi lại hoặc học lại vượt quá 5% tổng số tín chỉ quy định cho toàn bộ chương trình đào tạo của ngành học",
-        "expected_answer": "Khi khối lượng tín chỉ thi lại/học lại vượt quá 5% tổng số tín chỉ chương trình, hoặc đã từng bị kỷ luật từ mức Cảnh cáo cấp trường trở lên",
+        "evidence_quote": "nếu thuộc một trong hai trường hợp cụ thể sau đây: - Trường hợp 1 (Học lại vượt định mức): Có khối lượng tín chỉ của các học phần phải thi lại hoặc học lại vượt quá 5% tổng số tín chỉ quy định cho toàn bộ chương trình đào tạo của ngành học (ví dụ: đối với chương trình 140 tín chỉ, nếu số tín chỉ thi lại/học lại từ 8 tín chỉ trở lên sẽ bị hạ bậc). - Trường hợp 2 (Bị kỷ luật): Đã từng bị nhà trường kỷ luật từ mức Cảnh cáo cấp trường trở lên trong suốt thời gian học tập tại trường.",
+        "evidence_quotes": [
+            "Có khối lượng tín chỉ của các học phần phải thi lại hoặc học lại vượt quá 5% tổng số tín chỉ quy định cho toàn bộ chương trình đào tạo",
+            "Đã từng bị nhà trường kỷ luật từ mức Cảnh cáo cấp trường trở lên trong suốt thời gian học tập tại trường"
+        ],
+        "expected_answer": "Bị hạ một bậc tốt nghiệp nếu thuộc một trong hai trường hợp: (1) Khối lượng tín chỉ của các học phần phải thi lại hoặc học lại vượt quá 5% tổng số tín chỉ; (2) Đã từng bị nhà trường kỷ luật từ mức Cảnh cáo cấp trường trở lên.",
         "filter": None
     }
 ]
@@ -239,12 +303,15 @@ def validate_and_save():
     for q in questions:
         page_idx = q["gold_page"] - 1
         page_text = reader.pages[page_idx].extract_text()
-        norm_page = " ".join(page_text.split())
-        norm_ev = " ".join(q["evidence_quote"].split())
-        if norm_ev not in norm_page:
-            errors.append(f"Question {q['id']} evidence not found on page {q['gold_page']}")
-        else:
-            print(f"  [PASS] {q['id']} ({q['split']}) -> Page {q['gold_page']}")
+        norm_page = " ".join(page_text.split()).lower()
+        
+        quotes_to_check = q.get("evidence_quotes", [q["evidence_quote"]])
+        for eq in quotes_to_check:
+            norm_eq = " ".join(eq.split()).lower()
+            if norm_eq not in norm_page:
+                errors.append(f"Question {q['id']} quote not found on page {q['gold_page']}: '{eq}'")
+            else:
+                print(f"  [PASS] {q['id']} ({q['split']}) -> Page {q['gold_page']}: found '{norm_eq[:50]}...'")
             
     if errors:
         print("ERRORS FOUND:")
