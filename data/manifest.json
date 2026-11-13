@@ -1,5 +1,8 @@
 {
   "corpus_id": "so-tay-sinh-vien-2024",
+  "source_id": "so-tay-sinh-vien-2024",
+  "document_id": "so-tay-sinh-vien-2024",
+  "accessed_at": "2026-11-13",
   "title": "Tài liệu Quy chế Đào tạo và Công tác Sinh viên Đại học (Tập hợp chuẩn hóa phục vụ nghiên cứu Data Ingestion)",
   "nature_of_corpus": "Tài liệu học thuật do học viên Lê Song Thảo biên soạn và kết xuất PDF kỹ thuật bằng ReportLab 5.1.0 (ngày 13/11/2026), dựa trên việc hệ thống hóa các quy định hiện hành trong các văn bản quy phạm pháp luật công khai của Nhà nước và Bộ Giáo dục & Đào tạo.",
   "compiled_by": "Lê Song Thảo (MSSV: 2A202603534)",

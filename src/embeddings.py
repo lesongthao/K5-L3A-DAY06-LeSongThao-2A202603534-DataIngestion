@@ -4,12 +4,18 @@ Strictly adheres to the Embedder protocol; does NOT use mock/random vectors.
 import os
 import time
 from typing import Protocol
+from pathlib import Path
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
 load_dotenv()
-load_dotenv("starter/.env")
+_base = Path(__file__).resolve().parent
+for _p in [_base, _base.parent, _base.parent.parent]:
+    if (_p / ".env").exists():
+        load_dotenv(_p / ".env")
+    if (_p / "starter" / ".env").exists():
+        load_dotenv(_p / "starter" / ".env")
 
 
 class Embedder(Protocol):

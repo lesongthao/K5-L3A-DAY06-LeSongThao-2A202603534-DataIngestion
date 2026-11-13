@@ -6,7 +6,6 @@ when a document version changes or reduces in chunk count.
 from pathlib import Path
 from typing import Any
 import chromadb
-from chromadb.config import Settings
 from .models import Chunk
 
 
