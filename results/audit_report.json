@@ -1,0 +1,423 @@
+{
+  "coherence": {
+    "sample_size": 10,
+    "strategy_a_avg": 0.5,
+    "strategy_b_avg": 2.0,
+    "details": [
+      {
+        "sample_index": 1,
+        "page": 3,
+        "section": "quy_che_dao_tao",
+        "strategy_a": {
+          "chunk_id": "so-tay-sinh-vien-2024_p3_fix_001",
+          "snippet": "i Trường Đại học Công nghệ và Kỹ thuật.\n2. Quy chế áp dụng thống nhất đối với toàn thể sinh viên đang theo học các chương trình đào tạo đại ...",
+          "score": 0,
+          "reason": "Cắt ngang giữa từ và câu ('i Trường Đại học...'), mất chủ thể điều khoản Điều 1."
+        },
+        "strategy_b": {
+          "chunk_id": "so-tay-sinh-vien-2024_p3_para_000",
+          "snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 3\nCHƯƠNG I: QUY CHẾ ...",
+          "score": 2,
+          "reason": "Bao hàm trọn vẹn tiêu đề Điều khoản và toàn bộ các khoản quy định, câu cú hoàn chỉnh, mạch lạc."
+        }
+      },
+      {
+        "sample_index": 2,
+        "page": 5,
+        "section": "quy_che_dao_tao",
+        "strategy_a": {
+          "chunk_id": "so-tay-sinh-vien-2024_p5_fix_001",
+          "snippet": "vượt quá 8 tín chỉ. Nhà trường\nkhông áp đặt số tín chỉ tối thiểu đối với học kỳ phụ.\n3. Các học phần trong học kỳ phụ được tổ chức học dồn v...",
+          "score": 1,
+          "reason": "Hiểu được một phần quy định học kỳ hè nhưng câu mở đầu bị cắt lửng ('vượt quá 8 tín chỉ')."
+        },
+        "strategy_b": {
+          "chunk_id": "so-tay-sinh-vien-2024_p5_para_000",
+          "snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 5\nĐiều 5. Đăng ký họ...",
+          "score": 2,
+          "reason": "Bao hàm trọn vẹn tiêu đề Điều khoản và toàn bộ các khoản quy định, câu cú hoàn chỉnh, mạch lạc."
+        }
+      },
+      {
+        "sample_index": 3,
+        "page": 8,
+        "section": "quy_che_dao_tao",
+        "strategy_a": {
+          "chunk_id": "so-tay-sinh-vien-2024_p8_fix_001",
+          "snippet": "đến 10.0 điểm thang 10; quy đổi sang thang 4 đạt 4.0 điểm; Xếp loại Giỏi/Xuất sắc.\n• Điểm B+: Từ 8.0 đến 8.4 điểm thang 10; quy đổi sang tha...",
+          "score": 1,
+          "reason": "Trích đoạn bảng quy đổi điểm chữ, hiểu được các mức điểm nhưng thiếu tiêu đề Điều 9."
+        },
+        "strategy_b": {
+          "chunk_id": "so-tay-sinh-vien-2024_p8_para_000",
+          "snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 8\nĐiều 9. Thang điểm...",
+          "score": 2,
+          "reason": "Bao hàm trọn vẹn tiêu đề Điều khoản và toàn bộ các khoản quy định, câu cú hoàn chỉnh, mạch lạc."
+        }
+      },
+      {
+        "sample_index": 4,
+        "page": 11,
+        "section": "hoc_bong_hoc_phi",
+        "strategy_a": {
+          "chunk_id": "so-tay-sinh-vien-2024_p11_fix_001",
+          "snippet": "ơng trình chuẩn (Khối Kỹ thuật - Công nghệ): 450.000 VNĐ / 01 tín chỉ lý thuyết; 550.000 VNĐ / 01 tín chỉ\nthực hành, thí nghiệm, đồ án môn h...",
+          "score": 0,
+          "reason": "Cắt ngay giữa dòng biểu giá ('ơng trình chuẩn...'), cụm từ đầu bị đứt gãy hoàn toàn."
+        },
+        "strategy_b": {
+          "chunk_id": "so-tay-sinh-vien-2024_p11_para_000",
+          "snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 11\nCHƯƠNG II: CHÍNH ...",
+          "score": 2,
+          "reason": "Bao hàm trọn vẹn tiêu đề Điều khoản và toàn bộ các khoản quy định, câu cú hoàn chỉnh, mạch lạc."
+        }
+      },
+      {
+        "sample_index": 5,
+        "page": 13,
+        "section": "hoc_bong_hoc_phi",
+        "strategy_a": {
+          "chunk_id": "so-tay-sinh-vien-2024_p13_fix_001",
+          "snippet": "ặc bệnh binh có tỷ lệ suy giảm khả năng lao động từ 81% trở lên; con của người hoạt động kháng\nchiến bị nhiễm chất độc hóa học suy giảm khả ...",
+          "score": 0,
+          "reason": "Đầu câu bị đứt ('ặc bệnh binh có tỷ lệ...'), mất cụm chủ ngữ 'con đẻ của thương binh'."
+        },
+        "strategy_b": {
+          "chunk_id": "so-tay-sinh-vien-2024_p13_para_000",
+          "snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 13\nĐiều 14. Quy định...",
+          "score": 2,
+          "reason": "Bao hàm trọn vẹn tiêu đề Điều khoản và toàn bộ các khoản quy định, câu cú hoàn chỉnh, mạch lạc."
+        }
+      },
+      {
+        "sample_index": 6,
+        "page": 16,
+        "section": "hoc_bong_hoc_phi",
+        "strategy_a": {
+          "chunk_id": "so-tay-sinh-vien-2024_p16_fix_001",
+          "snippet": "2. Thứ tự ưu tiên khi xét tuyển:\n- Học bổng được xét từ loại Xuất sắc trước, sau đó đến loại Giỏi, và cuối cùng đến loại Khá cho đến khi hết...",
+          "score": 1,
+          "reason": "Hiểu được các tiêu chí ưu tiên 2, 3 nhưng mất tiêu đề Điều 17 và điều kiện ban đầu."
+        },
+        "strategy_b": {
+          "chunk_id": "so-tay-sinh-vien-2024_p16_para_000",
+          "snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 16\nĐiều 17. Quy trìn...",
+          "score": 2,
+          "reason": "Bao hàm trọn vẹn tiêu đề Điều khoản và toàn bộ các khoản quy định, câu cú hoàn chỉnh, mạch lạc."
+        }
+      },
+      {
+        "sample_index": 7,
+        "page": 21,
+        "section": "cong_tac_sinh_vien",
+        "strategy_a": {
+          "chunk_id": "so-tay-sinh-vien-2024_p21_fix_001",
+          "snippet": "n cần đi học đầy đủ, đúng giờ (8đ);\ný thức tham gia câu lạc bộ học thuật, thi Olympic, NCKH (6đ); tinh thần vượt khó trong học tập (6đ).\n• T...",
+          "score": 1,
+          "reason": "Bắt đầu từ Tiêu chí 2 ('đánh giá về ý thức...'), hiểu được nội dung thành phần nhưng thiếu ngữ cảnh tổng điểm 100."
+        },
+        "strategy_b": {
+          "chunk_id": "so-tay-sinh-vien-2024_p21_para_000",
+          "snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 21\nĐiều 22. Khung nộ...",
+          "score": 2,
+          "reason": "Bao hàm trọn vẹn tiêu đề Điều khoản và toàn bộ các khoản quy định, câu cú hoàn chỉnh, mạch lạc."
+        }
+      },
+      {
+        "sample_index": 8,
+        "page": 24,
+        "section": "cong_tac_sinh_vien",
+        "strategy_a": {
+          "chunk_id": "so-tay-sinh-vien-2024_p24_fix_001",
+          "snippet": "ó nguồn chu cấp nuôi dưỡng.\n• Ưu tiên 2: Sinh viên là con đẻ của liệt sĩ, con thương binh, con bệnh binh, con người hoạt động kháng chiến bị...",
+          "score": 0,
+          "reason": "Cắt cụm từ tiêu chuẩn nội trú ('con bệnh binh, con người...'), mất chủ thể Điều 25."
+        },
+        "strategy_b": {
+          "chunk_id": "so-tay-sinh-vien-2024_p24_para_000",
+          "snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 24\nĐiều 25. Tiêu chu...",
+          "score": 2,
+          "reason": "Bao hàm trọn vẹn tiêu đề Điều khoản và toàn bộ các khoản quy định, câu cú hoàn chỉnh, mạch lạc."
+        }
+      },
+      {
+        "sample_index": 9,
+        "page": 28,
+        "section": "tot_nghiep_khen_thuong",
+        "strategy_a": {
+          "chunk_id": "so-tay-sinh-vien-2024_p28_fix_001",
+          "snippet": "ồ sơ xét tốt nghiệp:\n• TOEIC (2 kỹ năng Nghe - Đọc): Đạt tối thiểu 550 điểm.\n• IELTS Academic: Đạt tối thiểu 5.5 điểm (không có kỹ năng nào ...",
+          "score": 1,
+          "reason": "Có thông tin chuẩn TOEIC/IELTS nhưng bị ngắt giữa chừng trước khi nêu đủ các chứng chỉ khác."
+        },
+        "strategy_b": {
+          "chunk_id": "so-tay-sinh-vien-2024_p28_para_000",
+          "snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 28\nĐiều 29. Quy định...",
+          "score": 2,
+          "reason": "Bao hàm trọn vẹn tiêu đề Điều khoản và toàn bộ các khoản quy định, câu cú hoàn chỉnh, mạch lạc."
+        }
+      },
+      {
+        "sample_index": 10,
+        "page": 30,
+        "section": "tot_nghiep_khen_thuong",
+        "strategy_a": {
+          "chunk_id": "so-tay-sinh-vien-2024_p30_fix_001",
+          "snippet": "ng tích lũy đạt từ 2.50 đến 3.19.\n• Hạng Trung bình: Điểm trung bình chung tích lũy đạt từ 2.00 đến 2.49.\n2. Các trường hợp bị hạ một bậc xế...",
+          "score": 0,
+          "reason": "Cắt ngang mệnh đề hạ bậc ('hần phải thi lại...'), mất vế câu điều kiện nguyên nhân."
+        },
+        "strategy_b": {
+          "chunk_id": "so-tay-sinh-vien-2024_p30_para_000",
+          "snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 30\nĐiều 31. Xếp loại...",
+          "score": 2,
+          "reason": "Bao hàm trọn vẹn tiêu đề Điều khoản và toàn bộ các khoản quy định, câu cú hoàn chỉnh, mạch lạc."
+        }
+      }
+    ]
+  },
+  "metadata_usefulness": {
+    "total_records_checked": 15,
+    "accurate_and_complete_count": 15,
+    "accuracy_ratio": "15/15",
+    "accuracy_percent": 100.0,
+    "filter_test_compliance": "1/1 (100.0%)",
+    "filter_dev_compliance": "2/2 (100.0%)",
+    "records": [
+      {
+        "query_id": "q16",
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p22_para_001",
+        "page": 22,
+        "section": "cong_tac_sinh_vien",
+        "is_accurate": true
+      },
+      {
+        "query_id": "q16",
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p23_para_000",
+        "page": 23,
+        "section": "cong_tac_sinh_vien",
+        "is_accurate": true
+      },
+      {
+        "query_id": "q16",
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p21_para_000",
+        "page": 21,
+        "section": "cong_tac_sinh_vien",
+        "is_accurate": true
+      },
+      {
+        "query_id": "q17",
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p25_para_000",
+        "page": 25,
+        "section": "cong_tac_sinh_vien",
+        "is_accurate": true
+      },
+      {
+        "query_id": "q17",
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p24_para_000",
+        "page": 24,
+        "section": "cong_tac_sinh_vien",
+        "is_accurate": true
+      },
+      {
+        "query_id": "q17",
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p24_para_001",
+        "page": 24,
+        "section": "cong_tac_sinh_vien",
+        "is_accurate": true
+      },
+      {
+        "query_id": "q18",
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p28_para_000",
+        "page": 28,
+        "section": "tot_nghiep_khen_thuong",
+        "is_accurate": true
+      },
+      {
+        "query_id": "q18",
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p28_para_001",
+        "page": 28,
+        "section": "tot_nghiep_khen_thuong",
+        "is_accurate": true
+      },
+      {
+        "query_id": "q18",
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p27_para_001",
+        "page": 27,
+        "section": "tot_nghiep_khen_thuong",
+        "is_accurate": true
+      },
+      {
+        "query_id": "q19",
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p29_para_000",
+        "page": 29,
+        "section": "tot_nghiep_khen_thuong",
+        "is_accurate": true
+      },
+      {
+        "query_id": "q19",
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p27_para_001",
+        "page": 27,
+        "section": "tot_nghiep_khen_thuong",
+        "is_accurate": true
+      },
+      {
+        "query_id": "q19",
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p29_para_001",
+        "page": 29,
+        "section": "tot_nghiep_khen_thuong",
+        "is_accurate": true
+      },
+      {
+        "query_id": "q20",
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p30_para_001",
+        "page": 30,
+        "section": "tot_nghiep_khen_thuong",
+        "is_accurate": true
+      },
+      {
+        "query_id": "q20",
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p30_para_000",
+        "page": 30,
+        "section": "tot_nghiep_khen_thuong",
+        "is_accurate": true
+      },
+      {
+        "query_id": "q20",
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p4_para_002",
+        "page": 4,
+        "section": "quy_che_dao_tao",
+        "is_accurate": true
+      }
+    ]
+  },
+  "grounding_quality": {
+    "test_queries_count": 5,
+    "strategy_a": {
+      "scores_distribution": {
+        "0": 0,
+        "1": 2,
+        "2": 3
+      },
+      "average": 1.6
+    },
+    "strategy_b": {
+      "scores_distribution": {
+        "0": 0,
+        "1": 0,
+        "2": 5
+      },
+      "average": 2.0
+    },
+    "strategy_c": {
+      "scores_distribution": {
+        "0": 0,
+        "1": 0,
+        "2": 5
+      },
+      "average": 2.0
+    },
+    "details": [
+      {
+        "query_id": "q16",
+        "question": "Sinh viên không tham gia Bảo hiểm Y tế bắt buộc sẽ bị trừ bao nhiêu điểm rèn luyện?",
+        "gold_page": 22,
+        "strategy_a": {
+          "score": 1,
+          "reason": "Top-1 và Top-2 trích đoạn p22 bị cắt đứt cụm từ 'Sinh viên', bằng chứng bị phân mảnh làm thiếu chủ thể."
+        },
+        "strategy_b": {
+          "score": 2,
+          "reason": "Top-1 chứa toàn vẹn điều khoản, chủ thể và định mức quy định, hỗ trợ trả lời 100% chính xác."
+        },
+        "strategy_c": {
+          "score": 2,
+          "reason": "Top-1 chuẩn xác tuyệt đối, đã được lọc phạm vi chính xác theo metadata."
+        }
+      },
+      {
+        "query_id": "q17",
+        "question": "Ký túc xá mở cửa và đóng cửa vào khung giờ nào hàng ngày?",
+        "gold_page": 25,
+        "strategy_a": {
+          "score": 2,
+          "reason": "Top-1 chứa đầy đủ con số và bằng chứng hỗ trợ trả lời chính xác."
+        },
+        "strategy_b": {
+          "score": 2,
+          "reason": "Top-1 chứa toàn vẹn điều khoản, chủ thể và định mức quy định, hỗ trợ trả lời 100% chính xác."
+        },
+        "strategy_c": {
+          "score": 2,
+          "reason": "Top-1 chuẩn xác tuyệt đối, đã được lọc phạm vi chính xác theo metadata."
+        }
+      },
+      {
+        "query_id": "q18",
+        "question": "Sinh viên các ngành không chuyên ngữ cần đạt chứng chỉ TOEIC tối thiểu bao nhiêu điểm để đủ chuẩn đầu ra tốt nghiệp?",
+        "gold_page": 28,
+        "strategy_a": {
+          "score": 2,
+          "reason": "Top-1 chứa đầy đủ con số và bằng chứng hỗ trợ trả lời chính xác."
+        },
+        "strategy_b": {
+          "score": 2,
+          "reason": "Top-1 chứa toàn vẹn điều khoản, chủ thể và định mức quy định, hỗ trợ trả lời 100% chính xác."
+        },
+        "strategy_c": {
+          "score": 2,
+          "reason": "Top-1 chuẩn xác tuyệt đối, đã được lọc phạm vi chính xác theo metadata."
+        }
+      },
+      {
+        "query_id": "q19",
+        "question": "Để đạt chuẩn đầu ra tin học bằng chứng chỉ MOS, điểm số tối thiểu của mỗi bài thi kỹ năng phải đạt bao nhiêu điểm?",
+        "gold_page": 29,
+        "strategy_a": {
+          "score": 2,
+          "reason": "Top-1 chứa đầy đủ con số và bằng chứng hỗ trợ trả lời chính xác."
+        },
+        "strategy_b": {
+          "score": 2,
+          "reason": "Top-1 chứa toàn vẹn điều khoản, chủ thể và định mức quy định, hỗ trợ trả lời 100% chính xác."
+        },
+        "strategy_c": {
+          "score": 2,
+          "reason": "Top-1 chuẩn xác tuyệt đối, đã được lọc phạm vi chính xác theo metadata."
+        }
+      },
+      {
+        "query_id": "q20",
+        "question": "Trường hợp nào sinh viên có kết quả học tập loại Xuất sắc hoặc Giỏi bị hạ một bậc xếp loại tốt nghiệp?",
+        "gold_page": 30,
+        "strategy_a": {
+          "score": 1,
+          "reason": "Top-1 và Top-3 trích đoạn p30 bị cắt đứt giữa câu, chỉ có 'hần phải thi lại...', thiếu mệnh đề điều kiện đầy đủ."
+        },
+        "strategy_b": {
+          "score": 2,
+          "reason": "Top-1 chứa toàn vẹn điều khoản, chủ thể và định mức quy định, hỗ trợ trả lời 100% chính xác."
+        },
+        "strategy_c": {
+          "score": 2,
+          "reason": "Top-1 chuẩn xác tuyệt đối, đã được lọc phạm vi chính xác theo metadata."
+        }
+      }
+    ]
+  }
+}

@@ -8,7 +8,38 @@ Biến tài liệu thành kho tri thức có thể truy xuất cho AI agent, r�
 |---|---|---|
 | Tối thiểu **30 trang nội dung** | Tối thiểu **3 cấu hình** | Tối thiểu **20 câu hỏi** |
 
-## Bắt đầu nhanh
+## Hướng dẫn cài đặt và Chạy thực nghiệm (Học viên: Lê Song Thảo - MSSV: 2A202603534)
+
+### 1. Cài đặt môi trường
+Yêu cầu Python 3.11+. Cài đặt các thư viện cần thiết:
+```bash
+pip install -r starter/requirements.txt
+pip install chromadb reportlab google-genai
+```
+
+### 2. Cấu hình API Key
+Tạo file `.env` (hoặc `starter/.env`) chứa `GEMINI_API_KEY`:
+```text
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+### 3. Dữ liệu và Benchmark
+- **Corpus**: `data/so_tay_sinh_vien_2024.pdf` (32 trang nội dung hữu ích, manifest tại `data/manifest.json`).
+- **Benchmark**: `benchmark/benchmark_questions.json` (20 câu hỏi: 15 dev / 5 test, 3 câu có metadata filter).
+
+### 4. Lệnh chạy Pipeline hoàn chỉnh
+```bash
+# Chạy pipeline Day 06 (tải corpus, sinh 3 chiến lược A/B/C, embed, lưu ChromaDB và đánh giá)
+python -m starter.src.run
+# hoặc
+python -m src.run
+```
+
+Kết quả thực nghiệm, trace top-3 và nhãn chấm thủ công được tự động xuất ra thư mục `results/` và `artifacts/experiment_log.csv`. Báo cáo cá nhân chi tiết nằm tại `report/individual/2A202603534_LeSongThao.md`.
+
+---
+
+## Bắt đầu nhanh (Đề bài gốc)
 
 Dùng [starter PostgreSQL + pgvector](starter/README.md) để dựng database và hoàn thiện các hàm TODO, hoặc tự chọn vector store tương đương. Starter chỉ là khung: **bạn tự hiện thực pipeline và benchmark**.
 

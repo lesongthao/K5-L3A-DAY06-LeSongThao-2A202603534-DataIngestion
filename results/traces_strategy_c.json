@@ -1,0 +1,828 @@
+[
+  {
+    "id": "q01",
+    "split": "dev",
+    "type": "truc_tiep",
+    "question": "Thời gian đào tạo tiêu chuẩn đối với sinh viên khối ngành Kỹ thuật - Công nghệ là bao nhiêu năm?",
+    "gold_page": 3,
+    "evidence_quote": "Đối với khối ngành Kỹ thuật - Công nghệ là 4,0 năm (tương đương 8 học kỳ chính)",
+    "filter": null,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "filter_compliant": null,
+    "hits": [
+      {
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p3_para_001",
+        "score": 0.8629,
+        "page": 3,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": true,
+        "text_snippet": "Thời gian đào tạo và kế hoạch năm học\n1. Thời gian đào tạo tiêu chuẩn theo thiết kế chương trình được quy định như sau: Đối với khối ngành Kỹ thuật -\nCông nghệ là 4,0 năm (tương đư..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p4_para_000",
+        "score": 0.7403,
+        "page": 4,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": false,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 4\nĐiều 3. Đơn vị đo lường học tập và tổ chức lớp học phần\n1...."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p3_para_000",
+        "score": 0.7349,
+        "page": 3,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": false,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 3\nCHƯƠNG I: QUY CHẾ ĐÀO TẠO THEO HỆ THỐNG TÍN CHỈ\nĐiều 1. Ph..."
+      }
+    ]
+  },
+  {
+    "id": "q02",
+    "split": "dev",
+    "type": "truc_tiep",
+    "question": "Sinh viên có học lực bình thường phải đăng ký tối thiểu bao nhiêu tín chỉ trong một học kỳ chính?",
+    "gold_page": 4,
+    "evidence_quote": "Sinh viên có học lực bình thường (GPA tích lũy đạt từ 2.00 trở lên) phải đăng ký tối thiểu 14 tín chỉ và tối đa 24 tín chỉ trong mỗi học kỳ chính",
+    "filter": null,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "filter_compliant": null,
+    "hits": [
+      {
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p4_para_001",
+        "score": 0.8786,
+        "page": 4,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": true,
+        "text_snippet": "Sinh viên có học lực bình thường (GPA tích lũy đạt từ 2.00 trở lên) phải đăng ký tối thiểu 14 tín chỉ và tối đa 24\ntín chỉ trong mỗi học kỳ chính, trừ học kỳ cuối của khóa học khi ..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p5_para_002",
+        "score": 0.8228,
+        "page": 5,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": false,
+        "text_snippet": "Sinh viên không được phép rút học phần nếu số tín chỉ còn lại sau khi rút ít hơn mức tối thiểu (14\ntín chỉ đối với sinh viên bình thường, 10 tín chỉ đối với sinh viên bị cảnh báo)."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p4_para_002",
+        "score": 0.7763,
+        "page": 4,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": false,
+        "text_snippet": "Sinh viên có điểm trung bình chung tích lũy (GPA) từ 3.20 trở lên (xếp loại Giỏi và Xuất sắc) được phép nộp\nđơn xin đăng ký vượt mức tối đa, nhưng không vượt quá 28 tín chỉ trong m..."
+      }
+    ]
+  },
+  {
+    "id": "q03",
+    "split": "dev",
+    "type": "dieu_kien_ngoai_le",
+    "question": "Sinh viên rút bớt học phần sau tuần thứ 2 có phải đóng học phí cho học phần đó không?",
+    "gold_page": 5,
+    "evidence_quote": "Sinh viên rút học phần sau tuần thứ 2 vẫn phải đóng 100% học phí của học phần đó.",
+    "filter": null,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "filter_compliant": null,
+    "hits": [
+      {
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p5_para_001",
+        "score": 0.887,
+        "page": 5,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": true,
+        "text_snippet": "Hủy học phần trong thời gian điều chỉnh: Trong vòng 2 tuần đầu tiên của học kỳ chính và 1 tuần đầu của học\nkỳ phụ, sinh viên được quyền thêm, bớt hoặc hủy học phần trực tuyến trên ..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p5_para_002",
+        "score": 0.7624,
+        "page": 5,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": false,
+        "text_snippet": "Sinh viên không được phép rút học phần nếu số tín chỉ còn lại sau khi rút ít hơn mức tối thiểu (14\ntín chỉ đối với sinh viên bình thường, 10 tín chỉ đối với sinh viên bị cảnh báo)."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p6_para_001",
+        "score": 0.7358,
+        "page": 6,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": false,
+        "text_snippet": "Trường hợp điểm học cải thiện thấp hơn điểm cũ, hệ thống đào tạo sẽ\ntự động giữ lại điểm cao nhất cho sinh viên. 3. Sinh viên đã đạt từ điểm C trở lên không được phép đăng ký học c..."
+      }
+    ]
+  },
+  {
+    "id": "q04",
+    "split": "dev",
+    "type": "dien_dat_lai",
+    "question": "Những học phần đạt điểm chữ nào thì sinh viên được quyền đăng ký học cải thiện điểm số?",
+    "gold_page": 6,
+    "evidence_quote": "Sinh viên đạt điểm D hoặc D+ ở bất kỳ học phần nào được quyền đăng ký học cải thiện để nâng cao điểm trung bình chung tích lũy.",
+    "filter": null,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "filter_compliant": null,
+    "hits": [
+      {
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p6_para_000",
+        "score": 0.8069,
+        "page": 6,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": true,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 6\nĐiều 7. Quy định về học lại và học cải thiện điểm số\n1. Họ..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p6_para_001",
+        "score": 0.8034,
+        "page": 6,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": false,
+        "text_snippet": "Trường hợp điểm học cải thiện thấp hơn điểm cũ, hệ thống đào tạo sẽ\ntự động giữ lại điểm cao nhất cho sinh viên. 3. Sinh viên đã đạt từ điểm C trở lên không được phép đăng ký học c..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p8_para_001",
+        "score": 0.7563,
+        "page": 8,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": false,
+        "text_snippet": "Xếp loại Trung bình khá. • Điểm C: Từ 5.5 đến 6.4 điểm thang 10; quy đổi sang thang 4 đạt 2.0 điểm; Xếp loại Trung bình. • Điểm D+: Từ 5.0 đến 5.4 điểm thang 10; quy đổi sang thang..."
+      }
+    ]
+  },
+  {
+    "id": "q05",
+    "split": "dev",
+    "type": "dieu_kien_ngoai_le",
+    "question": "Sinh viên vắng mặt quá bao nhiêu phần trăm số tiết học thì bị cấm thi kết thúc học phần?",
+    "gold_page": 7,
+    "evidence_quote": "Sinh viên vắng mặt quá 20% tổng số tiết học quy định trên lớp của học phần (tương đương nghỉ quá 3 buổi đối với môn 3 tín chỉ lý thuyết) mà không có lý do chính đáng sẽ bị cấm thi kết thúc học phần.",
+    "filter": null,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "filter_compliant": null,
+    "hits": [
+      {
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p7_para_001",
+        "score": 0.8578,
+        "page": 7,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": true,
+        "text_snippet": "Điều kiện cấm thi kết thúc học phần: Sinh viên vắng mặt quá 20% tổng số tiết học quy định trên lớp của học\nphần (tương đương nghỉ quá 3 buổi đối với môn 3 tín chỉ lý thuyết) mà khô..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p7_para_000",
+        "score": 0.748,
+        "page": 7,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": false,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 7\nĐiều 8. Cơ cấu đánh giá điểm học phần và điều kiện dự thi ..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p5_para_002",
+        "score": 0.7227,
+        "page": 5,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": false,
+        "text_snippet": "Sinh viên không được phép rút học phần nếu số tín chỉ còn lại sau khi rút ít hơn mức tối thiểu (14\ntín chỉ đối với sinh viên bình thường, 10 tín chỉ đối với sinh viên bị cảnh báo)."
+      }
+    ]
+  },
+  {
+    "id": "q06",
+    "split": "dev",
+    "type": "truc_tiep",
+    "question": "Điểm chữ B+ được quy đổi sang thang điểm 4 tương ứng với bao nhiêu điểm?",
+    "gold_page": 8,
+    "evidence_quote": "Điểm B+: Từ 8.0 đến 8.4 điểm thang 10; quy đổi sang thang 4 đạt 3.5 điểm; Xếp loại Khá giỏi.",
+    "filter": null,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "filter_compliant": null,
+    "hits": [
+      {
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p8_para_000",
+        "score": 0.7596,
+        "page": 8,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": true,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 8\nĐiều 9. Thang điểm đánh giá và bảng quy đổi thang điểm chu..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p8_para_001",
+        "score": 0.7068,
+        "page": 8,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": false,
+        "text_snippet": "Xếp loại Trung bình khá. • Điểm C: Từ 5.5 đến 6.4 điểm thang 10; quy đổi sang thang 4 đạt 2.0 điểm; Xếp loại Trung bình. • Điểm D+: Từ 5.0 đến 5.4 điểm thang 10; quy đổi sang thang..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p30_para_001",
+        "score": 0.6677,
+        "page": 30,
+        "section": "tot_nghiep_khen_thuong",
+        "is_evidence_hit": false,
+        "text_snippet": "từ Giỏi xuống Khá) nếu thuộc một trong hai trường hợp cụ thể sau đây:\n- Trường hợp 1 (Học lại vượt định mức): Có khối lượng tín chỉ của các học phần phải thi lại hoặc học lại vượt ..."
+      }
+    ]
+  },
+  {
+    "id": "q07",
+    "split": "dev",
+    "type": "dieu_kien_ngoai_le",
+    "question": "Sinh viên bị buộc thôi học khi bị cảnh báo kết quả học tập trong những trường hợp cụ thể nào?",
+    "gold_page": 10,
+    "evidence_quote": "Bị cảnh báo học vụ mức 2 liên tiếp 3 học kỳ chính.",
+    "filter": null,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "filter_compliant": null,
+    "hits": [
+      {
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p10_para_001",
+        "score": 0.8316,
+        "page": 10,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": true,
+        "text_snippet": "- Trường hợp 3: Tổng số tín chỉ bị điểm F chưa tích lũy tính từ đầu khóa học vượt quá 24 tín chỉ. 2. Các mức cảnh báo học vụ: Mức 1 (cảnh báo lần đầu); Mức 2 (bị cảnh báo tiếp tục ..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p10_para_000",
+        "score": 0.8103,
+        "page": 10,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": false,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 10\nĐiều 11. Xử lý học vụ, cảnh báo kết quả học tập và buộc t..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p22_para_001",
+        "score": 0.7398,
+        "page": 22,
+        "section": "cong_tac_sinh_vien",
+        "is_evidence_hit": false,
+        "text_snippet": "- Sinh viên bị kỷ luật mức Cảnh cáo cấp trường trở lên: Điểm rèn luyện học kỳ bị khống chế tối đa không vượt\nquá loại Trung bình (không quá 64 điểm). - Sinh viên không tham gia Bảo..."
+      }
+    ]
+  },
+  {
+    "id": "q08",
+    "split": "dev",
+    "type": "metadata_filter",
+    "question": "Mức học phí một tín chỉ lý thuyết của chương trình chuẩn khối Kỹ thuật - Công nghệ là bao nhiêu?",
+    "gold_page": 11,
+    "evidence_quote": "Chương trình chuẩn (Khối Kỹ thuật - Công nghệ): 450.000 VNĐ / 01 tín chỉ lý thuyết; 550.000 VNĐ / 01 tín chỉ thực hành",
+    "filter": {
+      "section": "hoc_bong_hoc_phi"
+    },
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "filter_compliant": true,
+    "hits": [
+      {
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p11_para_000",
+        "score": 0.8289,
+        "page": 11,
+        "section": "hoc_bong_hoc_phi",
+        "is_evidence_hit": true,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 11\nCHƯƠNG II: CHÍNH SÁCH HỌC PHÍ, MIỄN GIẢM VÀ HỌC BỔNG\nĐiều..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p11_para_001",
+        "score": 0.7616,
+        "page": 11,
+        "section": "hoc_bong_hoc_phi",
+        "is_evidence_hit": false,
+        "text_snippet": "• Chương trình Chất lượng cao (CLC giảng dạy bằng tiếng Anh): 850.000 VNĐ / 01 tín chỉ cho toàn bộ các học\nphần chuyên môn. • Học phần Giáo dục Quốc phòng - An ninh và Giáo dục Thể..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p15_para_000",
+        "score": 0.7048,
+        "page": 15,
+        "section": "hoc_bong_hoc_phi",
+        "is_evidence_hit": false,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 15\nĐiều 16. Tiêu chuẩn và mức hưởng Học bổng Khuyến khích Họ..."
+      }
+    ]
+  },
+  {
+    "id": "q09",
+    "split": "dev",
+    "type": "truc_tiep",
+    "question": "Sinh viên có hoàn cảnh khó khăn xin gia hạn nộp học phí được gia hạn tối đa bao nhiêu ngày?",
+    "gold_page": 12,
+    "evidence_quote": "Thời gian gia hạn tối đa không quá 30 ngày kể từ hạn nộp cuối cùng.",
+    "filter": null,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "filter_compliant": null,
+    "hits": [
+      {
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p12_para_001",
+        "score": 0.8772,
+        "page": 12,
+        "section": "hoc_bong_hoc_phi",
+        "is_evidence_hit": true,
+        "text_snippet": "Thủ tục xin gia hạn nộp học phí: Sinh viên có gia cảnh khó khăn đột xuất (tai nạn, thiên tai, dịch bệnh) có\nnguyện vọng xin gia hạn nộp học phí phải làm 'Đơn xin gia hạn nộp học ph..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p12_para_000",
+        "score": 0.7587,
+        "page": 12,
+        "section": "hoc_bong_hoc_phi",
+        "is_evidence_hit": false,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 12\nĐiều 13. Thời hạn nộp học phí, quy trình gia hạn và chế t..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p7_para_002",
+        "score": 0.7517,
+        "page": 7,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": false,
+        "text_snippet": "Hoãn thi có lý do: Sinh viên ốm đau, tai nạn hoặc lý do bất khả kháng có xác nhận của bệnh viện cấp\nquận/huyện trở lên phải nộp đơn xin hoãn thi về Phòng Đào tạo trong vòng 3 ngày ..."
+      }
+    ]
+  },
+  {
+    "id": "q10",
+    "split": "dev",
+    "type": "dieu_kien_ngoai_le",
+    "question": "Con đẻ của thương binh hoặc bệnh binh cần có tỷ lệ suy giảm khả năng lao động từ bao nhiêu trở lên thì được miễn 100% học phí?",
+    "gold_page": 13,
+    "evidence_quote": "con đẻ của thương binh hoặc bệnh binh có tỷ lệ suy giảm khả năng lao động từ 81% trở lên;",
+    "filter": null,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "filter_compliant": null,
+    "hits": [
+      {
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p13_para_000",
+        "score": 0.7451,
+        "page": 13,
+        "section": "hoc_bong_hoc_phi",
+        "is_evidence_hit": true,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 13\nĐiều 14. Quy định chính sách miễn 100% học phí cho đối tư..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p14_para_000",
+        "score": 0.7178,
+        "page": 14,
+        "section": "hoc_bong_hoc_phi",
+        "is_evidence_hit": false,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 14\nĐiều 15. Quy định chính sách giảm 70% và 50% học phí cho ..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p23_para_001",
+        "score": 0.7053,
+        "page": 23,
+        "section": "cong_tac_sinh_vien",
+        "is_evidence_hit": false,
+        "text_snippet": "- Mức thu thực tế cho năm học 12 tháng (từ 01/01 đến 31/12) được Phòng Kế hoạch - Tài chính thông báo đầu\nnăm học căn cứ trên mức lương cơ sở hiện hành. 3. Quyền lợi khám chữa bệnh..."
+      }
+    ]
+  },
+  {
+    "id": "q11",
+    "split": "dev",
+    "type": "metadata_filter",
+    "question": "Mức hưởng học bổng khuyến khích học tập loại Xuất sắc bằng bao nhiêu phần trăm mức học phí của học kỳ?",
+    "gold_page": 15,
+    "evidence_quote": "Học bổng loại Xuất sắc: Dành cho sinh viên có GPA đạt từ 3.60 đến 4.00 và Điểm rèn luyện đạt loại Xuất sắc (từ 90 điểm trở lên). Mức học bổng bằng 120% mức học phí của học kỳ đó.",
+    "filter": {
+      "section": "hoc_bong_hoc_phi"
+    },
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "filter_compliant": true,
+    "hits": [
+      {
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p15_para_001",
+        "score": 0.8287,
+        "page": 15,
+        "section": "hoc_bong_hoc_phi",
+        "is_evidence_hit": true,
+        "text_snippet": "- Điểm trung bình chung học tập (GPA) đạt từ loại Khá (GPA $\\ge 2.50$) trở lên. 3. Ba định mức học bổng khuyến khích học tập cụ thể:\n• Học bổng loại Xuất sắc: Dành cho sinh viên có..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p15_para_000",
+        "score": 0.7426,
+        "page": 15,
+        "section": "hoc_bong_hoc_phi",
+        "is_evidence_hit": false,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 15\nĐiều 16. Tiêu chuẩn và mức hưởng Học bổng Khuyến khích Họ..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p16_para_000",
+        "score": 0.7098,
+        "page": 16,
+        "section": "hoc_bong_hoc_phi",
+        "is_evidence_hit": false,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 16\nĐiều 17. Quy trình xét chọn, phân bổ ngân sách và thứ tự ..."
+      }
+    ]
+  },
+  {
+    "id": "q12",
+    "split": "dev",
+    "type": "truc_tiep",
+    "question": "Học bổng Viettel - Chắp cánh tài năng công nghệ trao tặng có giá trị bao nhiêu tiền cho mỗi suất?",
+    "gold_page": 17,
+    "evidence_quote": "Học bổng Viettel - Chắp cánh tài năng công nghệ: Trị giá 20.000.000 VNĐ / suất;",
+    "filter": null,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "filter_compliant": null,
+    "hits": [
+      {
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p17_para_000",
+        "score": 0.7559,
+        "page": 17,
+        "section": "hoc_bong_hoc_phi",
+        "is_evidence_hit": true,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 17\nĐiều 18. Các chương trình học bổng tài trợ doanh nghiệp v..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p17_para_001",
+        "score": 0.7195,
+        "page": 17,
+        "section": "hoc_bong_hoc_phi",
+        "is_evidence_hit": false,
+        "text_snippet": "Học bổng Vingroup - Đổi mới sáng tạo khoa học công nghệ: Trị giá 25.000.000 VNĐ / suất; ưu tiên các dự án\nnghiên cứu AI, IoT, Robotics và xe tự hành có tính ứng dụng thực tiễn cao...."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p11_para_000",
+        "score": 0.679,
+        "page": 11,
+        "section": "hoc_bong_hoc_phi",
+        "is_evidence_hit": false,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 11\nCHƯƠNG II: CHÍNH SÁCH HỌC PHÍ, MIỄN GIẢM VÀ HỌC BỔNG\nĐiều..."
+      }
+    ]
+  },
+  {
+    "id": "q13",
+    "split": "dev",
+    "type": "truc_tiep",
+    "question": "Mức vốn vay tín dụng đào tạo tối đa dành cho sinh viên có hoàn cảnh khó khăn theo tháng là bao nhiêu?",
+    "gold_page": 18,
+    "evidence_quote": "mức vay tối đa được điều chỉnh lên tới 4.000.000 VNĐ / tháng / sinh viên (tương đương 40.000.000 VNĐ cho một năm học 10 tháng).",
+    "filter": null,
+    "hit_at_1": false,
+    "hit_at_3": true,
+    "filter_compliant": null,
+    "hits": [
+      {
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p18_para_000",
+        "score": 0.7451,
+        "page": 18,
+        "section": "hoc_bong_hoc_phi",
+        "is_evidence_hit": false,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 18\nĐiều 19. Hỗ trợ thủ tục vay vốn tín dụng sinh viên theo Q..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p18_para_001",
+        "score": 0.7429,
+        "page": 18,
+        "section": "hoc_bong_hoc_phi",
+        "is_evidence_hit": true,
+        "text_snippet": "Mức vốn vay và lãi suất ưu đãi:\n- Căn cứ Quyết định số 05/2022/QĐ-TTg sửa đổi Quyết định 157/2007/QĐ-TTg của Thủ tướng Chính phủ, mức\nvay tối đa được điều chỉnh lên tới 4.000.000 V..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p11_para_000",
+        "score": 0.6775,
+        "page": 11,
+        "section": "hoc_bong_hoc_phi",
+        "is_evidence_hit": false,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 11\nCHƯƠNG II: CHÍNH SÁCH HỌC PHÍ, MIỄN GIẢM VÀ HỌC BỔNG\nĐiều..."
+      }
+    ]
+  },
+  {
+    "id": "q14",
+    "split": "dev",
+    "type": "truc_tiep",
+    "question": "Tiêu chí đánh giá về ý thức học tập trong khung điểm rèn luyện sinh viên chiếm tối đa bao nhiêu điểm?",
+    "gold_page": 21,
+    "evidence_quote": "Tiêu chí 1: Đánh giá về ý thức học tập (Tối đa 20 điểm):",
+    "filter": null,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "filter_compliant": null,
+    "hits": [
+      {
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p21_para_000",
+        "score": 0.8097,
+        "page": 21,
+        "section": "cong_tac_sinh_vien",
+        "is_evidence_hit": true,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 21\nĐiều 22. Khung nội dung và cơ cấu tính điểm rèn luyện (Th..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p21_para_001",
+        "score": 0.7714,
+        "page": 21,
+        "section": "cong_tac_sinh_vien",
+        "is_evidence_hit": false,
+        "text_snippet": "thực hiện tốt văn hóa giảng đường\nvà đeo thẻ sinh viên (5đ). • Tiêu chí 3: Đánh giá về ý thức tham gia hoạt động chính trị, xã hội, văn thể mỹ (Tối đa 20 điểm): Tham gia các\nbuổi s..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p22_para_001",
+        "score": 0.7456,
+        "page": 22,
+        "section": "cong_tac_sinh_vien",
+        "is_evidence_hit": false,
+        "text_snippet": "- Sinh viên bị kỷ luật mức Cảnh cáo cấp trường trở lên: Điểm rèn luyện học kỳ bị khống chế tối đa không vượt\nquá loại Trung bình (không quá 64 điểm). - Sinh viên không tham gia Bảo..."
+      }
+    ]
+  },
+  {
+    "id": "q15",
+    "split": "dev",
+    "type": "dieu_kien_ngoai_le",
+    "question": "Sinh viên bị kỷ luật mức Khiển trách thì điểm rèn luyện trong học kỳ bị khống chế tối đa loại gì?",
+    "gold_page": 22,
+    "evidence_quote": "Sinh viên bị kỷ luật mức Khiển trách trong học kỳ: Điểm rèn luyện trong học kỳ đó tối đa không được vượt quá loại Khá (không quá 79 điểm), bất kể tổng điểm tự chấm đạt mức nào.",
+    "filter": null,
+    "hit_at_1": false,
+    "hit_at_3": true,
+    "filter_compliant": null,
+    "hits": [
+      {
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p22_para_001",
+        "score": 0.8231,
+        "page": 22,
+        "section": "cong_tac_sinh_vien",
+        "is_evidence_hit": false,
+        "text_snippet": "- Sinh viên bị kỷ luật mức Cảnh cáo cấp trường trở lên: Điểm rèn luyện học kỳ bị khống chế tối đa không vượt\nquá loại Trung bình (không quá 64 điểm). - Sinh viên không tham gia Bảo..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p22_para_000",
+        "score": 0.752,
+        "page": 22,
+        "section": "cong_tac_sinh_vien",
+        "is_evidence_hit": true,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 22\nĐiều 23. Phân loại kết quả rèn luyện và chế tài áp dụng\n1..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p33_para_000",
+        "score": 0.751,
+        "page": 33,
+        "section": "tot_nghiep_khen_thuong",
+        "is_evidence_hit": false,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 33\nĐiều 34. Khung các hình thức xử lý kỷ luật sinh viên vi p..."
+      }
+    ]
+  },
+  {
+    "id": "q16",
+    "split": "test",
+    "type": "truc_tiep",
+    "question": "Sinh viên không tham gia Bảo hiểm Y tế bắt buộc sẽ bị trừ bao nhiêu điểm rèn luyện?",
+    "gold_page": 22,
+    "evidence_quote": "Sinh viên không tham gia Bảo hiểm Y tế bắt buộc sẽ bị trừ trực tiếp 15 điểm vào Tiêu chí 2.",
+    "filter": null,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "filter_compliant": null,
+    "hits": [
+      {
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p22_para_001",
+        "score": 0.8212,
+        "page": 22,
+        "section": "cong_tac_sinh_vien",
+        "is_evidence_hit": true,
+        "text_snippet": "- Sinh viên bị kỷ luật mức Cảnh cáo cấp trường trở lên: Điểm rèn luyện học kỳ bị khống chế tối đa không vượt\nquá loại Trung bình (không quá 64 điểm). - Sinh viên không tham gia Bảo..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p23_para_000",
+        "score": 0.7214,
+        "page": 23,
+        "section": "cong_tac_sinh_vien",
+        "is_evidence_hit": false,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 23\nĐiều 24. Chế độ Bảo hiểm Y tế (BHYT) bắt buộc và chăm sóc..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p21_para_000",
+        "score": 0.7096,
+        "page": 21,
+        "section": "cong_tac_sinh_vien",
+        "is_evidence_hit": false,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 21\nĐiều 22. Khung nội dung và cơ cấu tính điểm rèn luyện (Th..."
+      }
+    ]
+  },
+  {
+    "id": "q17",
+    "split": "test",
+    "type": "truc_tiep",
+    "question": "Ký túc xá mở cửa và đóng cửa vào khung giờ nào hàng ngày?",
+    "gold_page": 25,
+    "evidence_quote": "Ký túc xá mở cửa từ 05h30 sáng và đóng cửa lúc 23h00 đêm hàng ngày.",
+    "filter": null,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "filter_compliant": null,
+    "hits": [
+      {
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p25_para_000",
+        "score": 0.7781,
+        "page": 25,
+        "section": "cong_tac_sinh_vien",
+        "is_evidence_hit": true,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 25\nĐiều 26. Nội quy nội trú và quy định an ninh trật tự Ký t..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p24_para_000",
+        "score": 0.6605,
+        "page": 24,
+        "section": "cong_tac_sinh_vien",
+        "is_evidence_hit": false,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 24\nĐiều 25. Tiêu chuẩn xét duyệt và thứ tự đối tượng ưu tiên..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p24_para_001",
+        "score": 0.638,
+        "page": 24,
+        "section": "cong_tac_sinh_vien",
+        "is_evidence_hit": false,
+        "text_snippet": "• Ưu tiên 4: Sinh viên thuộc hộ nghèo, hộ cận nghèo theo giấy chứng nhận cấp năm hiện hành của chính quyền\nđịa phương. • Ưu tiên 5: Tân sinh viên khóa mới đạt giải trong kỳ thi học..."
+      }
+    ]
+  },
+  {
+    "id": "q18",
+    "split": "test",
+    "type": "truc_tiep",
+    "question": "Sinh viên các ngành không chuyên ngữ cần đạt chứng chỉ TOEIC tối thiểu bao nhiêu điểm để đủ chuẩn đầu ra tốt nghiệp?",
+    "gold_page": 28,
+    "evidence_quote": "TOEIC (2 kỹ năng Nghe - Đọc): Đạt tối thiểu 550 điểm.",
+    "filter": null,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "filter_compliant": null,
+    "hits": [
+      {
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p28_para_000",
+        "score": 0.811,
+        "page": 28,
+        "section": "tot_nghiep_khen_thuong",
+        "is_evidence_hit": true,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 28\nĐiều 29. Quy định chuẩn đầu ra Ngoại ngữ và bảng quy đổi ..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p28_para_001",
+        "score": 0.7868,
+        "page": 28,
+        "section": "tot_nghiep_khen_thuong",
+        "is_evidence_hit": false,
+        "text_snippet": "• Chứng chỉ VSTEP (Khung năng lực ngoại ngữ 6 bậc dùng cho Việt Nam): Đạt tối thiểu Bậc 3 (tương đương\ntrình độ B1) do các trường đại học được Bộ GD&ĐT cấp phép khảo thí cấp. 2. Ch..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p27_para_001",
+        "score": 0.7288,
+        "page": 27,
+        "section": "tot_nghiep_khen_thuong",
+        "is_evidence_hit": false,
+        "text_snippet": "Điều kiện điểm học tập: Điểm trung bình chung tích lũy (Cumulative GPA) của toàn khóa học đạt từ 2.00 điểm\ntrở lên theo thang điểm 4. 3. Điều kiện Giáo dục Thể chất và Quốc phòng: ..."
+      }
+    ]
+  },
+  {
+    "id": "q19",
+    "split": "test",
+    "type": "metadata_filter",
+    "question": "Để đạt chuẩn đầu ra tin học bằng chứng chỉ MOS, điểm số tối thiểu của mỗi bài thi kỹ năng phải đạt bao nhiêu điểm?",
+    "gold_page": 29,
+    "evidence_quote": "Điểm số tối thiểu của mỗi bài thi kỹ năng phải đạt từ 700 / 1.000 điểm trở lên.",
+    "filter": {
+      "section": "tot_nghiep_khen_thuong"
+    },
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "filter_compliant": true,
+    "hits": [
+      {
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p29_para_000",
+        "score": 0.7811,
+        "page": 29,
+        "section": "tot_nghiep_khen_thuong",
+        "is_evidence_hit": true,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 29\nĐiều 30. Quy định chuẩn đầu ra Tin học ứng dụng văn phòng..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p27_para_001",
+        "score": 0.7034,
+        "page": 27,
+        "section": "tot_nghiep_khen_thuong",
+        "is_evidence_hit": false,
+        "text_snippet": "Điều kiện điểm học tập: Điểm trung bình chung tích lũy (Cumulative GPA) của toàn khóa học đạt từ 2.00 điểm\ntrở lên theo thang điểm 4. 3. Điều kiện Giáo dục Thể chất và Quốc phòng: ..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p29_para_001",
+        "score": 0.6952,
+        "page": 29,
+        "section": "tot_nghiep_khen_thuong",
+        "is_evidence_hit": false,
+        "text_snippet": "• Chứng chỉ IC3 (Internet and Computing Core Certification): Phiên bản GS5 hoặc GS6, hoàn thành trọn vẹn cả 3\nbài thi thành phần: Máy tính căn bản (Computing Fundamentals), Các ứng..."
+      }
+    ]
+  },
+  {
+    "id": "q20",
+    "split": "test",
+    "type": "dieu_kien_ngoai_le",
+    "question": "Trường hợp nào sinh viên có kết quả học tập loại Xuất sắc hoặc Giỏi bị hạ một bậc xếp loại tốt nghiệp?",
+    "gold_page": 30,
+    "evidence_quote": "Có khối lượng tín chỉ của các học phần phải thi lại hoặc học lại vượt quá 5% tổng số tín chỉ quy định cho toàn bộ chương trình đào tạo của ngành học",
+    "filter": null,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "filter_compliant": null,
+    "hits": [
+      {
+        "rank": 1,
+        "chunk_id": "so-tay-sinh-vien-2024_p30_para_001",
+        "score": 0.791,
+        "page": 30,
+        "section": "tot_nghiep_khen_thuong",
+        "is_evidence_hit": true,
+        "text_snippet": "từ Giỏi xuống Khá) nếu thuộc một trong hai trường hợp cụ thể sau đây:\n- Trường hợp 1 (Học lại vượt định mức): Có khối lượng tín chỉ của các học phần phải thi lại hoặc học lại vượt ..."
+      },
+      {
+        "rank": 2,
+        "chunk_id": "so-tay-sinh-vien-2024_p30_para_000",
+        "score": 0.788,
+        "page": 30,
+        "section": "tot_nghiep_khen_thuong",
+        "is_evidence_hit": false,
+        "text_snippet": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang 30\nĐiều 31. Xếp loại tốt nghiệp đại học và các trường hợp bị..."
+      },
+      {
+        "rank": 3,
+        "chunk_id": "so-tay-sinh-vien-2024_p4_para_002",
+        "score": 0.7241,
+        "page": 4,
+        "section": "quy_che_dao_tao",
+        "is_evidence_hit": false,
+        "text_snippet": "Sinh viên có điểm trung bình chung tích lũy (GPA) từ 3.20 trở lên (xếp loại Giỏi và Xuất sắc) được phép nộp\nđơn xin đăng ký vượt mức tối đa, nhưng không vượt quá 28 tín chỉ trong m..."
+      }
+    ]
+  }
+]

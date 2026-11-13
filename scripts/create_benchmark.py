@@ -1,0 +1,272 @@
+"""Script to validate and save benchmark questions to benchmark/benchmark_questions.json
+and starter/data/benchmark_questions.json.
+Total questions: 20 (15 dev, 5 test).
+Metadata filter questions: 3 (q08, q11 in dev; q19 in test).
+"""
+import json
+import os
+import pypdf
+
+pdf_path = "data/so_tay_sinh_vien_2024.pdf"
+reader = pypdf.PdfReader(pdf_path)
+
+questions = [
+    {
+        "id": "q01",
+        "type": "truc_tiep",
+        "split": "dev",
+        "question": "Thời gian đào tạo tiêu chuẩn đối với sinh viên khối ngành Kỹ thuật - Công nghệ là bao nhiêu năm?",
+        "gold_source_id": "so-tay-sinh-vien-2024",
+        "gold_page": 3,
+        "evidence_quote": "Đối với khối ngành Kỹ thuật - Công nghệ là 4,0 năm (tương đương 8 học kỳ chính)",
+        "expected_answer": "4,0 năm (tương đương 8 học kỳ chính)",
+        "filter": None
+    },
+    {
+        "id": "q02",
+        "type": "truc_tiep",
+        "split": "dev",
+        "question": "Sinh viên có học lực bình thường phải đăng ký tối thiểu bao nhiêu tín chỉ trong một học kỳ chính?",
+        "gold_source_id": "so-tay-sinh-vien-2024",
+        "gold_page": 4,
+        "evidence_quote": "Sinh viên có học lực bình thường (GPA tích lũy đạt từ 2.00 trở lên) phải đăng ký tối thiểu 14 tín chỉ và tối đa 24 tín chỉ trong mỗi học kỳ chính",
+        "expected_answer": "Tối thiểu 14 tín chỉ (và tối đa 24 tín chỉ)",
+        "filter": None
+    },
+    {
+        "id": "q03",
+        "type": "dieu_kien_ngoai_le",
+        "split": "dev",
+        "question": "Sinh viên rút bớt học phần sau tuần thứ 2 có phải đóng học phí cho học phần đó không?",
+        "gold_source_id": "so-tay-sinh-vien-2024",
+        "gold_page": 5,
+        "evidence_quote": "Sinh viên rút học phần sau tuần thứ 2 vẫn phải đóng 100% học phí của học phần đó.",
+        "expected_answer": "Có, sinh viên rút học phần sau tuần thứ 2 vẫn phải đóng 100% học phí của học phần đó.",
+        "filter": None
+    },
+    {
+        "id": "q04",
+        "type": "dien_dat_lai",
+        "split": "dev",
+        "question": "Những học phần đạt điểm chữ nào thì sinh viên được quyền đăng ký học cải thiện điểm số?",
+        "gold_source_id": "so-tay-sinh-vien-2024",
+        "gold_page": 6,
+        "evidence_quote": "Sinh viên đạt điểm D hoặc D+ ở bất kỳ học phần nào được quyền đăng ký học cải thiện để nâng cao điểm trung bình chung tích lũy.",
+        "expected_answer": "Điểm D hoặc D+ (điểm C trở lên không được học cải thiện)",
+        "filter": None
+    },
+    {
+        "id": "q05",
+        "type": "dieu_kien_ngoai_le",
+        "split": "dev",
+        "question": "Sinh viên vắng mặt quá bao nhiêu phần trăm số tiết học thì bị cấm thi kết thúc học phần?",
+        "gold_source_id": "so-tay-sinh-vien-2024",
+        "gold_page": 7,
+        "evidence_quote": "Sinh viên vắng mặt quá 20% tổng số tiết học quy định trên lớp của học phần (tương đương nghỉ quá 3 buổi đối với môn 3 tín chỉ lý thuyết) mà không có lý do chính đáng sẽ bị cấm thi kết thúc học phần.",
+        "expected_answer": "Quá 20% tổng số tiết học quy định trên lớp của học phần",
+        "filter": None
+    },
+    {
+        "id": "q06",
+        "type": "truc_tiep",
+        "split": "dev",
+        "question": "Điểm chữ B+ được quy đổi sang thang điểm 4 tương ứng với bao nhiêu điểm?",
+        "gold_source_id": "so-tay-sinh-vien-2024",
+        "gold_page": 8,
+        "evidence_quote": "Điểm B+: Từ 8.0 đến 8.4 điểm thang 10; quy đổi sang thang 4 đạt 3.5 điểm; Xếp loại Khá giỏi.",
+        "expected_answer": "3.5 điểm",
+        "filter": None
+    },
+    {
+        "id": "q07",
+        "type": "dieu_kien_ngoai_le",
+        "split": "dev",
+        "question": "Sinh viên bị buộc thôi học khi bị cảnh báo kết quả học tập trong những trường hợp cụ thể nào?",
+        "gold_source_id": "so-tay-sinh-vien-2024",
+        "gold_page": 10,
+        "evidence_quote": "Bị cảnh báo học vụ mức 2 liên tiếp 3 học kỳ chính.",
+        "expected_answer": "Bị cảnh báo học vụ mức 2 liên tiếp 3 học kỳ chính, hoặc tổng số lần bị cảnh báo vượt quá 4 lần, hoặc quá thời gian đào tạo tối đa",
+        "filter": None
+    },
+    {
+        "id": "q08",
+        "type": "metadata_filter",
+        "split": "dev",
+        "question": "Mức học phí một tín chỉ lý thuyết của chương trình chuẩn khối Kỹ thuật - Công nghệ là bao nhiêu?",
+        "gold_source_id": "so-tay-sinh-vien-2024",
+        "gold_page": 11,
+        "evidence_quote": "Chương trình chuẩn (Khối Kỹ thuật - Công nghệ): 450.000 VNĐ / 01 tín chỉ lý thuyết; 550.000 VNĐ / 01 tín chỉ thực hành",
+        "expected_answer": "450.000 VNĐ / 01 tín chỉ lý thuyết",
+        "filter": {"section": "hoc_bong_hoc_phi"}
+    },
+    {
+        "id": "q09",
+        "type": "truc_tiep",
+        "split": "dev",
+        "question": "Sinh viên có hoàn cảnh khó khăn xin gia hạn nộp học phí được gia hạn tối đa bao nhiêu ngày?",
+        "gold_source_id": "so-tay-sinh-vien-2024",
+        "gold_page": 12,
+        "evidence_quote": "Thời gian gia hạn tối đa không quá 30 ngày kể từ hạn nộp cuối cùng.",
+        "expected_answer": "Tối đa không quá 30 ngày",
+        "filter": None
+    },
+    {
+        "id": "q10",
+        "type": "dieu_kien_ngoai_le",
+        "split": "dev",
+        "question": "Con đẻ của thương binh hoặc bệnh binh cần có tỷ lệ suy giảm khả năng lao động từ bao nhiêu trở lên thì được miễn 100% học phí?",
+        "gold_source_id": "so-tay-sinh-vien-2024",
+        "gold_page": 13,
+        "evidence_quote": "con đẻ của thương binh hoặc bệnh binh có tỷ lệ suy giảm khả năng lao động từ 81% trở lên;",
+        "expected_answer": "Suy giảm khả năng lao động từ 81% trở lên",
+        "filter": None
+    },
+    {
+        "id": "q11",
+        "type": "metadata_filter",
+        "split": "dev",
+        "question": "Mức hưởng học bổng khuyến khích học tập loại Xuất sắc bằng bao nhiêu phần trăm mức học phí của học kỳ?",
+        "gold_source_id": "so-tay-sinh-vien-2024",
+        "gold_page": 15,
+        "evidence_quote": "Học bổng loại Xuất sắc: Dành cho sinh viên có GPA đạt từ 3.60 đến 4.00 và Điểm rèn luyện đạt loại Xuất sắc (từ 90 điểm trở lên). Mức học bổng bằng 120% mức học phí của học kỳ đó.",
+        "expected_answer": "120% mức học phí của học kỳ đó",
+        "filter": {"section": "hoc_bong_hoc_phi"}
+    },
+    {
+        "id": "q12",
+        "type": "truc_tiep",
+        "split": "dev",
+        "question": "Học bổng Viettel - Chắp cánh tài năng công nghệ trao tặng có giá trị bao nhiêu tiền cho mỗi suất?",
+        "gold_source_id": "so-tay-sinh-vien-2024",
+        "gold_page": 17,
+        "evidence_quote": "Học bổng Viettel - Chắp cánh tài năng công nghệ: Trị giá 20.000.000 VNĐ / suất;",
+        "expected_answer": "20.000.000 VNĐ / suất",
+        "filter": None
+    },
+    {
+        "id": "q13",
+        "type": "truc_tiep",
+        "split": "dev",
+        "question": "Mức vốn vay tín dụng đào tạo tối đa dành cho sinh viên có hoàn cảnh khó khăn theo tháng là bao nhiêu?",
+        "gold_source_id": "so-tay-sinh-vien-2024",
+        "gold_page": 18,
+        "evidence_quote": "mức vay tối đa được điều chỉnh lên tới 4.000.000 VNĐ / tháng / sinh viên (tương đương 40.000.000 VNĐ cho một năm học 10 tháng).",
+        "expected_answer": "4.000.000 VNĐ / tháng / sinh viên (40 triệu VNĐ/năm học)",
+        "filter": None
+    },
+    {
+        "id": "q14",
+        "type": "truc_tiep",
+        "split": "dev",
+        "question": "Tiêu chí đánh giá về ý thức học tập trong khung điểm rèn luyện sinh viên chiếm tối đa bao nhiêu điểm?",
+        "gold_source_id": "so-tay-sinh-vien-2024",
+        "gold_page": 21,
+        "evidence_quote": "Tiêu chí 1: Đánh giá về ý thức học tập (Tối đa 20 điểm):",
+        "expected_answer": "Tối đa 20 điểm",
+        "filter": None
+    },
+    {
+        "id": "q15",
+        "type": "dieu_kien_ngoai_le",
+        "split": "dev",
+        "question": "Sinh viên bị kỷ luật mức Khiển trách thì điểm rèn luyện trong học kỳ bị khống chế tối đa loại gì?",
+        "gold_source_id": "so-tay-sinh-vien-2024",
+        "gold_page": 22,
+        "evidence_quote": "Sinh viên bị kỷ luật mức Khiển trách trong học kỳ: Điểm rèn luyện trong học kỳ đó tối đa không được vượt quá loại Khá (không quá 79 điểm), bất kể tổng điểm tự chấm đạt mức nào.",
+        "expected_answer": "Tối đa không vượt quá loại Khá (không quá 79 điểm)",
+        "filter": None
+    },
+    {
+        "id": "q16",
+        "type": "truc_tiep",
+        "split": "test",
+        "question": "Sinh viên không tham gia Bảo hiểm Y tế bắt buộc sẽ bị trừ bao nhiêu điểm rèn luyện?",
+        "gold_source_id": "so-tay-sinh-vien-2024",
+        "gold_page": 22,
+        "evidence_quote": "Sinh viên không tham gia Bảo hiểm Y tế bắt buộc sẽ bị trừ trực tiếp 15 điểm vào Tiêu chí 2.",
+        "expected_answer": "Bị trừ trực tiếp 15 điểm vào Tiêu chí 2",
+        "filter": None
+    },
+    {
+        "id": "q17",
+        "type": "truc_tiep",
+        "split": "test",
+        "question": "Ký túc xá mở cửa và đóng cửa vào khung giờ nào hàng ngày?",
+        "gold_source_id": "so-tay-sinh-vien-2024",
+        "gold_page": 25,
+        "evidence_quote": "Ký túc xá mở cửa từ 05h30 sáng và đóng cửa lúc 23h00 đêm hàng ngày.",
+        "expected_answer": "Mở cửa từ 05h30 sáng và đóng cửa lúc 23h00 đêm",
+        "filter": None
+    },
+    {
+        "id": "q18",
+        "type": "truc_tiep",
+        "split": "test",
+        "question": "Sinh viên các ngành không chuyên ngữ cần đạt chứng chỉ TOEIC tối thiểu bao nhiêu điểm để đủ chuẩn đầu ra tốt nghiệp?",
+        "gold_source_id": "so-tay-sinh-vien-2024",
+        "gold_page": 28,
+        "evidence_quote": "TOEIC (2 kỹ năng Nghe - Đọc): Đạt tối thiểu 550 điểm.",
+        "expected_answer": "Tối thiểu 550 điểm TOEIC (2 kỹ năng Nghe - Đọc)",
+        "filter": None
+    },
+    {
+        "id": "q19",
+        "type": "metadata_filter",
+        "split": "test",
+        "question": "Để đạt chuẩn đầu ra tin học bằng chứng chỉ MOS, điểm số tối thiểu của mỗi bài thi kỹ năng phải đạt bao nhiêu điểm?",
+        "gold_source_id": "so-tay-sinh-vien-2024",
+        "gold_page": 29,
+        "evidence_quote": "Điểm số tối thiểu của mỗi bài thi kỹ năng phải đạt từ 700 / 1.000 điểm trở lên.",
+        "expected_answer": "Từ 700 / 1.000 điểm trở lên",
+        "filter": {"section": "tot_nghiep_khen_thuong"}
+    },
+    {
+        "id": "q20",
+        "type": "dieu_kien_ngoai_le",
+        "split": "test",
+        "question": "Trường hợp nào sinh viên có kết quả học tập loại Xuất sắc hoặc Giỏi bị hạ một bậc xếp loại tốt nghiệp?",
+        "gold_source_id": "so-tay-sinh-vien-2024",
+        "gold_page": 30,
+        "evidence_quote": "Có khối lượng tín chỉ của các học phần phải thi lại hoặc học lại vượt quá 5% tổng số tín chỉ quy định cho toàn bộ chương trình đào tạo của ngành học",
+        "expected_answer": "Khi khối lượng tín chỉ thi lại/học lại vượt quá 5% tổng số tín chỉ chương trình, hoặc đã từng bị kỷ luật từ mức Cảnh cáo cấp trường trở lên",
+        "filter": None
+    }
+]
+
+def validate_and_save():
+    print(f"Checking evidence quotes for {len(questions)} questions against {pdf_path}...")
+    errors = []
+    for q in questions:
+        page_idx = q["gold_page"] - 1
+        page_text = reader.pages[page_idx].extract_text()
+        norm_page = " ".join(page_text.split())
+        norm_ev = " ".join(q["evidence_quote"].split())
+        if norm_ev not in norm_page:
+            errors.append(f"Question {q['id']} evidence not found on page {q['gold_page']}")
+        else:
+            print(f"  [PASS] {q['id']} ({q['split']}) -> Page {q['gold_page']}")
+            
+    if errors:
+        print("ERRORS FOUND:")
+        for e in errors:
+            print("  ", e)
+        raise ValueError("Evidence validation failed!")
+        
+    print("ALL 20 QUESTIONS HAVE 100% VERIFIED EVIDENCE QUOTES!")
+    
+    # Save to benchmark/
+    os.makedirs("benchmark", exist_ok=True)
+    bench_file = "benchmark/benchmark_questions.json"
+    with open(bench_file, "w", encoding="utf-8") as f:
+        json.dump(questions, f, ensure_ascii=False, indent=2)
+    print(f"Saved benchmark to {bench_file}")
+
+    # Also save to starter/data/
+    os.makedirs("starter/data", exist_ok=True)
+    starter_bench_file = "starter/data/benchmark_questions.json"
+    with open(starter_bench_file, "w", encoding="utf-8") as f:
+        json.dump(questions, f, ensure_ascii=False, indent=2)
+    print(f"Saved benchmark to {starter_bench_file}")
+
+if __name__ == "__main__":
+    validate_and_save()

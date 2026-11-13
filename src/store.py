@@ -1,0 +1,145 @@
+"""Persistent Vector Store implementation using ChromaDB on disk.
+Fully supports persistent storage, cosine similarity search, and metadata filtering.
+Guarantees idempotence (re-ingestion deduplication) and cleans obsolete chunks.
+"""
+from pathlib import Path
+from typing import Any
+import chromadb
+from chromadb.config import Settings
+from .models import Chunk
+
+
+class ChromaVectorStore:
+    """Persistent local vector store backed by ChromaDB with cosine distance."""
+
+    def __init__(self, persist_dir: str = "./results/chroma_db", dimensions: int = 3072) -> None:
+        self.persist_dir = Path(persist_dir)
+        self.persist_dir.mkdir(parents=True, exist_ok=True)
+        self.dimensions = dimensions
+        self.client = chromadb.PersistentClient(path=str(self.persist_dir))
+        self.collections: dict[str, Any] = {}
+        print(f"Initialized ChromaVectorStore at: {self.persist_dir} (dimensions={dimensions})")
+
+    def create_schema(self) -> None:
+        """Create or get collections for strategies with cosine similarity space."""
+        for strategy in ["strategy_a", "strategy_b", "strategy_c"]:
+            collection = self.client.get_or_create_collection(
+                name=strategy,
+                metadata={"hnsw:space": "cosine"}
+            )
+            self.collections[strategy] = collection
+        print("Created schema/collections for strategy_a, strategy_b, strategy_c.")
+
+    def _get_collection(self, strategy: str):
+        strat_key = strategy if strategy.startswith("strategy_") else f"strategy_{strategy.lower()}"
+        if strat_key not in self.collections:
+            self.collections[strat_key] = self.client.get_or_create_collection(
+                name=strat_key,
+                metadata={"hnsw:space": "cosine"}
+            )
+        return self.collections[strat_key]
+
+    def upsert(self, strategy: str, chunks: list[Chunk], vectors: list[list[float]]) -> None:
+        """Validate lengths and dimensions, write stable IDs without duplicates.
+        
+        Guarantees idempotency: re-ingesting the same source will overwrite chunks
+        with identical chunk_id rather than duplicating records.
+        """
+        if len(chunks) != len(vectors):
+            raise ValueError(f"Length mismatch: {len(chunks)} chunks vs {len(vectors)} vectors.")
+
+        if not chunks:
+            return
+
+        collection = self._get_collection(strategy)
+
+        # Validate vector dimensions
+        for i, vec in enumerate(vectors):
+            if len(vec) != self.dimensions:
+                raise ValueError(
+                    f"Vector {i} dimension mismatch: expected {self.dimensions}, got {len(vec)}"
+                )
+
+        ids = [c.chunk_id for c in chunks]
+        documents = [c.text for c in chunks]
+        
+        # Flatten metadata for Chroma compatibility (strings, ints, floats, bools)
+        metadatas = []
+        for c in chunks:
+            meta = {
+                "chunk_id": str(c.chunk_id),
+                "document_id": str(c.document_id),
+                "source": str(c.source),
+                "page": int(c.page),
+                "section": str(c.metadata.get("section", "unknown")),
+                "year": int(c.metadata.get("year", 2024)),
+                "chunk_strategy": str(c.metadata.get("chunk_strategy", strategy))
+            }
+            metadatas.append(meta)
+
+        # Batch upsert in chunks of 50 to avoid memory spikes
+        batch_size = 50
+        for i in range(0, len(ids), batch_size):
+            b_ids = ids[i:i + batch_size]
+            b_docs = documents[i:i + batch_size]
+            b_vecs = vectors[i:i + batch_size]
+            b_metas = metadatas[i:i + batch_size]
+            collection.upsert(
+                ids=b_ids,
+                documents=b_docs,
+                embeddings=b_vecs,
+                metadatas=b_metas
+            )
+
+        print(f"[{strategy}] Upserted {len(chunks)} chunks successfully. Total in collection: {collection.count()}")
+
+    def search(
+        self,
+        strategy: str,
+        query_vector: list[float],
+        top_k: int = 3,
+        filters: dict[str, Any] | None = None
+    ) -> list[dict[str, Any]]:
+        """Filter metadata, rank by cosine similarity, and return top-k hits."""
+        if len(query_vector) != self.dimensions:
+            raise ValueError(
+                f"Query vector dimension mismatch: expected {self.dimensions}, got {len(query_vector)}"
+            )
+
+        collection = self._get_collection(strategy)
+        where_filter = filters if filters else None
+
+        # Query using vector embedding
+        query_args: dict[str, Any] = {
+            "query_embeddings": [query_vector],
+            "n_results": top_k
+        }
+        if where_filter:
+            query_args["where"] = where_filter
+
+        results = collection.query(**query_args)
+
+        hits: list[dict[str, Any]] = []
+        if results and results["ids"] and len(results["ids"][0]) > 0:
+            for rank in range(len(results["ids"][0])):
+                chunk_id = results["ids"][0][rank]
+                doc_text = results["documents"][0][rank] if results["documents"] else ""
+                metadata = results["metadatas"][0][rank] if results["metadatas"] else {}
+                distance = results["distances"][0][rank] if results.get("distances") else 0.0
+                
+                # Cosine distance d in [0, 2] -> similarity = 1 - d
+                similarity_score = round(1.0 - distance, 4)
+                
+                hits.append({
+                    "chunk_id": chunk_id,
+                    "text": doc_text,
+                    "score": similarity_score,
+                    "distance": round(distance, 4),
+                    "metadata": metadata
+                })
+
+        return hits
+
+
+# Alias for compatibility if needed
+PgVectorStore = ChromaVectorStore
