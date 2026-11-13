@@ -4,8 +4,10 @@ Guarantees idempotence (re-ingestion deduplication) and cleans obsolete chunks
 when a document version changes or reduces in chunk count.
 """
 from pathlib import Path
+import math
 from typing import Any
 import chromadb
+from chromadb.config import Settings
 from .models import Chunk
 
 
@@ -16,7 +18,7 @@ class ChromaVectorStore:
         self.persist_dir = Path(persist_dir)
         self.persist_dir.mkdir(parents=True, exist_ok=True)
         self.dimensions = dimensions
-        self.client = chromadb.PersistentClient(path=str(self.persist_dir))
+        self.client = chromadb.PersistentClient(path=str(self.persist_dir), settings=Settings(anonymized_telemetry=False))
         self.collections: dict[str, Any] = {}
         print(f"Initialized ChromaVectorStore at: {self.persist_dir} (dimensions={dimensions})")
 
@@ -57,28 +59,16 @@ class ChromaVectorStore:
 
         # Validate vector dimensions
         for i, vec in enumerate(vectors):
-            if len(vec) != self.dimensions:
+            if len(vec) != self.dimensions or not all(math.isfinite(x) for x in vec):
                 raise ValueError(
                     f"Vector {i} dimension mismatch: expected {self.dimensions}, got {len(vec)}"
                 )
 
         ids = [c.chunk_id for c in chunks]
+        if len(ids) != len(set(ids)) or any(not c.chunk_id or not c.document_id or not c.text.strip() for c in chunks):
+            raise ValueError("Chunk IDs must be unique; IDs and text must be nonempty")
         documents = [c.text for c in chunks]
         new_ids_set = set(ids)
-
-        # Remove obsolete chunks for the document IDs being upserted
-        doc_ids = list({c.document_id for c in chunks})
-        for doc_id in doc_ids:
-            try:
-                existing = collection.get(where={"document_id": doc_id})
-                if existing and existing.get("ids"):
-                    obsolete_ids = [cid for cid in existing["ids"] if cid not in new_ids_set]
-                    if obsolete_ids:
-                        collection.delete(ids=obsolete_ids)
-                        print(f"[{strategy}] Cleaned up {len(obsolete_ids)} obsolete chunks for document '{doc_id}'.")
-            except Exception as e:
-                # In case collection is newly created or empty
-                pass
         
         # Flatten metadata for Chroma compatibility (strings, ints, floats, bools)
         metadatas = []
@@ -108,6 +98,14 @@ class ChromaVectorStore:
                 metadatas=b_metas
             )
 
+        # Delete stale IDs only after all input validation and new writes succeed.
+        for doc_id in {c.document_id for c in chunks}:
+            existing = collection.get(where={"document_id": doc_id})
+            obsolete_ids = [cid for cid in existing["ids"] if cid not in new_ids_set]
+            if obsolete_ids:
+                collection.delete(ids=obsolete_ids)
+                print(f"[{strategy}] Cleaned up {len(obsolete_ids)} obsolete chunks for document '{doc_id}'.")
+
         print(f"[{strategy}] Upserted {len(chunks)} chunks successfully. Total in collection: {collection.count()}")
 
     def search(
@@ -118,7 +116,9 @@ class ChromaVectorStore:
         filters: dict[str, Any] | None = None
     ) -> list[dict[str, Any]]:
         """Filter metadata, rank by cosine similarity, and return top-k hits."""
-        if len(query_vector) != self.dimensions:
+        if not 1 <= top_k <= 100:
+            raise ValueError("top_k must be between 1 and 100")
+        if len(query_vector) != self.dimensions or not all(math.isfinite(x) for x in query_vector):
             raise ValueError(
                 f"Query vector dimension mismatch: expected {self.dimensions}, got {len(query_vector)}"
             )

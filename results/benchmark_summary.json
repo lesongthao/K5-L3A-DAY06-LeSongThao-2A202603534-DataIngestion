@@ -26,23 +26,27 @@
     }
   },
   "cost_accounting": {
-    "pricing_rate": "$0.00002 / 1000 tokens",
-    "billed_cost_usd": 0.0,
+    "pricing_rate": "$0.15 / 1,000,000 tokens (Standard API)",
+    "billed_cost_usd": null,
     "strategy_a": {
       "characters": 49397,
       "approx_tokens": 14113,
-      "commercial_estimated_cost_usd": 0.000282
+      "commercial_estimated_cost_usd": 0.002117
     },
     "strategy_b": {
       "characters": 45197,
       "approx_tokens": 12913,
-      "commercial_estimated_cost_usd": 0.000258
+      "commercial_estimated_cost_usd": 0.001937
     },
     "strategy_c": {
       "characters": 45197,
       "approx_tokens": 12913,
       "commercial_estimated_cost_usd": 0.0
-    }
+    },
+    "pricing_source": "https://aistudio.google.com/docs/pricing#gemini-embedding",
+    "pricing_checked_at": "2026-11-13",
+    "reported_billed_cost_usd": 0.0,
+    "billing_note": "Bài làm trước đó khai báo 0 USD; chưa đối chiếu hóa đơn provider. Free Tier có giá 0 USD nếu tài khoản đủ điều kiện. Estimate chỉ gồm document embedding, chưa gồm query, probe và retry."
   },
   "strategy_a": {
     "name": "Fixed-size (500 chars, overlap 50)",

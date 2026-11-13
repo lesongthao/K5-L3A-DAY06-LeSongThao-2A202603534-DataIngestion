@@ -27,7 +27,7 @@ def is_evidence_hit(hit: dict[str, Any], question: dict[str, Any]) -> bool:
     hit_page = hit_metadata.get("page")
     
     # 1. Check gold document_id match
-    if gold_source_id and hit_source_id and str(hit_source_id) != str(gold_source_id):
+    if not gold_source_id or str(hit_source_id) != str(gold_source_id):
         return False
 
     # 2. Check gold page match
@@ -40,8 +40,8 @@ def is_evidence_hit(hit: dict[str, Any], question: dict[str, Any]) -> bool:
     if not evidence_quotes and evidence_quote:
         evidence_quotes = [evidence_quote]
         
-    if not evidence_quotes:
-        return True
+    if not evidence_quotes or any(not normalize_whitespace(eq) for eq in evidence_quotes):
+        return False
         
     norm_doc = normalize_whitespace(hit.get("text", ""))
     
@@ -56,8 +56,10 @@ def is_evidence_hit(hit: dict[str, Any], question: dict[str, Any]) -> bool:
 
 def check_filter_compliance(hits: list[dict[str, Any]], expected_filter: dict[str, Any] | None) -> bool:
     """Check if all returned top-k hits comply with the query filter."""
-    if not expected_filter or not hits:
+    if not expected_filter:
         return True
+    if not hits:
+        return False
         
     for hit in hits:
         metadata = hit.get("metadata", {})

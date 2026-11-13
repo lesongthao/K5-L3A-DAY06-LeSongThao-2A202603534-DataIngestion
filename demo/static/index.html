@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Demo truy xuất và so sánh ba chiến lược chuẩn bị dữ liệu — Day 06.">
+  <title>Ingest Lab · Day 06</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Đến nội dung chính</a>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="Ingest Lab, trang chính"><span class="brand-mark">i<span>l</span></span><span>ingest<span class="brand-light">lab</span><small>DATA ENGINEERING WORKSPACE</small></span></a>
+    <div class="nav-label">KHÔNG GIAN THỰC NGHIỆM</div>
+    <nav aria-label="Điều hướng">
+      <button class="nav-item active" data-view="explorer" aria-current="page"><span class="nav-icon">⌕</span> Khám phá truy xuất <span class="nav-arrow">↗</span></button>
+      <button class="nav-item" data-view="overview"><span class="nav-icon">▥</span> Kết quả benchmark</button>
+      <button class="nav-item" data-view="audit"><span class="nav-icon">☷</span> Kiểm tra chất lượng</button>
+    </nav>
+    <div class="sidebar-note"><span class="small-dot"></span> Một corpus. Ba cách tiếp cận.<p>Đi từ kết quả truy xuất đến đúng đoạn bằng chứng trong tài liệu.</p></div>
+    <a class="source-link" href="/api/document#page=3" target="_blank" rel="noopener noreferrer">▤ &nbsp; Mở tài liệu nguồn <span>↗</span></a>
+    <div class="identity"><span class="avatar">ST</span><div><strong id="studentName">Học viên</strong><small>2A202603534 · K5-L3A</small></div></div>
+  </aside>
+
+  <main id="main">
+    <header class="topbar"><span><span class="muted">LAB CÁ NHÂN</span><span class="slash">/</span>DAY 06</span><span class="top-status"><span class="small-dot"></span> Data Ingestion Engineering</span></header>
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+    <section class="hero">
+      <div class="eyebrow">DOCUMENT → KNOWLEDGE → EVIDENCE</div>
+      <h1>Từ tài liệu,<br>đến <em>bằng chứng.</em></h1>
+      <p>Quan sát cách chunking và metadata thay đổi kết quả truy xuất.<br class="desktop-only"> So sánh A/B/C trên cùng corpus và bộ câu hỏi.</p>
+      <div class="hero-tag"><span class="small-dot"></span> Gemini Embedding <span>3072 chiều</span><span class="tag-divider"></span> ChromaDB</div>
+      <div class="hero-art" aria-hidden="true"><div class="art-sheet"><div class="art-heading"></div><i></i><i></i><i></i><div class="art-selection"><i></i><i></i></div><i></i><i></i></div><div class="art-chip">↗<span>evidence found</span></div><div class="art-dots">· · ·<br>· · ·<br>· · ·</div></div>
+    </section>
+
+    <section class="stats" aria-label="Thông tin bộ dữ liệu">
+      <article><span class="stat-label">TRANG NỘI DUNG <span>01</span></span><strong id="pageCount">—</strong><small id="pageDetail">Đang đọc corpus</small></article>
+      <article><span class="stat-label">CÂU HỎI BENCHMARK <span>02</span></span><strong id="queryCount">—</strong><small id="splitDetail">Dev / Test</small></article>
+      <article><span class="stat-label">CHUNK A / B / C <span>03</span></span><strong class="stat-chunks" id="chunkCounts">—</strong><small>Cùng model và corpus</small></article>
+      <article class="stat-featured"><span class="stat-label">EVIDENCE HIT@3 · C / TEST <span>↗</span></span><strong id="bestHit">—</strong><small id="hitDetail">Tập test đã dùng lại sau sửa code</small></article>
+    </section>
+
+    <div class="pipeline" aria-label="Pipeline"><span><b>01</b> Đọc PDF</span><i>→</i><span><b>02</b> Chuẩn hóa</span><i>→</i><span><b>03</b> Chia chunk</span><i>→</i><span><b>04</b> Embedding</span><i>→</i><span class="pipeline-current"><b>05</b> Truy xuất & kiểm tra</span></div>
+
+    <section id="view-explorer" class="view">
+      <div class="section-heading"><div><div class="eyebrow">01 / RETRIEVAL EXPLORER</div><h2>Đọc kết quả, nhìn thấy nguồn.</h2></div><span class="pill" id="modeBadge">TRACE ĐÃ LƯU</span></div>
+      <div class="query-panel">
+        <div class="query-tabs" role="tablist" aria-label="Chế độ tra cứu"><button id="recordedTab" role="tab" aria-selected="true" class="selected">Câu hỏi benchmark</button><button id="liveTab" role="tab" aria-selected="false">Tra cứu trực tiếp <span>↗</span></button></div>
+        <div id="recordedControls">
+          <div class="filter-row"><label class="search-label" for="questionFilter">⌕ <input id="questionFilter" placeholder="Tìm câu hỏi, chủ đề…" autocomplete="off" maxlength="120"></label><div class="segments" aria-label="Lọc tập câu hỏi"><button class="selected" data-split="all">Tất cả</button><button data-split="dev">Dev</button><button data-split="test">Test</button></div></div>
+          <label for="questionSelect" class="control-label">CHỌN CÂU HỎI <span id="questionCounter"></span></label>
+          <select id="questionSelect" aria-label="Câu hỏi benchmark"></select>
+          <div class="question-meta" id="questionMeta"></div>
+        </div>
+        <form id="liveForm" hidden>
+          <label class="control-label" for="liveQuestion">CÂU HỎI CỦA BẠN</label>
+          <textarea id="liveQuestion" minlength="3" maxlength="500" rows="2" placeholder="Ví dụ: Sinh viên bị cảnh báo học vụ được đăng ký bao nhiêu tín chỉ?"></textarea>
+          <div class="live-controls"><label for="liveSection">Phạm vi cho C <select id="liveSection"><option value="">Toàn bộ tài liệu</option value="quy_che_dao_tao">Quy chế đào tạo</option><option value="hoc_bong_hoc_phi">Học phí & học bổng</option><option value="cong_tac_sinh_vien">Công tác sinh viên</option><option value="tot_nghiep_khen_thuong">Tốt nghiệp & khen thưởng</option></select></label><button class="primary" type="submit" id="liveSubmit">Tra cứu top-3 <span>→</span></button></div>
+          <p class="fine-print" id="liveHint">Tra cứu trực tiếp sử dụng Gemini API. Kết quả mới không có nhãn gold tự động.</p>
+        </form>
+      </div>
+      <div id="goldPanel" class="gold-panel"><div><span class="eyebrow">GOLD EVIDENCE</span><p id="goldQuote"></p></div><a id="goldSource" class="text-link" href="/api/document#page=3" target="_blank" rel="noopener noreferrer">Trang nguồn ↗</a><details><summary>Đáp án kỳ vọng</summary><p id="goldAnswer"></p></details></div>
+      <div class="results-toolbar"><h3 id="resultsTitle">So sánh kết quả top-3</h3><div class="segments" aria-label="Cấu hình hiển thị"><button class="selected" data-strategy="all">So sánh A/B/C</button><button data-strategy="a">A</button><button data-strategy="b">B</button><button data-strategy="c">C</button></div></div>
+      <div id="results" class="results-grid" aria-live="polite"><p class="empty">Đang tải kết quả thực nghiệm…</p></div>
+    </section>
+
+    <section id="view-overview" class="view" hidden>
+      <div class="section-heading"><div><div class="eyebrow">02 / BENCHMARK RESULTS</div><h2>Đo trên cùng một điểm xuất phát.</h2></div><div class="segments"><button class="selected" data-metric-split="dev">Dev · 15 câu</button><button data-metric-split="test">Test · 5 câu</button></div></div>
+      <div class="overview-grid"><article class="panel"><h3>Evidence Hit@3</h3><p class="muted">Một chunk phải chứa đủ evidence và khớp nguồn/trang gold.</p><div id="benchmarkBars"></div></article><article class="panel"><div class="eyebrow">B → C / MỘT YẾU TỐ THAY ĐỔI</div><h3>Giữ chunk. Thay phạm vi.</h3><p>B và C dùng chung chunk và vector. C chỉ lọc <code>section</code> khi câu hỏi có phạm vi được cung cấp trước.</p><p class="callout">Với q08, C loại được chunk ở Chương I khỏi top-3 về học phí; Hit@3 của B và C vẫn bằng nhau.</p><button class="text-button" id="showFilterCase">Xem câu q08 <span>→</span></button></article></div>
+      <div class="panel table-wrap"><table><caption>Chỉ số retrieval theo cấu hình</caption><thead><tr><th>Cấu hình</th><th>Hit@1</th><th>Evidence Hit@3</th><th>Filter tuân thủ</th><th>Số chunk</th><th>Embedding</th></tr></thead><tbody id="metricsBody"></tbody></table></div>
+      <p class="fine-print">Các số đo thuộc lần chạy được lưu trong repo. Tập test đã được dùng lại sau sửa code; kết quả không được báo như holdout độc lập. Số câu nhỏ giới hạn khả năng suy rộng.</p>
+    </section>
+
+    <section id="view-audit" class="view" hidden>
+      <div class="section-heading"><div><div class="eyebrow">03 / QUALITY REVIEW</div><h2>Giữ lại lý do cho từng điểm.</h2></div><button class="secondary" id="exportAudit">Xuất bảng nhãn JSON ↓</button></div>
+      <div class="audit-intro panel"><p id="auditMethod"></p><p class="fine-print">Trạng thái được ghi nhận theo xác nhận của tác giả. Xuất bảng nhãn không tạo ra một lần chấm mới.</p></div>
+      <div id="auditSummary" class="audit-summary"></div>
+      <h3 class="subheading">Coherence · 10 vị trí nguồn</h3><div id="coherenceSamples"></div>
+      <h3 class="subheading">Grounding · 5 câu test</h3><div id="groundingSamples"></div>
+    </section>
+    <footer><span>INGEST LAB <span class="footer-dot">/</span> DAY 06 · K5-L3A</span><span>Corpus tự biên soạn · Truy nguồn theo trang PDF</span></footer>
+  </main>
+</body>
+</html>

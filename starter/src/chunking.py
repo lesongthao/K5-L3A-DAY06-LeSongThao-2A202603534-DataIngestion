@@ -8,6 +8,8 @@ def fixed_size(page: DocumentPage, size: int = 500, overlap: int = 50) -> list[C
     
     Retains page metadata, document_id, source, and page number.
     """
+    if size <= 0 or overlap < 0 or overlap >= size:
+        raise ValueError("Require size > 0 and 0 <= overlap < size")
     text = page.text
     step = size - overlap
     if step <= 0:
@@ -48,6 +50,8 @@ def fixed_size(page: DocumentPage, size: int = 500, overlap: int = 50) -> list[C
 
 def _split_oversized_unit(unit: str, max_size: int) -> list[str]:
     """Split a string that exceeds max_size cleanly by word boundaries."""
+    if max_size <= 0:
+        raise ValueError("max_size must be positive")
     if len(unit) <= max_size:
         return [unit]
     pieces: list[str] = []
@@ -74,6 +78,8 @@ def by_paragraph(page: DocumentPage, max_size: int = 800) -> list[Chunk]:
     Guarantees no chunk text exceeds max_size characters while preserving
     heading and sentence boundaries to maximize semantic coherence.
     """
+    if max_size <= 0:
+        raise ValueError("max_size must be positive")
     raw_paras = [p.strip() for p in page.text.split("\n\n") if p.strip()]
     refined_units: list[str] = []
 

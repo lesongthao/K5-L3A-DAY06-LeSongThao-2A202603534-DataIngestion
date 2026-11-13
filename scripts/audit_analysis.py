@@ -27,7 +27,7 @@ for t in ta:
         print("  Top-3 hits returned:")
         for h in t["hits"]:
             print(f"    Rank {h['rank']}: Page {h['page']} | Score: {h['score']} | Chunk: {h['chunk_id']}")
-            print(f"    Snippet: {h['text_snippet']}")
+            print(f"    Snippet: {h.get('text', h.get('text_snippet', ''))[:180]}")
         print("-" * 50)
 
 print("\n" + "=" * 70)

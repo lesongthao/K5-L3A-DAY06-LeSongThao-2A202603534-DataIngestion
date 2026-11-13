@@ -1,4 +1,4 @@
-"""Script to generate the authentic 35-page PDF document: 'Sổ tay Sinh viên và Quy chế Đào tạo 2024-2025'
+"""Generate the self-compiled 35-page lab corpus; not an official handbook.
 Total physical pages: 35.
 Content pages: 32 (Page 3 to Page 34).
 Non-content pages: 3 (Page 1: Bìa, Page 2: Lời nói đầu/Mục lục, Page 35: Phụ lục).
@@ -103,7 +103,7 @@ pages_content.append({
         Paragraph("TÀI LIỆU QUY CHẾ ĐÀO TẠO VÀ CÔNG TÁC SINH VIÊN ĐẠI HỌC", title_style),
         Paragraph("Tập hợp chuẩn hóa phục vụ kiểm thử kỹ thuật Data Ingestion & Retrieval", subtitle_style),
         Spacer(1, 100),
-        Paragraph("<b>Biên soạn và kết xuất:</b> Lê Song Thảo (MSSV: 2A202603534)<br/><b>Căn cứ pháp lý:</b> TT 08/2021/TT-BGDĐT, TT 10/2016/TT-BGDĐT, NĐ 81/2021/NĐ-CP, QĐ 157/2007/QĐ-TTg<br/><b>Giấy phép:</b> Creative Commons Attribution 4.0 International (CC-BY 4.0)<br/><b>Hà Nội — Tháng 11/2026</b>", subtitle_style)
+        Paragraph("<b>Biên soạn và kết xuất:</b> Lê Sông Thao (MSSV: 2A202603534)<br/><b>Căn cứ pháp lý:</b> TT 08/2021/TT-BGDĐT, TT 10/2016/TT-BGDĐT, NĐ 81/2021/NĐ-CP, QĐ 157/2007/QĐ-TTg<br/><b>Giấy phép:</b> Creative Commons Attribution 4.0 International (CC-BY 4.0)<br/><b>Hà Nội — Tháng 11/2026</b>", subtitle_style)
     ]
 })
 
@@ -291,7 +291,7 @@ pages_content.append({
     "elements": [
         Paragraph("Điều 16. Tiêu chuẩn và mức hưởng Học bổng Khuyến khích Học tập (HB KKHT)", article_style),
         Paragraph("1. Học bổng Khuyến khích Học tập được xét cấp theo từng học kỳ chính (không xét cho học kỳ hè) nhằm khuyến khích sinh viên có thành tích học tập và rèn luyện tốt. Quỹ học bổng được trích tối thiểu 8% từ nguồn thu học phí sinh viên hệ chính quy.", body_style),
-        Paragraph("2. Điều kiện tối thiểu để được đưa vào danh sách xét học bổng:<br/>- Đăng ký và tích lũy tối thiểu 15 tín chỉ trong học kỳ chính đó (riêng sinh viên kỳ cuối đăng ký theo đúng số tín chỉ còn lại của chương trình).<br/>- Không có bất kỳ học phần nào bị điểm F hoặc phải thi lại trong học kỳ.<br/>- Điểm rèn luyện đạt từ loại Khá (từ 65 điểm trở lên).<br/>- Điểm trung bình chung học tập (GPA) đạt từ loại Khá (GPA $\ge 2.50$) trở lên.", body_style),
+        Paragraph("2. Điều kiện tối thiểu để được đưa vào danh sách xét học bổng:<br/>- Đăng ký và tích lũy tối thiểu 15 tín chỉ trong học kỳ chính đó (riêng sinh viên kỳ cuối đăng ký theo đúng số tín chỉ còn lại của chương trình).<br/>- Không có bất kỳ học phần nào bị điểm F hoặc phải thi lại trong học kỳ.<br/>- Điểm rèn luyện đạt từ loại Khá (từ 65 điểm trở lên).<br/>- Điểm trung bình chung học tập (GPA) đạt từ loại Khá (GPA $\\ge 2.50$) trở lên.", body_style),
         Paragraph("3. Ba định mức học bổng khuyến khích học tập cụ thể:<br/>• <b>Học bổng loại Xuất sắc</b>: Dành cho sinh viên có GPA đạt từ <b>3.60 đến 4.00</b> và Điểm rèn luyện đạt loại Xuất sắc (từ 90 điểm trở lên). Mức học bổng bằng <b>120% mức học phí</b> của học kỳ đó.<br/>• <b>Học bổng loại Giỏi</b>: Dành cho sinh viên có GPA đạt từ <b>3.20 đến 3.59</b> và Điểm rèn luyện đạt loại Tốt trở lên (từ 80 điểm trở lên). Mức học bổng bằng <b>100% mức học phí</b> của học kỳ đó.<br/>• <b>Học bổng loại Khá</b>: Dành cho sinh viên có GPA đạt từ <b>2.50 đến 3.19</b> và Điểm rèn luyện đạt loại Khá trở lên (từ 65 điểm trở lên). Mức học bổng bằng <b>80% mức học phí</b> của học kỳ đó.", body_style)
     ]
 })
@@ -315,7 +315,7 @@ pages_content.append({
     "elements": [
         Paragraph("Điều 18. Các chương trình học bổng tài trợ doanh nghiệp và cựu sinh viên", article_style),
         Paragraph("Hàng năm, nhà trường tiếp nhận và quản lý nhiều quỹ học bổng tài trợ ngoài ngân sách do các tập đoàn kinh tế, doanh nghiệp đối tác và cựu sinh viên trao tặng. Sinh viên nhận học bổng tài trợ vẫn được hưởng học bổng khuyến khích của trường nếu đủ điều kiện.", body_style),
-        Paragraph("Một số quỹ học bổng doanh nghiệp tiêu biểu thường niên:<br/>1. <b>Học bổng Viettel - Chắp cánh tài năng công nghệ</b>: Trị giá <b>20.000.000 VNĐ / suất</b>; cấp cho sinh viên năm 3, năm 4 các ngành CNTT, Điện tử Viễn thông có GPA $\ge 3.20$ và có bài báo khoa học hoặc giải thưởng lập trình quốc gia.<br/>2. <b>Học bổng Vingroup - Đổi mới sáng tạo khoa học công nghệ</b>: Trị giá <b>25.000.000 VNĐ / suất</b>; ưu tiên các dự án nghiên cứu AI, IoT, Robotics và xe tự hành có tính ứng dụng thực tiễn cao.<br/>3. <b>Học bổng Thắp sáng tương lai (Quỹ Cựu sinh viên)</b>: Trị giá <b>15.000.000 VNĐ / suất</b>; dành riêng cho sinh viên có hoàn cảnh đặc biệt khó khăn nhưng đạt GPA từ 2.80 trở lên.<br/>4. <b>Học bổng Samsung Talent Program (STP)</b>: Trị giá <b>54.000.000 VNĐ / năm</b> kèm cơ hội thực tập và việc làm chính thức tại Trung tâm R&D Samsung.", body_style),
+        Paragraph("Một số quỹ học bổng doanh nghiệp tiêu biểu thường niên:<br/>1. <b>Học bổng Viettel - Chắp cánh tài năng công nghệ</b>: Trị giá <b>20.000.000 VNĐ / suất</b>; cấp cho sinh viên năm 3, năm 4 các ngành CNTT, Điện tử Viễn thông có GPA $\\ge 3.20$ và có bài báo khoa học hoặc giải thưởng lập trình quốc gia.<br/>2. <b>Học bổng Vingroup - Đổi mới sáng tạo khoa học công nghệ</b>: Trị giá <b>25.000.000 VNĐ / suất</b>; ưu tiên các dự án nghiên cứu AI, IoT, Robotics và xe tự hành có tính ứng dụng thực tiễn cao.<br/>3. <b>Học bổng Thắp sáng tương lai (Quỹ Cựu sinh viên)</b>: Trị giá <b>15.000.000 VNĐ / suất</b>; dành riêng cho sinh viên có hoàn cảnh đặc biệt khó khăn nhưng đạt GPA từ 2.80 trở lên.<br/>4. <b>Học bổng Samsung Talent Program (STP)</b>: Trị giá <b>54.000.000 VNĐ / năm</b> kèm cơ hội thực tập và việc làm chính thức tại Trung tâm R&D Samsung.", body_style),
         Paragraph("Quy trình nộp hồ sơ học bổng doanh nghiệp được thông báo định kỳ trên Cổng thông tin Công tác sinh viên. Hội đồng xét duyệt sẽ tổ chức phỏng vấn trực tiếp đối với các ứng viên tiềm năng.", body_style)
     ]
 })
@@ -556,7 +556,7 @@ def build_pdf(output_path):
         topMargin=54,
         bottomMargin=54,
         title="Tài liệu Quy chế Đào tạo và Công tác Sinh viên Đại học",
-        author="Lê Song Thảo",
+        author="Lê Sông Thao",
         subject="Corpus nghiên cứu Data Ingestion - Day 06",
         creator="ReportLab 5.1.0"
     )

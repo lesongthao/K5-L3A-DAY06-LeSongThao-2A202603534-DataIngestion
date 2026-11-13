@@ -1,6 +1,18 @@
 {
-  "auditor": "Lê Song Thảo (MSSV: 2A202603534)",
-  "methodology": "Tác giả tự đọc và đối chiếu thủ công 100% từng chunk với tài liệu PDF gốc tại các vị trí nguồn cố định, có sự hỗ trợ của script để chuẩn hóa dữ liệu so khớp.",
+  "auditor": "Lê Sông Thao (MSSV: 2A202603534)",
+  "declared_methodology": "Tác giả tự đọc và đối chiếu từng chunk với trang PDF gốc tại các vị trí nguồn cố định, dùng script hỗ trợ so khớp chuỗi.",
+  "methodology": "Nhãn coherence/grounding được lưu kèm lý do và xác nhận của tác giả; script tổng hợp lại nhãn. Xác nhận chỉ còn hiệu lực khi hash corpus và bảng nhãn khớp. Metadata được kiểm tra tự động bằng text, nguồn, trang, section và year.",
+  "human_review_status": "confirmed",
+  "confirmation": {
+    "confirmation_type": "author_self_declaration",
+    "reviewer": "Lê Sông Thao (MSSV: 2A202603534)",
+    "confirmed_on": "2026-11-14",
+    "basis": "Tác giả xác nhận kết quả và bảng chấm trong trao đổi ngày 14/11/2026. Đây là xác nhận của tác giả, không phải chứng nhận độc lập của công cụ.",
+    "corpus_sha256": "c71d431db2607a67565cf552672bfd24955d18bcf68e43cb0ca1acb6ec4fad0b",
+    "labels_sha256": "a8f8ddc12d15848734908f0d659f813b66a65bb32499665599e556c16c07834e",
+    "previous_labels_sha256": "21e81dde803cd2d54159c65c2770a6de56c347118cd404db14cb2d06f3e8ee64",
+    "editorial_update": "Bổ sung đoạn neo nguồn và sửa mô tả trích đoạn để khớp text; giữ nguyên toàn bộ điểm đã được tác giả xác nhận."
+  },
   "coherence": {
     "sample_size": 10,
     "strategy_a_avg": 0.5,
@@ -9,6 +21,10 @@
       {
         "page": 3,
         "section": "quy_che_dao_tao",
+        "source_anchor": {
+          "start_char": 450,
+          "quote": "i Trường Đại học Công nghệ và Kỹ thuật.\n2. Quy chế"
+        },
         "strategy_a": {
           "chunk_id": "so-tay-sinh-vien-2024_p3_fix_001",
           "text_preview": "i Trường Đại học Công nghệ và Kỹ thuật.\n2. Quy chế áp dụng thống nhất đối với toàn thể sinh viên đang theo học các chươn...",
@@ -25,6 +41,10 @@
       {
         "page": 5,
         "section": "quy_che_dao_tao",
+        "source_anchor": {
+          "start_char": 450,
+          "quote": "vượt quá 8 tín chỉ. Nhà trường\nkhông áp đặt số tín"
+        },
         "strategy_a": {
           "chunk_id": "so-tay-sinh-vien-2024_p5_fix_001",
           "text_preview": "vượt quá 8 tín chỉ. Nhà trường\nkhông áp đặt số tín chỉ tối thiểu đối với học kỳ phụ.\n3. Các học phần trong học kỳ phụ đư...",
@@ -41,6 +61,10 @@
       {
         "page": 8,
         "section": "quy_che_dao_tao",
+        "source_anchor": {
+          "start_char": 450,
+          "quote": " đến 10.0 điểm thang 10; quy đổi sang thang 4 đạt "
+        },
         "strategy_a": {
           "chunk_id": "so-tay-sinh-vien-2024_p8_fix_001",
           "text_preview": "đến 10.0 điểm thang 10; quy đổi sang thang 4 đạt 4.0 điểm; Xếp loại Giỏi/Xuất sắc.\n• Điểm B+: Từ 8.0 đến 8.4 điểm thang ...",
@@ -51,12 +75,16 @@
           "chunk_id": "so-tay-sinh-vien-2024_p8_para_000",
           "text_preview": "SỔ TAY SINH VIÊN VÀ QUY CHẾ ĐÀO TẠO ĐẠI HỌC 2024 - 2025\nTrường Đại học Công nghệ và Kỹ thuật - Ban Đào tạo & CTSV\nTrang ...",
           "score": 2,
-          "reason": "Chunk para_000 chứa đầy đủ bảng quy đổi thang điểm và phân loại đạt chuẩn, rất mạch lạc."
+          "reason": "Chunk para_000 giữ tiêu đề Điều 9 và phần đầu bảng quy đổi, giúp xác định ngữ cảnh của các mức điểm."
         }
       },
       {
         "page": 11,
         "section": "hoc_bong_hoc_phi",
+        "source_anchor": {
+          "start_char": 450,
+          "quote": "ơng trình chuẩn (Khối Kỹ thuật - Công nghệ): 450.0"
+        },
         "strategy_a": {
           "chunk_id": "so-tay-sinh-vien-2024_p11_fix_001",
           "text_preview": "ơng trình chuẩn (Khối Kỹ thuật - Công nghệ): 450.000 VNĐ / 01 tín chỉ lý thuyết; 550.000 VNĐ / 01 tín chỉ\nthực hành, thí...",
@@ -73,6 +101,10 @@
       {
         "page": 13,
         "section": "hoc_bong_hoc_phi",
+        "source_anchor": {
+          "start_char": 450,
+          "quote": "ặc bệnh binh có tỷ lệ suy giảm khả năng lao động t"
+        },
         "strategy_a": {
           "chunk_id": "so-tay-sinh-vien-2024_p13_fix_001",
           "text_preview": "ặc bệnh binh có tỷ lệ suy giảm khả năng lao động từ 81% trở lên; con của người hoạt động kháng\nchiến bị nhiễm chất độc h...",
@@ -89,6 +121,10 @@
       {
         "page": 16,
         "section": "hoc_bong_hoc_phi",
+        "source_anchor": {
+          "start_char": 450,
+          "quote": "2. Thứ tự ưu tiên khi xét tuyển:\n- Học bổng được x"
+        },
         "strategy_a": {
           "chunk_id": "so-tay-sinh-vien-2024_p16_fix_001",
           "text_preview": "2. Thứ tự ưu tiên khi xét tuyển:\n- Học bổng được xét từ loại Xuất sắc trước, sau đó đến loại Giỏi, và cuối cùng đến loại...",
@@ -105,11 +141,15 @@
       {
         "page": 21,
         "section": "cong_tac_sinh_vien",
+        "source_anchor": {
+          "start_char": 450,
+          "quote": "n cần đi học đầy đủ, đúng giờ (8đ);\ný thức tham gi"
+        },
         "strategy_a": {
           "chunk_id": "so-tay-sinh-vien-2024_p21_fix_001",
           "text_preview": "n cần đi học đầy đủ, đúng giờ (8đ);\ný thức tham gia câu lạc bộ học thuật, thi Olympic, NCKH (6đ); tinh thần vượt khó tro...",
           "score": 1,
-          "reason": "Chunk fix_001 bắt đầu từ Tiêu chí 2, hiểu được nội dung thành phần nhưng thiếu ngữ cảnh tổng điểm 100."
+          "reason": "Chunk fix_001 bắt đầu giữa cụm 'n cần đi học đầy đủ', còn nội dung chấm điểm nhưng thiếu phần mở đầu tiêu chí."
         },
         "strategy_b": {
           "chunk_id": "so-tay-sinh-vien-2024_p21_para_000",
@@ -121,11 +161,15 @@
       {
         "page": 24,
         "section": "cong_tac_sinh_vien",
+        "source_anchor": {
+          "start_char": 450,
+          "quote": "ó nguồn chu cấp nuôi dưỡng.\n• Ưu tiên 2: Sinh viên"
+        },
         "strategy_a": {
           "chunk_id": "so-tay-sinh-vien-2024_p24_fix_001",
           "text_preview": "ó nguồn chu cấp nuôi dưỡng.\n• Ưu tiên 2: Sinh viên là con đẻ của liệt sĩ, con thương binh, con bệnh binh, con người hoạt...",
           "score": 0,
-          "reason": "Chunk fix_001 bị cắt cụm từ mở đầu đối tượng ưu tiên ('con bệnh binh, con người...'), mất ngữ cảnh KTX."
+          "reason": "Chunk fix_001 bắt đầu bằng 'ó nguồn chu cấp nuôi dưỡng', mất phần đầu đối tượng ưu tiên và ngữ cảnh mở đầu Điều 25."
         },
         "strategy_b": {
           "chunk_id": "so-tay-sinh-vien-2024_p24_para_000",
@@ -137,6 +181,10 @@
       {
         "page": 28,
         "section": "tot_nghiep_khen_thuong",
+        "source_anchor": {
+          "start_char": 450,
+          "quote": "ồ sơ xét tốt nghiệp:\n• TOEIC (2 kỹ năng Nghe - Đọc"
+        },
         "strategy_a": {
           "chunk_id": "so-tay-sinh-vien-2024_p28_fix_001",
           "text_preview": "ồ sơ xét tốt nghiệp:\n• TOEIC (2 kỹ năng Nghe - Đọc): Đạt tối thiểu 550 điểm.\n• IELTS Academic: Đạt tối thiểu 5.5 điểm (k...",
@@ -153,11 +201,15 @@
       {
         "page": 30,
         "section": "tot_nghiep_khen_thuong",
+        "source_anchor": {
+          "start_char": 450,
+          "quote": "ng tích lũy đạt từ 2.50 đến 3.19.\n• Hạng Trung bìn"
+        },
         "strategy_a": {
           "chunk_id": "so-tay-sinh-vien-2024_p30_fix_001",
           "text_preview": "ng tích lũy đạt từ 2.50 đến 3.19.\n• Hạng Trung bình: Điểm trung bình chung tích lũy đạt từ 2.00 đến 2.49.\n2. Các trường ...",
           "score": 0,
-          "reason": "Chunk fix_001 bị ngắt ngang câu tại 'Hạng tốt nghiệp của n...', mất toàn bộ điều kiện hạ bậc."
+          "reason": "Chunk fix_001 bắt đầu giữa cụm GPA và kết thúc tại '5% tổng số', không giữ đủ điều kiện học lại vượt định mức."
         },
         "strategy_b": {
           "chunk_id": "so-tay-sinh-vien-2024_p30_para_000",
@@ -182,6 +234,8 @@
           "page": 22,
           "section": "cong_tac_sinh_vien",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -192,6 +246,8 @@
           "page": 22,
           "section": "cong_tac_sinh_vien",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -202,6 +258,8 @@
           "page": 23,
           "section": "cong_tac_sinh_vien",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -212,6 +270,8 @@
           "page": 25,
           "section": "cong_tac_sinh_vien",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -222,6 +282,8 @@
           "page": 25,
           "section": "cong_tac_sinh_vien",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -232,6 +294,8 @@
           "page": 24,
           "section": "cong_tac_sinh_vien",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -242,6 +306,8 @@
           "page": 28,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -252,6 +318,8 @@
           "page": 28,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -262,6 +330,8 @@
           "page": 28,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -272,6 +342,8 @@
           "page": 29,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -282,6 +354,8 @@
           "page": 29,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -292,6 +366,8 @@
           "page": 31,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -302,6 +378,8 @@
           "page": 30,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -312,6 +390,8 @@
           "page": 30,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -322,6 +402,8 @@
           "page": 30,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         }
@@ -340,6 +422,8 @@
           "page": 22,
           "section": "cong_tac_sinh_vien",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -350,6 +434,8 @@
           "page": 23,
           "section": "cong_tac_sinh_vien",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -360,6 +446,8 @@
           "page": 21,
           "section": "cong_tac_sinh_vien",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -370,6 +458,8 @@
           "page": 25,
           "section": "cong_tac_sinh_vien",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -380,6 +470,8 @@
           "page": 24,
           "section": "cong_tac_sinh_vien",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -390,6 +482,8 @@
           "page": 25,
           "section": "cong_tac_sinh_vien",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -400,6 +494,8 @@
           "page": 28,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -410,6 +506,8 @@
           "page": 28,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -420,6 +518,8 @@
           "page": 27,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -430,6 +530,8 @@
           "page": 29,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -440,6 +542,8 @@
           "page": 27,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -450,6 +554,8 @@
           "page": 29,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -460,6 +566,8 @@
           "page": 30,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -470,6 +578,8 @@
           "page": 30,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -480,6 +590,8 @@
           "page": 4,
           "section": "quy_che_dao_tao",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         }
@@ -498,6 +610,8 @@
           "page": 22,
           "section": "cong_tac_sinh_vien",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -508,6 +622,8 @@
           "page": 23,
           "section": "cong_tac_sinh_vien",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -518,6 +634,8 @@
           "page": 21,
           "section": "cong_tac_sinh_vien",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -528,6 +646,8 @@
           "page": 25,
           "section": "cong_tac_sinh_vien",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -538,6 +658,8 @@
           "page": 24,
           "section": "cong_tac_sinh_vien",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -548,6 +670,8 @@
           "page": 25,
           "section": "cong_tac_sinh_vien",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -558,6 +682,8 @@
           "page": 28,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -568,6 +694,8 @@
           "page": 28,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -578,6 +706,8 @@
           "page": 27,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -588,6 +718,8 @@
           "page": 29,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -598,6 +730,8 @@
           "page": 27,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -608,6 +742,8 @@
           "page": 29,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -618,6 +754,8 @@
           "page": 30,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -628,6 +766,8 @@
           "page": 30,
           "section": "tot_nghiep_khen_thuong",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         },
@@ -638,6 +778,8 @@
           "page": 4,
           "section": "quy_che_dao_tao",
           "source": "data/so_tay_sinh_vien_2024.pdf",
+          "section_verified": true,
+          "year_verified": true,
           "content_verified_on_page": true,
           "is_accurate": true
         }
@@ -688,7 +830,7 @@
         "gold_page": 28,
         "strategy_a": {
           "score": 2,
-          "reason": "Top-1 (p28_fix_000) nêu rõ chuẩn TOEIC 550 điểm cho khối ngành không chuyên ngữ."
+          "reason": "Top-1 (p28_fix_001) nêu rõ chuẩn TOEIC 550 điểm cho khối ngành không chuyên ngữ."
         },
         "strategy_b": {
           "score": 2,
@@ -705,7 +847,7 @@
         "gold_page": 29,
         "strategy_a": {
           "score": 2,
-          "reason": "Top-1 (p29_fix_000) nêu chuẩn điểm 700/1000 cho từng bài thi MOS."
+          "reason": "Top-1 (p29_fix_001) nêu chuẩn điểm 700/1000 cho từng bài thi MOS."
         },
         "strategy_b": {
           "score": 2,

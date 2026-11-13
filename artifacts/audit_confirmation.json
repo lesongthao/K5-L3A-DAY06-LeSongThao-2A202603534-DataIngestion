@@ -1,0 +1,10 @@
+{
+  "confirmation_type": "author_self_declaration",
+  "reviewer": "Lê Sông Thao (MSSV: 2A202603534)",
+  "confirmed_on": "2026-11-14",
+  "basis": "Tác giả xác nhận kết quả và bảng chấm trong trao đổi ngày 14/11/2026. Đây là xác nhận của tác giả, không phải chứng nhận độc lập của công cụ.",
+  "corpus_sha256": "c71d431db2607a67565cf552672bfd24955d18bcf68e43cb0ca1acb6ec4fad0b",
+  "labels_sha256": "a8f8ddc12d15848734908f0d659f813b66a65bb32499665599e556c16c07834e",
+  "previous_labels_sha256": "21e81dde803cd2d54159c65c2770a6de56c347118cd404db14cb2d06f3e8ee64",
+  "editorial_update": "Bổ sung đoạn neo nguồn và sửa mô tả trích đoạn để khớp text; giữ nguyên toàn bộ điểm đã được tác giả xác nhận."
+}

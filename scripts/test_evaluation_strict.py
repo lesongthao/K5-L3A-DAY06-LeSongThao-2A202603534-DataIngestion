@@ -9,7 +9,7 @@ sys.path.insert(0, str(BASE_DIR))
 
 import json
 import pypdf
-from starter.src.evaluation import is_evidence_hit, normalize_whitespace
+from starter.src.evaluation import is_evidence_hit, normalize_whitespace, check_filter_compliance
 
 PDF_PATH = BASE_DIR / "data" / "so_tay_sinh_vien_2024.pdf"
 BENCHMARK_PATH = BASE_DIR / "benchmark" / "benchmark_questions.json"
@@ -62,6 +62,22 @@ def test_strict_evidence():
         if is_evidence_hit(mock_wrong_doc, q):
             print(f"FAIL: is_evidence_hit accepted wrong document_id for {q['id']}")
             all_passed = False
+
+        missing_doc = {"text": page_text, "metadata": {"page": q["gold_page"]}}
+        if is_evidence_hit(missing_doc, q):
+            raise AssertionError(f"Missing document_id accepted for {q['id']}")
+
+        no_evidence = {**q, "evidence_quote": "", "evidence_quotes": []}
+        if is_evidence_hit(mock_hit, no_evidence):
+            raise AssertionError(f"Missing evidence accepted for {q['id']}")
+
+        if len(quotes) > 1:
+            partial_hit = {**mock_hit, "text": quotes[0]}
+            if is_evidence_hit(partial_hit, q):
+                raise AssertionError(f"Partial evidence accepted for {q['id']}")
+
+    if check_filter_compliance([], {"section": "quy_che_dao_tao"}):
+        raise AssertionError("Empty filtered results must not count as compliance")
 
     if all_passed:
         print("ALL 20 BENCHMARK EVIDENCE STRINGS VERIFIED 100% MATCH ON PDF!")

@@ -4,6 +4,8 @@ stores in ChromaDB, runs 20 benchmark queries across dev/test splits,
 computes Hit@1/Hit@3, performs comprehensive audits, and exports all artifacts.
 """
 import json
+import hashlib
+import csv
 import os
 import sys
 import time
@@ -22,11 +24,15 @@ BASE_DIR = get_base_dir()
 sys.path.insert(0, str(BASE_DIR))
 sys.path.insert(0, str(BASE_DIR / "starter"))
 
-from .ingestion import load_pdf
+from .ingestion import load_pdf, get_section_for_page
 from .chunking import fixed_size, by_paragraph
 from .embeddings import GeminiEmbedder
 from .store import ChromaVectorStore
-from .evaluation import evaluate_query, summarize
+from .evaluation import evaluate_query, summarize, normalize_whitespace
+
+
+PRICING_SOURCE = "https://aistudio.google.com/docs/pricing#gemini-embedding"
+PRICE_PER_MILLION_TOKENS = 0.15
 
 
 def run_coherence_audit(content_pages) -> tuple[float, float, list[dict]]:
@@ -52,7 +58,7 @@ def run_coherence_audit(content_pages) -> tuple[float, float, list[dict]]:
         },
         8: {
             "a": (1, "Chunk fix_001 chứa các mức điểm quy đổi B+, B, C+ nhưng thiếu tiêu đề Điều 9 và mức A phía trước."),
-            "b": (2, "Chunk para_000 chứa đầy đủ bảng quy đổi thang điểm và phân loại đạt chuẩn, rất mạch lạc.")
+            "b": (2, "Chunk para_000 giữ tiêu đề Điều 9 và phần đầu bảng quy đổi, giúp xác định ngữ cảnh của các mức điểm.")
         },
         11: {
             "a": (0, "Chunk fix_001 bị cắt ngang ngay giữa dòng biểu giá ('ơng trình chuẩn...'), mất từ khóa đầu dòng."),
@@ -67,11 +73,11 @@ def run_coherence_audit(content_pages) -> tuple[float, float, list[dict]]:
             "b": (2, "Chunk para_000 chứa trọn vẹn Khoản 1 và 2 Điều 17 về thứ tự ưu tiên phân bổ học bổng khuyến khích.")
         },
         21: {
-            "a": (1, "Chunk fix_001 bắt đầu từ Tiêu chí 2, hiểu được nội dung thành phần nhưng thiếu ngữ cảnh tổng điểm 100."),
+            "a": (1, "Chunk fix_001 bắt đầu giữa cụm 'n cần đi học đầy đủ', còn nội dung chấm điểm nhưng thiếu phần mở đầu tiêu chí."),
             "b": (2, "Chunk para_000 mở đầu trọn vẹn Điều 22 và nêu đầy đủ Tiêu chí 1 điểm rèn luyện.")
         },
         24: {
-            "a": (0, "Chunk fix_001 bị cắt cụm từ mở đầu đối tượng ưu tiên ('con bệnh binh, con người...'), mất ngữ cảnh KTX."),
+            "a": (0, "Chunk fix_001 bắt đầu bằng 'ó nguồn chu cấp nuôi dưỡng', mất phần đầu đối tượng ưu tiên và ngữ cảnh mở đầu Điều 25."),
             "b": (2, "Chunk para_000 bao hàm tiêu đề Điều 25 và danh mục đầy đủ các đối tượng ưu tiên 1, 2, 3 ở KTX.")
         },
         28: {
@@ -79,7 +85,7 @@ def run_coherence_audit(content_pages) -> tuple[float, float, list[dict]]:
             "b": (2, "Chunk para_000 chứa toàn vẹn Khoản 1 Điều 29 về chuẩn đầu ra ngoại ngữ ngành không chuyên.")
         },
         30: {
-            "a": (0, "Chunk fix_001 bị ngắt ngang câu tại 'Hạng tốt nghiệp của n...', mất toàn bộ điều kiện hạ bậc."),
+            "a": (0, "Chunk fix_001 bắt đầu giữa cụm GPA và kết thúc tại '5% tổng số', không giữ đủ điều kiện học lại vượt định mức."),
             "b": (1, "Chunk para_000 chứa khung xếp loại bằng tốt nghiệp nhưng cuối chunk bị dính tiêu đề '2. Các trường hợp...' do ranh giới ngắt đoạn.")
         }
     }
@@ -90,7 +96,12 @@ def run_coherence_audit(content_pages) -> tuple[float, float, list[dict]]:
         chunks_para = by_paragraph(p_obj, max_size=800)
 
         chunk_a = chunks_fix[1] if len(chunks_fix) > 1 else chunks_fix[0]
-        chunk_b = chunks_para[0]
+        anchor_start = min(450, max(0, len(p_obj.text) - 50))
+        anchor_quote = p_obj.text[anchor_start:anchor_start + 50]
+        chunk_b = next(c for c in chunks_para
+                       if normalize_whitespace(anchor_quote) in normalize_whitespace(c.text))
+        if normalize_whitespace(anchor_quote) not in normalize_whitespace(chunk_a.text):
+            raise ValueError("Coherence sample does not cover its shared source anchor")
 
         score_a, reason_a = manual_audit_scores[p_num]["a"]
         score_b, reason_b = manual_audit_scores[p_num]["b"]
@@ -98,6 +109,7 @@ def run_coherence_audit(content_pages) -> tuple[float, float, list[dict]]:
         eval_details.append({
             "page": p_num,
             "section": p_obj.metadata["section"],
+            "source_anchor": {"start_char": anchor_start, "quote": anchor_quote},
             "strategy_a": {
                 "chunk_id": chunk_a.chunk_id,
                 "text_preview": chunk_a.text[:120] + "...",
@@ -142,10 +154,12 @@ def run_metadata_audit(traces_a, traces_b, traces_c, pdf_path) -> dict:
                 
                 # Verify chunk text actually exists on that claimed physical page
                 actual_page_text = reader.pages[page_num - 1].extract_text() if has_valid_page else ""
-                snippet = h.get("text", "")[:60].strip()
-                content_verified = (snippet in actual_page_text) if actual_page_text else False
-
-                is_accurate = has_valid_doc and has_valid_src and has_valid_page and content_verified
+                chunk_text = normalize_whitespace(h.get("text", ""))
+                content_verified = bool(chunk_text) and chunk_text in normalize_whitespace(actual_page_text)
+                section_verified = has_valid_page and h.get("section") == get_section_for_page(page_num)
+                year_verified = h.get("year") == 2024
+                is_accurate = all((has_valid_doc, has_valid_src, has_valid_page,
+                                   content_verified, section_verified, year_verified))
                 if is_accurate:
                     valid_count += 1
 
@@ -156,6 +170,8 @@ def run_metadata_audit(traces_a, traces_b, traces_c, pdf_path) -> dict:
                     "page": page_num,
                     "section": h.get("section"),
                     "source": h.get("source"),
+                    "section_verified": section_verified,
+                    "year_verified": year_verified,
                     "content_verified_on_page": content_verified,
                     "is_accurate": is_accurate
                 })
@@ -208,14 +224,14 @@ def run_grounding_audit(traces_a, traces_b, traces_c) -> dict:
             reason_c = "Top-1 (p25_para_000) đầy đủ bằng chứng và điều kiện hỗ trợ câu trả lời."
         elif qid == "q18":
             score_a = 2
-            reason_a = "Top-1 (p28_fix_000) nêu rõ chuẩn TOEIC 550 điểm cho khối ngành không chuyên ngữ."
+            reason_a = "Top-1 (p28_fix_001) nêu rõ chuẩn TOEIC 550 điểm cho khối ngành không chuyên ngữ."
             score_b = 2
             reason_b = "Top-1 (p28_para_000) chứa toàn bộ Khoản 1 Điều 29 với định mức 550 điểm TOEIC."
             score_c = 2
             reason_c = "Top-1 (p28_para_000) hỗ trợ đầy đủ điều kiện trả lời chính xác."
         elif qid == "q19":
             score_a = 2
-            reason_a = "Top-1 (p29_fix_000) nêu chuẩn điểm 700/1000 cho từng bài thi MOS."
+            reason_a = "Top-1 (p29_fix_001) nêu chuẩn điểm 700/1000 cho từng bài thi MOS."
             score_b = 2
             reason_b = "Top-1 (p29_para_000) đầy đủ quy định 3 bài thi Word, Excel, PowerPoint đạt từ 700 điểm."
             score_c = 2
@@ -256,17 +272,62 @@ def run_grounding_audit(traces_a, traces_b, traces_c) -> dict:
     }
 
 
+def build_audit_report(content_pages, traces_a, traces_b, traces_c, pdf_path):
+    """Replay existing subjective labels; this does not certify human review."""
+    avg_a, avg_b, details = run_coherence_audit(content_pages)
+    metadata = run_metadata_audit(traces_a, traces_b, traces_c, pdf_path)
+    name_line = next(line for line in (BASE_DIR / "STUDENT.md").read_text(encoding="utf-8").splitlines()
+                     if line.startswith("- Họ và tên:"))
+    auditor = name_line.split(":", 1)[1].strip() + " (MSSV: 2A202603534)"
+    coherence = {"sample_size": len(details), "strategy_a_avg": avg_a,
+                 "strategy_b_avg": avg_b, "details": details}
+    grounding = run_grounding_audit(traces_a, traces_b, traces_c)
+    label_digest = hashlib.sha256(json.dumps({"coherence": coherence, "grounding_quality": grounding},
+                                  ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
+    confirmation_path = BASE_DIR / "artifacts/audit_confirmation.json"
+    confirmation = json.loads(confirmation_path.read_text(encoding="utf-8")) if confirmation_path.exists() else {}
+    confirmed = (confirmation.get("confirmation_type") == "author_self_declaration"
+                 and confirmation.get("reviewer") == auditor
+                 and confirmation.get("corpus_sha256") == hashlib.sha256(Path(pdf_path).read_bytes()).hexdigest()
+                 and confirmation.get("labels_sha256") == label_digest)
+    return {
+        "auditor": auditor,
+        "declared_methodology": "Tác giả tự đọc và đối chiếu từng chunk với trang PDF gốc tại các vị trí nguồn cố định, dùng script hỗ trợ so khớp chuỗi.",
+        "methodology": "Nhãn coherence/grounding được lưu kèm lý do và xác nhận của tác giả; script tổng hợp lại nhãn. Xác nhận chỉ còn hiệu lực khi hash corpus và bảng nhãn khớp. Metadata được kiểm tra tự động bằng text, nguồn, trang, section và year.",
+        "human_review_status": "confirmed" if confirmed else "unconfirmed",
+        "confirmation": confirmation if confirmed else None,
+        "coherence": coherence,
+        "metadata_usefulness": {
+            **{"strategy_" + s.lower(): metadata[s] for s in "ABC"},
+            "filter_compliance_dev": summarize(traces_c)["dev"]["filter_compliance"],
+            "filter_compliance_test": summarize(traces_c)["test"]["filter_compliance"],
+        },
+        "grounding_quality": grounding,
+    }
+
+
 def update_experiment_log(summary_a, summary_b, summary_c, timing_stats, cost_stats):
     """Write experimental parameters and empirical results into artifacts/experiment_log.csv."""
     csv_path = BASE_DIR / "artifacts" / "experiment_log.csv"
-    csv_content = [
-        "strategy,chunking,chunk_size,overlap,metadata,filter,vectorizer,hypothesis,dev_hit1,dev_hit3,test_hit1,test_hit3,notes",
-        f"A,fixed_size,500,50,\"source,page,section,year\",None,models/gemini-embedding-001 (3072d),Cửa sổ cố định 500 ký tự phân mảnh câu văn làm giảm độ trúng bằng chứng,{summary_a['dev']['hit_at_1']},{summary_a['dev']['hit_at_3']},{summary_a['test']['hit_at_1']},{summary_a['test']['hit_at_3']},Nhiều câu bị cắt cụm từ khóa và bằng chứng giữa 2 chunk (q01 q10 q16 q20)",
-        f"B,by_paragraph,800,0,\"source,page,section,year\",None,models/gemini-embedding-001 (3072d),Chunking theo điều khoản/đoạn văn bảo toàn toàn vẹn ngữ nghĩa và bằng chứng,{summary_b['dev']['hit_at_1']},{summary_b['dev']['hit_at_3']},{summary_b['test']['hit_at_1']},{summary_b['test']['hit_at_3']},Hit@3 đạt 100% trên cả dev và test; Coherence đạt 1.90/2.0 và Grounding đạt 2.0/2.0",
-        f"C,by_paragraph,800,0,\"source,page,section,year\",Metadata Filter (section),models/gemini-embedding-001 (3072d),Metadata filter giúp thu hẹp phạm vi chính xác theo chương quy chế loại bỏ hoàn toàn nhiễu,{summary_c['dev']['hit_at_1']},{summary_c['dev']['hit_at_3']},{summary_c['test']['hit_at_1']},{summary_c['test']['hit_at_3']},Tuân thủ filter 100% (2/2 dev 1/1 test); top-3 chỉ chứa chunk thuộc đúng section chỉ định"
-    ]
-    with open(csv_path, "w", encoding="utf-8") as f:
-        f.write("\n".join(csv_content) + "\n")
+    csv_path.parent.mkdir(parents=True, exist_ok=True)
+    hypotheses = {
+        "a": "Cửa sổ cố định có thể chia cắt evidence qua hai chunk",
+        "b": "Chia theo đoạn/câu có thể giữ evidence tốt hơn cửa sổ cố định",
+        "c": "Filter section có thể loại các chunk ngoài phạm vi được hỏi",
+    }
+    with open(csv_path, "w", encoding="utf-8", newline="") as stream:
+        writer = csv.writer(stream)
+        writer.writerow(["strategy", "chunking", "chunk_size", "overlap", "metadata", "filter", "vectorizer",
+                         "hypothesis", "dev_hit1", "dev_hit3", "test_hit1", "test_hit3", "notes"])
+        for s, summary in zip("abc", (summary_a, summary_b, summary_c)):
+            note = (f"Filter compliance dev={summary['dev']['filter_compliance']}; test={summary['test']['filter_compliance']}; "
+                    f"embed={timing_stats['strategy_' + s]['embed_time']}s; "
+                    f"document cost estimate={cost_stats['strategy_' + s]['commercial_estimated_cost_usd']} USD")
+            writer.writerow([s.upper(), "fixed_size" if s == "a" else "by_paragraph", 500 if s == "a" else 800,
+                             50 if s == "a" else 0, "source,page,section,year", "section" if s == "c" else "None",
+                             "models/gemini-embedding-001 (3072d)", hypotheses[s],
+                             summary["dev"]["hit_at_1"], summary["dev"]["hit_at_3"],
+                             summary["test"]["hit_at_1"], summary["test"]["hit_at_3"], note])
     print(f"Updated experiment log at: {csv_path}")
 
 
@@ -328,9 +389,9 @@ def main() -> None:
     # Approx 1 token ~ 3.5 characters for Vietnamese text
     tokens_a = int(chars_a / 3.5)
     tokens_b = int(chars_b / 3.5)
-    # Gemini Embedding standard pricing: $0.00002 per 1000 tokens (Free Tier = $0.00)
-    cost_a_est = round((tokens_a / 1000) * 0.00002, 6)
-    cost_b_est = round((tokens_b / 1000) * 0.00002, 6)
+    # Synchronous Standard API rate, verified 2026-11-13; estimate only.
+    cost_a_est = round(tokens_a / 1_000_000 * PRICE_PER_MILLION_TOKENS, 6)
+    cost_b_est = round(tokens_b / 1_000_000 * PRICE_PER_MILLION_TOKENS, 6)
 
     # Ingest Strategy A
     print(f"\nEmbedding Strategy A ({len(chunks_a)} chunks, {chars_a} chars, ~{tokens_a} tokens)...")
@@ -380,10 +441,14 @@ def main() -> None:
     # Ingesting only 5 chunks should clean up the remaining 111 chunks
     store.upsert("strategy_a", test_subset, test_subset_vecs)
     count_after_reduction = store._get_collection("strategy_a").count()
+    if count_after_reduction != len(test_subset):
+        raise AssertionError("Obsolete chunk cleanup failed")
     print(f"Collection count after reducing to 5 chunks: {count_after_reduction}")
     # Restore full collection
     store.upsert("strategy_a", chunks_a, vectors_a)
     print(f"Full collection restored: {store._get_collection('strategy_a').count()} chunks.")
+    if store._get_collection("strategy_a").count() != len(chunks_a):
+        raise AssertionError("Restored collection count does not match corpus")
 
     # 5. Benchmark Queries
     print(f"\n[Step 5] Running Benchmark Queries from: {benchmark_path}")
@@ -442,28 +507,7 @@ def main() -> None:
 
     # 7. Run Audits: Coherence, Metadata Usefulness, Grounding Quality
     print("\n[Step 6] Running comprehensive audits (Coherence, Metadata, Grounding)...")
-    avg_coh_a, avg_coh_b, coh_details = run_coherence_audit(content_pages)
-    meta_audit = run_metadata_audit(traces_a, traces_b, traces_c, pdf_path)
-    ground_audit = run_grounding_audit(traces_a, traces_b, traces_c)
-
-    audit_report = {
-        "auditor": "Lê Song Thảo (MSSV: 2A202603534)",
-        "methodology": "Tác giả tự đọc và đối chiếu thủ công 100% từng chunk với tài liệu PDF gốc tại các vị trí nguồn cố định, có sự hỗ trợ của script để chuẩn hóa dữ liệu so khớp.",
-        "coherence": {
-            "sample_size": len(coh_details),
-            "strategy_a_avg": avg_coh_a,
-            "strategy_b_avg": avg_coh_b,
-            "details": coh_details
-        },
-        "metadata_usefulness": {
-            "strategy_a": meta_audit["A"],
-            "strategy_b": meta_audit["B"],
-            "strategy_c": meta_audit["C"],
-            "filter_compliance_dev": summary_c["dev"]["filter_compliance"],
-            "filter_compliance_test": summary_c["test"]["filter_compliance"]
-        },
-        "grounding_quality": ground_audit
-    }
+    audit_report = build_audit_report(content_pages, traces_a, traces_b, traces_c, pdf_path)
 
     with open(results_dir / "audit_report.json", "w", encoding="utf-8") as f:
         json.dump(audit_report, f, ensure_ascii=False, indent=2)
@@ -492,8 +536,11 @@ def main() -> None:
             "strategy_c": {"chunk_time": time_chunk_c, "embed_time": embed_time_c, "store_time": store_time_c, "total_ingest_time": total_ingest_time_c}
         },
         "cost_accounting": {
-            "pricing_rate": "$0.00002 / 1000 tokens",
-            "billed_cost_usd": 0.0,
+            "pricing_rate": "$0.15 / 1,000,000 tokens (Standard API)",
+            "pricing_source": PRICING_SOURCE,
+            "pricing_checked_at": "2026-11-13",
+            "billed_cost_usd": None,
+            "billing_note": "Chưa đối chiếu hóa đơn provider. Free Tier có giá 0 USD nếu tài khoản đủ điều kiện; estimate chỉ gồm document embedding, chưa gồm query, probe và retry.",
             "strategy_a": {"characters": chars_a, "approx_tokens": tokens_a, "commercial_estimated_cost_usd": cost_a_est},
             "strategy_b": {"characters": chars_b, "approx_tokens": tokens_b, "commercial_estimated_cost_usd": cost_b_est},
             "strategy_c": {"characters": chars_b, "approx_tokens": tokens_b, "commercial_estimated_cost_usd": 0.0}

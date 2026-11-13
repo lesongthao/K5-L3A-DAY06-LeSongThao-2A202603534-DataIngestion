@@ -1,6 +1,6 @@
 # Core dependencies for Day 06 Data Ingestion & Retrieval
-pypdf>=5.0.0
-python-dotenv>=1.0.0
-chromadb>=1.5.0
-reportlab>=5.0.0
-google-genai>=3.0.0
+pypdf==7.0.0
+python-dotenv==1.2.4
+chromadb==1.5.9
+reportlab==5.1.0
+google-genai==3.0.0

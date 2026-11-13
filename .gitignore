@@ -11,3 +11,6 @@ __pycache__/
 *.sqlite3
 chroma_db/
 results/chroma_db/
+exports/
+playwright-report/
+test-results/
